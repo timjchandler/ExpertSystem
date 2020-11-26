@@ -2,15 +2,13 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="805.0" xmlns=" " xmlns:fx=" " fx:controller="home.controller.Controller">
    <children>
       <Pane fx:id="boxBanner" layoutX="259.0" layoutY="77.0" prefHeight="76.0" prefWidth="552.0" style="-fx-background-color: #383D3B;" AnchorPane.rightAnchor="0.0">
          <children>
@@ -32,7 +30,7 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="btnRestart" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="63.0" prefWidth="267.0" stylesheets="@../css/style.css" text="Restart" textFill="#f8f3f2">
+            <Button fx:id="btnRestart" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sortClicks" prefHeight="63.0" prefWidth="267.0" stylesheets="@../css/style.css" text="Restart" textFill="#f8f3f2">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -40,7 +38,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnTrace" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="63.0" prefWidth="294.0" stylesheets="@../css/style.css" text="View Trace" textFill="#f8f3f2">
+            <Button fx:id="btnTrace" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sortClicks" prefHeight="63.0" prefWidth="294.0" stylesheets="@../css/style.css" text="View Trace" textFill="#f8f3f2">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -48,7 +46,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnUndo" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="63.0" prefWidth="320.0" stylesheets="@../css/style.css" text="Undo" textFill="#f8f3f2">
+            <Button fx:id="btnUndo" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sortClicks" prefHeight="63.0" prefWidth="320.0" stylesheets="@../css/style.css" text="Undo" textFill="#f8f3f2">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -56,7 +54,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="63.0" prefWidth="301.0" stylesheets="@../css/style.css" text="Settings" textFill="#f8f3f2">
+            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sortClicks" prefHeight="63.0" prefWidth="301.0" stylesheets="@../css/style.css" text="Settings" textFill="#f8f3f2">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -64,7 +62,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnExit" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="63.0" prefWidth="301.0" stylesheets="@../css/style.css" text="Exit" textFill="#f8f3f2">
+            <Button fx:id="btnExit" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sortClicks" prefHeight="63.0" prefWidth="301.0" stylesheets="@../css/style.css" text="Exit" textFill="#f8f3f2">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -84,77 +82,13 @@
       </Label>
       <Pane fx:id="paneMain" layoutX="324.0" layoutY="167.0" prefHeight="438.0" prefWidth="411.0">
          <children>
-            <Button fx:id="btnNext" alignment="CENTER" layoutX="72.0" layoutY="386.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="267.0" style="-fx-background-color: #DACABE; -fx-text-fill: #383D3b;" stylesheets="@../css/style.css" text="Next" textFill="#f8f3f2">
+            <Button fx:id="btnNext" alignment="CENTER" layoutX="72.0" layoutY="386.0" mnemonicParsing="false" onAction="#sortClicks" prefHeight="38.0" prefWidth="267.0" style="-fx-background-color: #DACABE; -fx-text-fill: #383D3b;" stylesheets="@../css/style.css" text="Next" textFill="#f8f3f2">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
             <Label fx:id="textFullQuestion" alignment="TOP_LEFT" prefHeight="48.0" prefWidth="411.0" text="Full question text that if I keep typing may go over onto a new line I suppose. let us see" textFill="#383d3b" textOverrun="CLIP" wrapText="true" />
-            <VBox fx:id="answerBox" layoutX="72.0" layoutY="48.0" prefHeight="334.0" prefWidth="267.0">
-               <children>
-                  <CheckBox fx:id="check1" mnemonicParsing="false" text="CheckBox">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </CheckBox>
-                  <RadioButton fx:id="radio1" mnemonicParsing="false" text="RadioButton">
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </RadioButton>
-                  <CheckBox fx:id="check2" mnemonicParsing="false" text="CheckBox">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </CheckBox>
-                  <CheckBox fx:id="check3" mnemonicParsing="false" text="CheckBox">
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </CheckBox>
-                  <CheckBox fx:id="check4" mnemonicParsing="false" text="CheckBox">
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </CheckBox>
-                  <CheckBox fx:id="check5" mnemonicParsing="false" text="CheckBox">
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </CheckBox>
-                  <CheckBox fx:id="check6" mnemonicParsing="false" text="CheckBox">
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </CheckBox>
-                  <CheckBox fx:id="check7" mnemonicParsing="false" text="CheckBox">
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </CheckBox>
-                  <CheckBox fx:id="check8" mnemonicParsing="false" text="CheckBox">
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </CheckBox>
-                  <CheckBox fx:id="check9" mnemonicParsing="false" text="CheckBox">
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </CheckBox>
-                  <CheckBox fx:id="check10" mnemonicParsing="false" text="CheckBox">
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </CheckBox>
-               </children>
-            </VBox>
+            <VBox fx:id="answerBox" layoutX="72.0" layoutY="48.0" prefHeight="334.0" prefWidth="267.0" />
          </children>
       </Pane>
    </children>

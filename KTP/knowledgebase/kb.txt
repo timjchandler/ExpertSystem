@@ -1,0 +1,44 @@
++RULE
+TYPE:SINGLE
+ANSWERS:2
+Q:This is an example question
+A:VALUE:Yes#RESPONSE:That is good
+A:VALUE:No#RESPONSE:That is also ok
+A:VALUE:#RESPONSE:No answer was given
+-RULE
+
++RULE
+TYPE:SINGLE
+ANSWERS:3
+Q:This is a different example question
+A:VALUE:I think so#RESPONSE:Good for you
+A:VALUE:I'm not sure#RESPONSE:That's unfortunate
+A:VALUE:I have no idea#RESPONSE:You tried
+A:VALUE:#RESPONSE:You didn't try
+-RULE
+
+
+
+
++RULE
+TYPE:SINGLE
+ANSWERS:5
+Q:This is a question, pick a number between one and five
+A:VALUE:One#RESPONSE:You picked one
+A:VALUE:Two#RESPONSE:You picked two
+A:VALUE:Three#RESPONSE:You picked three
+A:VALUE:Four#RESPONSE:You picked four
+A:VALUE:Five#RESPONSE:You picked five
+A:VALUE:#RESPONSE:You did not pick
+-RULE
+
++RULE
+TYPE:MULTI
+ANSWERS:4
+Q:Here multiple answers may be selected
+A:VALUE:(a)#RESPONSE:a was selected
+A:VALUE:(b)#RESPONSE:b was selected
+A:VALUE:(c)#RESPONSE:c was selected
+A:VALUE:(d)#RESPONSE:d was selected
+A:VALUE:#RESPONSE:Nothing was selected
+-RULE
