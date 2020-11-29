@@ -10,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -35,9 +34,6 @@ public class Controller implements Initializable {
 
     @FXML
     Label labelBelowNext;
-
-    @FXML
-    Text traceText;
 
     @FXML
     VBox questionVBox;
@@ -69,6 +65,11 @@ public class Controller implements Initializable {
     @FXML
     Button btnSide3;
 
+    /**
+     * Method
+     * Responds to a mouse click by passing over to a relevant method
+     * @param event     The event representing the mouse click
+     */
     public void mouseClicked(ActionEvent event) {
         if (event.getSource().equals(btnSide0)) restart();
         else if (event.getSource().equals(btnSide1)) trace();
@@ -76,6 +77,10 @@ public class Controller implements Initializable {
         else if (event.getSource().equals(btnSide3)) System.out.println(btnSide3.getText());
     }
 
+    /**
+     * Method
+     * Restart the system, reloading the model and resetting the view
+     */
     private void restart() {
         currentView = CurrentView.QUESTIONS;
         btnSide0.setText("Restart");
@@ -83,6 +88,12 @@ public class Controller implements Initializable {
         loadPage("questionArea");
     }
 
+    /**
+     * Method
+     * React to the button "next" being pressed. If no options were selected, present a prompt
+     * to select something. Pass over to methods that record new facts and set the button arrays
+     * to null
+     */
     public void next() {
         boolean selectionMade = false;
         if (rbArray != null) selectionMade = checkRB();
@@ -97,6 +108,10 @@ public class Controller implements Initializable {
         buildScene(model.getQuestion(true));
     }
 
+    /**
+     * Method
+     * Cause the trace of gathered facts to be shown or hidden.
+     */
     private void trace() {
         if (currentView == CurrentView.TRACE) {
             if (questionPane != null) {
@@ -117,6 +132,11 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Method
+     * Load a page from a .fxml file and set it into the main pane
+     * @param page      The name of the page to be loaded
+     */
     private void loadPage(String page) {
         Parent root = null;
 
@@ -130,6 +150,11 @@ public class Controller implements Initializable {
         mainPane.setCenter(root);
     }
 
+    /**
+     * Method
+     * Check the CheckBox ArrayList for new facts, add them to the model.
+     * @return      True if facts obtained, false otherwise
+     */
     private boolean checkCB() {
         if (model.getQuestion(false) == null) return false;
         boolean out = false;
@@ -143,6 +168,11 @@ public class Controller implements Initializable {
         return out;
     }
 
+    /**
+     * Method
+     * Check the RadioButton ArrayList for new facts, add them to the model.
+     * @return      True if facts obtained, false otherwise
+     */
     private boolean checkRB() {
         if (model.getQuestion(false) == null) return false;
         boolean out = false;
@@ -156,6 +186,12 @@ public class Controller implements Initializable {
         return out;
     }
 
+    /**
+     * Method
+     * Build the main question panel, update the question text and pass to other methods to add buttons.
+     * If no new questions available shows a summary of gathered information
+     * @param question      The question to build around
+     */
     private void buildScene(Question question) {
         if (question == null) {
             showSummary();
@@ -170,6 +206,11 @@ public class Controller implements Initializable {
         else if (question.getType() == Question.QuestionType.SINGLE) buildSingle(question);
     }
 
+    /**
+     * Method
+     * Changes the visuals of the question pane to indicate the end, shows the calculated recommended
+     * sentence
+     */
     private void showSummary() {
         questionLabel.setText(model.getSentence());
         topPane.setStyle("-fx-background-color: #5F0F40");
@@ -178,6 +219,11 @@ public class Controller implements Initializable {
         questionVBox.getChildren().clear();
     }
 
+    /**
+     * Method
+     * Adds the buttons for a single choice question
+     * @param question  The question to add
+     */
     private void buildSingle(Question question) {
         ToggleGroup group = new ToggleGroup();
         rbArray = new ArrayList<>();
@@ -191,6 +237,11 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Method
+     * Adds the buttons for a multi choice question
+     * @param question  The question to add
+     */
     private void buildMulti(Question question) {
         cbArray = new ArrayList<>();
         for (String answer: question.getAnswers()) {
@@ -202,6 +253,12 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Initialisation Method
+     * Loads the model
+     * @param location      Not used
+     * @param resources     Not used
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new Model();

@@ -9,22 +9,47 @@ public abstract class AbstractKnowledge {
     protected final ArrayList<Fact> requiredFacts;
     protected boolean reqIsAnd;
 
+    /**
+     * Constructor
+     * Initialised the requiredFacts array
+     */
     public AbstractKnowledge() {
         requiredFacts = new ArrayList<>();
     }
 
+    /**
+     * Method
+     * Sets the reqIsAnd variable, true if all facts required, false if only one required
+     * @param and   boolean representing whether the choice is "and" or "or"
+     */
     public void setAnd(boolean and) {
         reqIsAnd = and;
     }
 
+    /**
+     * Overloaded method
+     * Adds an ArrayList of facts to the requiredFact ArrayList
+     * @param facts     The list of facts to add
+     */
     public void addFact(ArrayList<Fact> facts) {
         requiredFacts.addAll(facts);
     }
 
+    /**
+     * Overloaded method
+     * Adds a single fact to the ArrayList requiredFacts
+     * @param fact  The fact to add
+     */
     public void addFact(Fact fact) {
         requiredFacts.add(fact);
     }
 
+    /**
+     * Method
+     * Check if the input ArrayList of facts meets the requirements of this rule
+     * @param facts     The facts to check against the rule
+     * @return          True if the prerequisites are met, else false
+     */
     public boolean meetsRequirements(ArrayList<Fact> facts) {
         int meetsReq = 1;
         for (Fact req: requiredFacts) {
@@ -45,6 +70,14 @@ public abstract class AbstractKnowledge {
         return meetsReq > 0;
     }
 
+    /**
+     * Method
+     * If a fact has the requirement "null" or "not-null" it is tested here against the given ArrayList
+     * of facts
+     * @param req       The requirement fact
+     * @param facts     The ArrayList of facts to ascertain meets the requirement
+     * @return          True if requirement met, else false
+     */
     private boolean testNulls(Fact req, ArrayList<Fact> facts) {
         boolean isNull = req.valueIsNotNull();
         for (Fact fact: facts) if (fact.getName().equals(req.getName())) {
@@ -53,6 +86,13 @@ public abstract class AbstractKnowledge {
         return !isNull;
     }
 
+    /**
+     * Method
+     * Ascertains whether a fact is present in a given ArrayList of facts
+     * @param req       The required fact
+     * @param facts     The ArrayList to check for the fact
+     * @return          True of if the fact is present, else false
+     */
     private boolean factPresent(Fact req, @NotNull ArrayList<Fact> facts) {
         boolean conditionMet = false;
         for (Fact fact: facts) {
@@ -64,6 +104,11 @@ public abstract class AbstractKnowledge {
         return conditionMet;
     }
 
+    /**
+     * Method
+     * Shows the fact as a String representation
+     * @return  The fact as a string
+     */
     public String toString() {
         StringBuilder out = new StringBuilder("Requirements:\n");
         for (Fact fact: requiredFacts) {

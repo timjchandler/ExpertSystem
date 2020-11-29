@@ -13,6 +13,11 @@ public class State {
     private int segment;
     private boolean recentlyUpdated;
 
+    /**
+     * Constructor
+     * Reads in rules from the xml file via the parser, initialises the facts and implications lists
+     * Sets other member variables to their defaults
+     */
     public State() {
         rules = new RuleParser("knowledgebase/rules.xml").getRules();
         facts = new ArrayList<>();
@@ -22,11 +27,21 @@ public class State {
         segment = 0;
     }
 
+    /**
+     * Method
+     * Adds a fact to the list of facts, if it is not already present
+     * @param fact  The fact to add
+     */
     public void addFact(Fact fact) {
         if (!facts.contains(fact)) facts.add(fact);
         recentlyUpdated = false;
     }
 
+    /**
+     * Method
+     * Updates the list of implications by applying rules to the facts obtained through
+     * questions
+     */
     private void updateImplications() {
         if (recentlyUpdated) {
             System.out.println("Already updated");
@@ -42,6 +57,11 @@ public class State {
         recentlyUpdated = true;
     }
 
+    /**
+     * Method
+     * Calculates the current sentence recommendation from the list of implications
+     * @return  A string of the current sentence
+     */
     private String calculateSentence() {
         updateImplications();
         float multiplier = 1;
@@ -58,6 +78,11 @@ public class State {
         return tidySentence();
     }
 
+    /**
+     * Method
+     * Sets the segment of the sentence to select, based on the severity of a given fact
+     * @param fact  The fact to calculate from
+     */
     private void calculateSegment(Fact fact) {
         if (fact.getName().equals("segment")) {
             if (fact.equals(new Fact("segment", "light"))) segment = Math.max(1, segment);
@@ -67,6 +92,11 @@ public class State {
         }
     }
 
+    /**
+     * Method
+     * Tidies the sentence to a round number of years/months
+     * @return  A string of the tidied sentence
+     */
     private String tidySentence() {
         StringBuilder out = new StringBuilder("From ");
         float[] recommendation = getRecommendation();
@@ -88,6 +118,11 @@ public class State {
         return out.toString();
     }
 
+    /**
+     * Method
+     * Gets the recommended sentence based on the current sentence and segment (if applicable)
+     * @return      The segment of a sentence as two floats
+     */
     private float[] getRecommendation() {
         if (segment == 0) return currentBase;
         float[] out = currentBase;
@@ -97,10 +132,20 @@ public class State {
         return out;
     }
 
+    /**
+     * Method
+     * Gets the current calculated sentence
+     * @return  The sentence in string form
+     */
     public String getSentence() {
         return calculateSentence();
     }
 
+    /**
+     * Override Method
+     * Converts the current state to a string representation
+     * @return  The state in string representation
+     */
     @Override
     public String toString() {
         updateImplications();
@@ -115,6 +160,11 @@ public class State {
         return out.toString();
     }
 
+    /**
+     * Method
+     * Gets the current list of obtained facts
+     * @return  The list of facts
+     */
     public ArrayList<Fact> getFacts() {
         return facts;
     }

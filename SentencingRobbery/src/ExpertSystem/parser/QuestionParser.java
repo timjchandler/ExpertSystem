@@ -80,8 +80,11 @@ public class QuestionParser extends Parser{
         return questions;
     }
 
-
-
+    /**
+     * Method
+     * Get the title
+     * @return  The title
+     */
     public String getTitle() {
         return title;
     }

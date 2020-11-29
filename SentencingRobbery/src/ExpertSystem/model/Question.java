@@ -12,49 +12,104 @@ public class Question extends AbstractKnowledge {
     private final ArrayList<String> answers;
     private final ArrayList<Fact> answerFacts;
 
+    /**
+     * Constructor
+     * Calls the super constructor and initialises the member ArrayLists
+     */
     public Question() {
         super();
         answers = new ArrayList<>();
         answerFacts = new ArrayList<>();
     }
 
+    /**
+     * Method
+     * Sets the type of question to Single or Multi choice
+     * @param type  The type to set
+     */
     public void setType(QuestionType type) {
         this.type = type;
     }
 
+    /**
+     * Method
+     * Sets the heading to of the section of the sentence being calculated.
+     * @param heading   The heading to set
+     */
     public void setHeading(String heading) {
         this.heading = heading;
     }
 
+    /**
+     * Method
+     * Sets the text of the question
+     * @param questionText  The text to set
+     */
     public void setQuestionText(String questionText) {
         this.questionText = questionText;
     }
 
+    /**
+     * Method
+     * Add the text to display for an answer
+     * @param answer    The answer text
+     */
     public void appendAnswer(String answer) {
         this.answers.add(answer);
     }
 
+    /**
+     * Method
+     * Adds a fact to the facts list
+     * @param fact  The fact to add
+     */
     public void appendAnswerFact(Fact fact) {
         this.answerFacts.add(fact);
     }
 
+    /**
+     * Method
+     * Get the type of the question, single/multi choice
+     * @return  The type
+     */
     public QuestionType getType() {
         return type;
     }
 
+    /**
+     * Method
+     * Get the heading
+     * @return  The heading
+     */
     public String getHeading() {
         return heading;
     }
 
+    /**
+     * Method
+     * Get the question text
+     * @return  The question text
+     */
     public String getQuestionText() {
         return questionText;
     }
 
+    /**
+     * Method
+     * Checks whether a list of facts satisfies this questions requirements, passes to the super
+     * @param facts     The facts to check against the rule
+     * @return          True if the list of facts satisfies the requirements, false otherwise
+     */
     public boolean meetsRequirements(ArrayList<Fact> facts) {
         for (Fact fact: facts) if (fact.getName().equals(answerFacts.get(0).getName())) return false;
         return super.meetsRequirements(facts);
     }
 
+    /**
+     * Override Method
+     * Converts the question to a string representation
+     * @return  A representation of the question as a string
+     */
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
@@ -69,10 +124,20 @@ public class Question extends AbstractKnowledge {
         return out.toString();
     }
 
+    /**
+     * Method
+     * Gets the list of answer facts
+     * @return  The list of answer facts
+     */
     public ArrayList<Fact> getAnswerFacts() {
         return answerFacts;
     }
 
+    /**
+     * Method
+     * Get the list of the answer texts
+     * @return  The list of answer texts
+     */
     public ArrayList<String> getAnswers() {
         return answers;
     }

@@ -2,7 +2,6 @@ package ExpertSystem.parser;
 
 import ExpertSystem.model.AbstractKnowledge;
 import ExpertSystem.model.Fact;
-import ExpertSystem.model.Rule;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -108,6 +107,16 @@ public abstract class Parser {
         return new Fact(ele.getAttribute("name"), ele.getTextContent());
     }
 
+    /**
+     * Method
+     * Retrieves the list of requirements for a given knowledge type, returning them as an
+     * ArrayList and setting updating the knowledge type with whether these requirements are
+     * following an "and" or "or" structure
+     * @param ele       The element to parse
+     * @param tag       The tag to identify the section of the element
+     * @param ak        The knowledge type
+     * @return          An ArrayList of facts
+     */
     protected ArrayList<Fact> parseRequirements(Element ele, String tag, AbstractKnowledge ak) {
         ArrayList<Fact> facts = new ArrayList<>();
         for (int idx = 0; idx < ele.getElementsByTagName(tag).getLength(); ++idx) {
@@ -121,6 +130,12 @@ public abstract class Parser {
         return facts;
     }
 
+    /**
+     * Method
+     * Extracts rules from an "and" or "or" branch
+     * @param ele   The element the branch is within
+     * @return      An ArrayList of facts
+     */
     protected ArrayList<Fact> parseAndOr(Element ele) {
         ArrayList<Fact> facts = new ArrayList<>();
         for (int idx = 0; idx < ele.getElementsByTagName("fact").getLength(); ++idx) {
