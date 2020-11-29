@@ -1,14 +1,15 @@
 package home.controller;
 
-import home.model.KnowledgeBase;
-import home.model.Question;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class Controller {
+
+    private static int currentID = 1;
 
     @FXML
     private Button btnRestart;
@@ -38,6 +39,15 @@ public class Controller {
     private Label textFullQuestion;
 
     @FXML
+    private Pane paneMain;
+
+    @FXML
+    private VBox answerBox;
+
+    @FXML
+    private VBox sideMenu;
+
+    @FXML
     private void sortClicks(ActionEvent e) {
         if (e.getSource().equals(btnExit)) System.exit(0);
         else if (e.getSource().equals(btnSettings)) settings();
@@ -48,8 +58,11 @@ public class Controller {
     }
 
     private void next() {
-        Question question = new KnowledgeBase().getQuestion(1);
-        textFullQuestion.setText(question.getQuestion());
+        QuestionController qc = new QuestionController(currentID);
+        currentID = currentID % 4 + 1;
+        answerBox.getChildren().clear();
+        textFullQuestion.setText(qc.getQuestionText());
+        answerBox.getChildren().add(qc.getVBox());
     }
 
     private void settings() {

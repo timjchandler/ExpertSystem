@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600" minWidth="640" prefHeight="600.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ExpertSystem.controller.Controller">
+   <center>
+      <VBox fx:id="questionVBox" prefHeight="363.0" prefWidth="261.0" BorderPane.alignment="CENTER" />
+   </center>
+   <left>
+      <Pane fx:id="leftPane" prefHeight="363.0" prefWidth="170.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane fx:id="rightPane" prefHeight="363.0" prefWidth="170.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Button fx:id="next" mnemonicParsing="false" onAction="#next" prefHeight="39.0" prefWidth="181.0" text="First Question" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="30.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+   <top>
+      <VBox prefHeight="168.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane fx:id="topPane" prefHeight="90.0" prefWidth="640.0">
+               <children>
+                  <Label fx:id="bannerLabel" contentDisplay="CENTER" layoutX="28.0" layoutY="17.0" prefHeight="53.0" prefWidth="549.0" textFill="#e36414">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label fx:id="questionLabel" alignment="BOTTOM_LEFT" prefHeight="83.0" prefWidth="649.0" wrapText="true">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="10.0" left="150.0" right="150.0" />
+               </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </top>
+</BorderPane>

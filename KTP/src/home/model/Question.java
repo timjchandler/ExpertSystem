@@ -6,18 +6,22 @@ public class Question {
 
     public enum Type {
         MULTI,
-        SINGLE,
+        SINGLE
     }
 
-    private final int id;
+    private int id;
     private Type type;
     private int numberOfAnswers;
     private String question;
-    private final ArrayList<Response> answers;
+    private final ArrayList<Response> responses;
 
     public Question() {
-        this.id = 1;
-        answers = new ArrayList<>();
+//        this.id = id;
+        responses = new ArrayList<>();
+    }
+
+    public void setID(int id) {
+        this.id = id;
     }
 
     public void setType(Type type) {
@@ -46,16 +50,17 @@ public class Question {
      */
     public void setAnswer(String fullAnswer) {
         String[] parts = fullAnswer.split("#RESPONSE:");
-        answers.add(new Response(parts[0], parts[1]));
+        responses.add(new Response(parts[0], parts[1]));
     }
 
-    public String viewAsString() {
+    @Override
+    public String toString() {
         StringBuilder out = new StringBuilder("This rule has ");
         out.append(numberOfAnswers);
         out.append(" answers.\nThe questions is:\n\"");
         out.append(question);
         out.append("\"\nThe possible answers are:\n");
-        for (Response answer : answers) {
+        for (Response answer : responses) {
             if (!answer.getValue().equals("")) out.append(answer.getValue());
             else out.append("<No answer given>");
             out.append("\n\t\"");
@@ -70,12 +75,8 @@ public class Question {
         return question;
     }
 
-    public int getNumberOfAnswers() {
-        return numberOfAnswers;
-    }
-
-    public ArrayList<Response> getAnswers() {
-        return answers;
+    public ArrayList<Response> getResponses() {
+        return responses;
     }
 
     public Type getType() {

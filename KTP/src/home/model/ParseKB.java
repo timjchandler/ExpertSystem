@@ -18,6 +18,7 @@ public class ParseKB {
     }
 
     enum Element {
+        ID,
         TYPE,
         NUMBER,
         QUESTION,
@@ -37,6 +38,7 @@ public class ParseKB {
 
     private Element getElement(String line) {
         String start = line.split(":")[0];
+        if (start.equals("ID")) return Element.ID;
         if (start.equals("TYPE")) return Element.TYPE;
         if (start.equals("ANSWERS")) return Element.NUMBER;
         if (start.equals("Q")) return Element.QUESTION;
@@ -60,6 +62,9 @@ public class ParseKB {
                     }
                     Element el = getElement(line);
                     switch (Objects.requireNonNull(el)) {
+                        case ID:
+                            currentRule.setID(Integer.parseInt(line.split(":")[1]));
+                            break;
                         case TYPE:
                             currentRule.setType(line.split(":")[1].equals("MULTI") ? Question.Type.MULTI : Question.Type.SINGLE);
                             break;
@@ -79,7 +84,7 @@ public class ParseKB {
     }
 
     public void printRules() {
-        for (Question rule: rules) System.out.println(rule.viewAsString());
+        for (Question rule: rules) System.out.println(rule.toString());
     }
 
     public ArrayList<Question> getRules() {

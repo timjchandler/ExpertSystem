@@ -1,4 +1,5 @@
 +RULE
+ID:1
 TYPE:SINGLE
 ANSWERS:2
 Q:This is an example question
@@ -8,6 +9,7 @@ A:VALUE:#RESPONSE:No answer was given
 -RULE
 
 +RULE
+ID:2
 TYPE:SINGLE
 ANSWERS:3
 Q:This is a different example question
@@ -21,6 +23,7 @@ A:VALUE:#RESPONSE:You didn't try
 
 
 +RULE
+ID:3
 TYPE:SINGLE
 ANSWERS:5
 Q:This is a question, pick a number between one and five
@@ -33,6 +36,7 @@ A:VALUE:#RESPONSE:You did not pick
 -RULE
 
 +RULE
+ID:4
 TYPE:MULTI
 ANSWERS:4
 Q:Here multiple answers may be selected
