@@ -1,11 +1,15 @@
-## Expert System
+# Expert System
 
-#### Sentencing calculator for Robbery under Swiss Law
+### Sentencing calculator for Robbery under Swiss Law
 
 This calculator reads in rules from xml files and implements them via a gui
 
+## Documentation
 
-### Structure
+The JavaDoc for this system may be found [here](https://timjchandler.github.io/ExpertSystem/JavaDoc/overview-summary.html)
+
+
+## Structure
 
 ```bash
 .
