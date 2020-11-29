@@ -21,7 +21,6 @@ public class Fact {
     private Implication implication;
 
     /**
-     * Constructor
      * Sets the name and value variables from the input, sets implication to NONE as default
      * @param name      The name, or category of the fact
      * @param value     The value assigned to the fact
@@ -34,7 +33,6 @@ public class Fact {
     }
 
     /**
-     * Method
      * Interprets numbers from the value variable. Updates the implication variable as required
      * Updates minValue, maxValue and multiplier variables where relevant
      */
@@ -90,7 +88,6 @@ public class Fact {
     }
 
     /**
-     * Method
      * Ascertains whether this rule is null
      * @return          True if the value of this fact is "null", else false
      */
@@ -99,15 +96,13 @@ public class Fact {
     }
 
     /**
-     * Method
-     * @return          True if the value of this fact is "not-null", else false
+     * @return  True if the value of this fact is "not-null", else false
      */
     public boolean valueIsNotNull() {
         return value.equals("not-null");
     }
 
     /**
-     * Method
      * Getter for the name of the fact
      * @return          The name variable
      */
@@ -126,7 +121,6 @@ public class Fact {
     }
 
     /**
-     * Overloaded Method
      * Ascertains whether this fact is equal to a fact consisting of two given strings. Since
      * all other member variables are derived from the two input strings, and cannot be externally
      * modified no other comparisons are required.
@@ -139,7 +133,6 @@ public class Fact {
     }
 
     /**
-     * Overloaded Method
      * Ascertains whether this fact is equal to a given fact
      * @param fact      The fact to compare
      * @return          True if the fact matches this one, false otherwise

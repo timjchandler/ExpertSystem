@@ -17,7 +17,6 @@ public abstract class Parser {
     protected NodeList nodeList;
 
     /**
-     * Constructor
      * Sets the file to be parsed, from the input argument
      * @param file  the file to be parsed
      */
@@ -26,7 +25,6 @@ public abstract class Parser {
     }
 
     /**
-     * Overloaded Method
      * Get an element from within a given element, based on the given tag, assuming index 0
      * @param ele   The element to look within
      * @param tag   The tag to identify where to look
@@ -37,7 +35,6 @@ public abstract class Parser {
     }
 
     /**
-     * Overloaded Method
      * Get an element from within a given element, based on the given tag and index
      * @param ele   The element to look within
      * @param tag   The tag to identify where to look
@@ -49,7 +46,6 @@ public abstract class Parser {
     }
 
     /**
-     * Overloaded Method
      * Returns the text from a given element with a given tag
      * @param ele   The element to retrieve text from
      * @param tag   The tag to identify where to retrieve text
@@ -60,7 +56,6 @@ public abstract class Parser {
     }
 
     /**
-     * Overloaded Method
      * Returns the text from a given element with a given tag
      * @param ele   The element to retrieve text from
      * @param idx   The index at which to look based on the given tag
@@ -97,7 +92,6 @@ public abstract class Parser {
     }
 
     /**
-     * Method
      * Parses a fact from a given element
      * @param ele   The element to extract a fact from
      * @return      The parsed fact
@@ -108,7 +102,6 @@ public abstract class Parser {
     }
 
     /**
-     * Method
      * Retrieves the list of requirements for a given knowledge type, returning them as an
      * ArrayList and setting updating the knowledge type with whether these requirements are
      * following an "and" or "or" structure
@@ -131,7 +124,6 @@ public abstract class Parser {
     }
 
     /**
-     * Method
      * Extracts rules from an "and" or "or" branch
      * @param ele   The element the branch is within
      * @return      An ArrayList of facts

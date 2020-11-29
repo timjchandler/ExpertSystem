@@ -15,7 +15,6 @@ public class QuestionParser extends Parser{
     private String title;
 
     /**
-     * Constructor
      * Reads in and parses the file from the given location.
      * @param file  the filepath of the xml file to parse
      */
@@ -25,7 +24,6 @@ public class QuestionParser extends Parser{
     }
 
     /**
-     * Method
      * Parses the title from the document
      * @param document  The document to parse
      */
@@ -34,7 +32,6 @@ public class QuestionParser extends Parser{
     }
 
     /**
-     * Method
      * Calls the supers parse method, passing the Document to getTitle
      */
     private void parse() {
@@ -42,7 +39,6 @@ public class QuestionParser extends Parser{
     }
 
     /**
-     * Method
      * Interprets a question from a given node
      * @param current   The node to interpret
      * @return          The interpreted question
@@ -69,7 +65,6 @@ public class QuestionParser extends Parser{
     }
 
     /**
-     * Method
      * @return  An ArrayList containing all of the parsed questions
      */
     public ArrayList<Question> getQuestions() {
@@ -81,7 +76,6 @@ public class QuestionParser extends Parser{
     }
 
     /**
-     * Method
      * Get the title
      * @return  The title
      */

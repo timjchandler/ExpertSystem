@@ -14,7 +14,6 @@ public class State {
     private boolean recentlyUpdated;
 
     /**
-     * Constructor
      * Reads in rules from the xml file via the parser, initialises the facts and implications lists
      * Sets other member variables to their defaults
      */
@@ -28,7 +27,6 @@ public class State {
     }
 
     /**
-     * Method
      * Adds a fact to the list of facts, if it is not already present
      * @param fact  The fact to add
      */
@@ -38,7 +36,6 @@ public class State {
     }
 
     /**
-     * Method
      * Updates the list of implications by applying rules to the facts obtained through
      * questions
      */
@@ -58,7 +55,6 @@ public class State {
     }
 
     /**
-     * Method
      * Calculates the current sentence recommendation from the list of implications
      * @return  A string of the current sentence
      */
@@ -79,7 +75,6 @@ public class State {
     }
 
     /**
-     * Method
      * Sets the segment of the sentence to select, based on the severity of a given fact
      * @param fact  The fact to calculate from
      */
@@ -93,7 +88,6 @@ public class State {
     }
 
     /**
-     * Method
      * Tidies the sentence to a round number of years/months
      * @return  A string of the tidied sentence
      */
@@ -119,7 +113,6 @@ public class State {
     }
 
     /**
-     * Method
      * Gets the recommended sentence based on the current sentence and segment (if applicable)
      * @return      The segment of a sentence as two floats
      */
@@ -133,7 +126,6 @@ public class State {
     }
 
     /**
-     * Method
      * Gets the current calculated sentence
      * @return  The sentence in string form
      */
@@ -142,7 +134,6 @@ public class State {
     }
 
     /**
-     * Override Method
      * Converts the current state to a string representation
      * @return  The state in string representation
      */
@@ -161,7 +152,6 @@ public class State {
     }
 
     /**
-     * Method
      * Gets the current list of obtained facts
      * @return  The list of facts
      */

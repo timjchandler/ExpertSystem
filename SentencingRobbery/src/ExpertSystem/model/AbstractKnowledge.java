@@ -10,7 +10,6 @@ public abstract class AbstractKnowledge {
     protected boolean reqIsAnd;
 
     /**
-     * Constructor
      * Initialised the requiredFacts array
      */
     public AbstractKnowledge() {
@@ -18,7 +17,6 @@ public abstract class AbstractKnowledge {
     }
 
     /**
-     * Method
      * Sets the reqIsAnd variable, true if all facts required, false if only one required
      * @param and   boolean representing whether the choice is "and" or "or"
      */
@@ -27,7 +25,6 @@ public abstract class AbstractKnowledge {
     }
 
     /**
-     * Overloaded method
      * Adds an ArrayList of facts to the requiredFact ArrayList
      * @param facts     The list of facts to add
      */
@@ -36,7 +33,6 @@ public abstract class AbstractKnowledge {
     }
 
     /**
-     * Overloaded method
      * Adds a single fact to the ArrayList requiredFacts
      * @param fact  The fact to add
      */
@@ -45,7 +41,6 @@ public abstract class AbstractKnowledge {
     }
 
     /**
-     * Method
      * Check if the input ArrayList of facts meets the requirements of this rule
      * @param facts     The facts to check against the rule
      * @return          True if the prerequisites are met, else false
@@ -71,7 +66,6 @@ public abstract class AbstractKnowledge {
     }
 
     /**
-     * Method
      * If a fact has the requirement "null" or "not-null" it is tested here against the given ArrayList
      * of facts
      * @param req       The requirement fact
@@ -87,7 +81,6 @@ public abstract class AbstractKnowledge {
     }
 
     /**
-     * Method
      * Ascertains whether a fact is present in a given ArrayList of facts
      * @param req       The required fact
      * @param facts     The ArrayList to check for the fact
@@ -105,7 +98,6 @@ public abstract class AbstractKnowledge {
     }
 
     /**
-     * Method
      * Shows the fact as a String representation
      * @return  The fact as a string
      */

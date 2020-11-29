@@ -14,7 +14,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -66,7 +65,6 @@ public class Controller implements Initializable {
     Button btnSide3;
 
     /**
-     * Method
      * Responds to a mouse click by passing over to a relevant method
      * @param event     The event representing the mouse click
      */
@@ -78,7 +76,6 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Method
      * Restart the system, reloading the model and resetting the view
      */
     private void restart() {
@@ -89,7 +86,6 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Method
      * React to the button "next" being pressed. If no options were selected, present a prompt
      * to select something. Pass over to methods that record new facts and set the button arrays
      * to null
@@ -109,8 +105,8 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Method
-     * Cause the trace of gathered facts to be shown or hidden.
+     * Generate and show the trace of gathered facts and implications. If the trace
+     * is already shown, hide it
      */
     private void trace() {
         if (currentView == CurrentView.TRACE) {
@@ -133,7 +129,6 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Method
      * Load a page from a .fxml file and set it into the main pane
      * @param page      The name of the page to be loaded
      */
@@ -151,7 +146,6 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Method
      * Check the CheckBox ArrayList for new facts, add them to the model.
      * @return      True if facts obtained, false otherwise
      */
@@ -169,7 +163,6 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Method
      * Check the RadioButton ArrayList for new facts, add them to the model.
      * @return      True if facts obtained, false otherwise
      */
@@ -187,7 +180,6 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Method
      * Build the main question panel, update the question text and pass to other methods to add buttons.
      * If no new questions available shows a summary of gathered information
      * @param question      The question to build around
@@ -207,7 +199,6 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Method
      * Changes the visuals of the question pane to indicate the end, shows the calculated recommended
      * sentence
      */
@@ -220,7 +211,6 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Method
      * Adds the buttons for a single choice question
      * @param question  The question to add
      */
@@ -238,7 +228,6 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Method
      * Adds the buttons for a multi choice question
      * @param question  The question to add
      */
@@ -254,7 +243,6 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Initialisation Method
      * Loads the model
      * @param location      Not used
      * @param resources     Not used

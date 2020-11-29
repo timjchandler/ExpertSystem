@@ -8,7 +8,6 @@ public class Rule extends AbstractKnowledge {
     private Fact then;
 
     /**
-     * Constructor
      * Calls the super constructor and sets the current section to Unknown
      */
     public Rule() {
@@ -17,7 +16,6 @@ public class Rule extends AbstractKnowledge {
     }
 
     /**
-     * Method
      * Sets the section that the rule applies to
      * Currently only implemented for FRAME and unknown
      * @param section   The section to set
@@ -44,7 +42,6 @@ public class Rule extends AbstractKnowledge {
     }
 
     /**
-     * Override method
      * Returns a representation of the rule as a string
      * @return  The string representation of the rule
      */

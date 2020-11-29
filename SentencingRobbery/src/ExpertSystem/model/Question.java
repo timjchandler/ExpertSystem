@@ -13,7 +13,6 @@ public class Question extends AbstractKnowledge {
     private final ArrayList<Fact> answerFacts;
 
     /**
-     * Constructor
      * Calls the super constructor and initialises the member ArrayLists
      */
     public Question() {
@@ -23,7 +22,6 @@ public class Question extends AbstractKnowledge {
     }
 
     /**
-     * Method
      * Sets the type of question to Single or Multi choice
      * @param type  The type to set
      */
@@ -32,7 +30,6 @@ public class Question extends AbstractKnowledge {
     }
 
     /**
-     * Method
      * Sets the heading to of the section of the sentence being calculated.
      * @param heading   The heading to set
      */
@@ -41,7 +38,6 @@ public class Question extends AbstractKnowledge {
     }
 
     /**
-     * Method
      * Sets the text of the question
      * @param questionText  The text to set
      */
@@ -50,7 +46,6 @@ public class Question extends AbstractKnowledge {
     }
 
     /**
-     * Method
      * Add the text to display for an answer
      * @param answer    The answer text
      */
@@ -59,7 +54,6 @@ public class Question extends AbstractKnowledge {
     }
 
     /**
-     * Method
      * Adds a fact to the facts list
      * @param fact  The fact to add
      */
@@ -68,7 +62,6 @@ public class Question extends AbstractKnowledge {
     }
 
     /**
-     * Method
      * Get the type of the question, single/multi choice
      * @return  The type
      */
@@ -77,7 +70,6 @@ public class Question extends AbstractKnowledge {
     }
 
     /**
-     * Method
      * Get the heading
      * @return  The heading
      */
@@ -86,7 +78,6 @@ public class Question extends AbstractKnowledge {
     }
 
     /**
-     * Method
      * Get the question text
      * @return  The question text
      */
@@ -95,7 +86,6 @@ public class Question extends AbstractKnowledge {
     }
 
     /**
-     * Method
      * Checks whether a list of facts satisfies this questions requirements, passes to the super
      * @param facts     The facts to check against the rule
      * @return          True if the list of facts satisfies the requirements, false otherwise
@@ -106,7 +96,6 @@ public class Question extends AbstractKnowledge {
     }
 
     /**
-     * Override Method
      * Converts the question to a string representation
      * @return  A representation of the question as a string
      */
@@ -125,7 +114,6 @@ public class Question extends AbstractKnowledge {
     }
 
     /**
-     * Method
      * Gets the list of answer facts
      * @return  The list of answer facts
      */
@@ -134,7 +122,6 @@ public class Question extends AbstractKnowledge {
     }
 
     /**
-     * Method
      * Get the list of the answer texts
      * @return  The list of answer texts
      */

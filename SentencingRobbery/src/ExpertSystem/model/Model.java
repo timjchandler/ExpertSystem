@@ -12,7 +12,6 @@ public class Model {
     private static Question current;
 
     /**
-     * Constructor
      * Calls the reset method if member variables are not set
      */
     public Model() {
@@ -20,7 +19,6 @@ public class Model {
     }
 
     /**
-     * Method
      * Reads in the questions.xml, sets the member variables
      */
     public void restart() {
@@ -31,7 +29,6 @@ public class Model {
     }
 
     /**
-     * Method
      * Gets the next question based on the current facts and question prerequisites
      * @param next  True if a new question requested, false if current question requested
      * @return      The requested question
@@ -53,7 +50,6 @@ public class Model {
     }
 
     /**
-     * Method
      * Return the title
      * @return  The title
      */
@@ -62,7 +58,6 @@ public class Model {
     }
 
     /**
-     * Method
      * Passes a fact to state to be added
      * @param fact  The fact to add
      */
@@ -71,7 +66,6 @@ public class Model {
     }
 
     /**
-     * Method
      * Get the current trace of known and inferred facts from the state
      * @return  The trace as a string
      */
@@ -80,7 +74,6 @@ public class Model {
     }
 
     /**
-     * Method
      * Get the current calculated sentence from the state
      * @return  The sentence as a string
      */
