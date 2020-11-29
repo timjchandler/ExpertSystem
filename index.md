@@ -11,6 +11,7 @@ The JavaDoc for this system may be found [here](https://timjchandler.github.io/E
 ## Knowledge Base
 
 The xml for the knowledge base may be found here:
+
     + [rules](https://timjchandler.github.io/ExpertSystem/SentencingRobbery/knowledgebase/rules.xml)
     + [questions](https://timjchandler.github.io/ExpertSystem/SentencingRobbery/knowledgebase/questions.xml)
 
