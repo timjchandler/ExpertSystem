@@ -18,13 +18,6 @@
    <right>
       <Pane fx:id="rightPane" prefHeight="363.0" prefWidth="170.0" BorderPane.alignment="CENTER" />
    </right>
-   <bottom>
-      <Button fx:id="next" mnemonicParsing="false" onAction="#next" prefHeight="39.0" prefWidth="181.0" text="First Question" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="30.0" />
-         </BorderPane.margin>
-      </Button>
-   </bottom>
    <top>
       <VBox prefHeight="168.0" prefWidth="640.0" BorderPane.alignment="CENTER">
          <children>
@@ -51,4 +44,20 @@
          </children>
       </VBox>
    </top>
+   <bottom>
+      <VBox prefHeight="98.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="next" mnemonicParsing="false" onAction="#next" prefHeight="39.0" prefWidth="180.0" text="First Question">
+               <VBox.margin>
+                  <Insets left="230.0" right="230.0" />
+               </VBox.margin>
+            </Button>
+            <Label fx:id="labelBelowNext" textFill="#ae0000">
+               <VBox.margin>
+                  <Insets left="257.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </bottom>
 </BorderPane>

@@ -92,8 +92,8 @@ public class State {
         if (segment == 0) return currentBase;
         float[] out = currentBase;
         float diff = out[1] - out[0];
-        out[0] += (diff / 4) * (segment - 1);
         out[1] = out[0] + (diff / 4) * segment;
+        out[0] += (diff / 4) * (segment - 1);
         return out;
     }
 

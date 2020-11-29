@@ -34,6 +34,9 @@ public class Controller implements Initializable {
 
 
     @FXML
+    Label labelBelowNext;
+
+    @FXML
     Text traceText;
 
     @FXML
@@ -81,8 +84,14 @@ public class Controller implements Initializable {
     }
 
     public void next() {
-        if (rbArray != null) checkRB();
-        if (cbArray != null) checkCB();
+        boolean selectionMade = false;
+        if (rbArray != null) selectionMade = checkRB();
+        if (cbArray != null) selectionMade = checkCB();
+        if (!selectionMade && (rbArray != null || cbArray != null)) {
+            labelBelowNext.setText("Please select an answer");
+            return;
+        }
+        labelBelowNext.setText("");
         rbArray = null;
         cbArray = null;
         buildScene(model.getQuestion(true));
@@ -121,24 +130,30 @@ public class Controller implements Initializable {
         mainPane.setCenter(root);
     }
 
-    private void checkCB() {
-        if (model.getQuestion(false) == null) return;
+    private boolean checkCB() {
+        if (model.getQuestion(false) == null) return false;
+        boolean out = false;
         for (CheckBox cb: cbArray) {
             if (cb.isSelected()) {
                 Fact fact = model.getQuestion(false).getAnswerFacts().get(cbArray.indexOf(cb));
                 model.addFact(fact);
+                out = true;
             }
         }
+        return out;
     }
 
-    private void checkRB() {
-        if (model.getQuestion(false) == null) return;
+    private boolean checkRB() {
+        if (model.getQuestion(false) == null) return false;
+        boolean out = false;
         for (RadioButton rb: rbArray) {
             if (rb.isSelected()) {
                 Fact fact = model.getQuestion(false).getAnswerFacts().get(rbArray.indexOf(rb));
                 model.addFact(fact);
+                out = true;
             }
         }
+        return out;
     }
 
     private void buildScene(Question question) {
