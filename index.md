@@ -1,6 +1,6 @@
 ## Expert System
 
-#### Sentencing calculated for Robbery under Swiss Law
+#### Sentencing calculator for Robbery under Swiss Law
 
 This calculator reads in rules from xml files and implements them via a gui
 
