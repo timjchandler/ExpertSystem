@@ -8,6 +8,8 @@ This calculator reads in rules from xml files and implements them via a gui
 
 An executable .jar of the current version _PROTOTYPE_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/raw/main/SentencingRobbery-PROTOTYPE.jar)
 
+It should run simply by double clicking on it.
+
 ## Documentation
 
 The JavaDoc for this system may be found [here](https://timjchandler.github.io/ExpertSystem/JavaDoc/overview-summary.html)
