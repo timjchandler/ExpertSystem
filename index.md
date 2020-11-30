@@ -28,32 +28,38 @@ The xml for the knowledge base may be found here:
     │   └── rules.xml
     └── src
         ├── ExpertSystem
-        │   ├── Main.java
-        │   ├── controller
-        │   │   ├── Controller.java
-        │   │   └── QuestionController.java
-        │   ├── model
-        │   │   ├── AbstractKnowledge.java
-        │   │   ├── Fact.java
-        │   │   ├── Model.java
-        │   │   ├── Question.java
-        │   │   ├── Rule.java
-        │   │   └── State.java
-        │   ├── parser
-        │   │   ├── Parser.java
-        │   │   ├── QuestionParser.java
-        │   │   └── RuleParser.java
-        │   └── view
-        │       ├── css
-        │       │   └── style.css
-        │       └── fxml
-        │           ├── main.fxml
-        │           ├── questionArea.fxml
-        │           └── trace.fxml
+        │   ├── Main.java
+        │   ├── controller
+        │   │   ├── Controller.java
+        │   │   └── HomeController.java
+        │   ├── model
+        │   │   ├── AbstractKnowledge.java
+        │   │   ├── Fact.java
+        │   │   ├── Model.java
+        │   │   ├── Question.java
+        │   │   ├── Rule.java
+        │   │   └── State.java
+        │   ├── parser
+        │   │   ├── Parser.java
+        │   │   ├── QuestionParser.java
+        │   │   └── RuleParser.java
+        │   └── view
+        │       ├── css
+        │       │   ├── exit.css
+        │       │   ├── question.css
+        │       │   └── style.css
+        │       └── fxml
+        │           ├── exitScreen.fxml
+        │           ├── home.fxml
+        │           ├── main.fxml
+        │           ├── questionArea.fxml
+        │           └── trace.fxml
+        ├── META-INF
+        │   └── MANIFEST.MF
         └── tests
-            ├── KnowledgeTest.java
-            ├── ModelTest.java
-            ├── ParserTest.java
-            └── StateTest.java
+           ├── KnowledgeTest.java
+           ├── ModelTest.java
+           ├── ParserTest.java
+           └── StateTest.java
             
 ```
