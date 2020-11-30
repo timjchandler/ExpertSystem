@@ -9,6 +9,7 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class Parser {
@@ -21,7 +22,8 @@ public abstract class Parser {
      * @param file  the file to be parsed
      */
     public Parser(String file) {
-        this.xmlFile = new File(file);
+        String path = getClass().getResource("").getPath();
+        this.xmlFile = new File(path + file);
     }
 
     /**

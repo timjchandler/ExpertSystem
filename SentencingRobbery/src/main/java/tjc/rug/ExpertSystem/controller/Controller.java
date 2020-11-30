@@ -158,7 +158,7 @@ public class Controller implements Initializable {
      */
     private void loadPage(String page) {
         Parent root = null;
-        String path = "../../../../viewresources/fxml/" + page + ".fxml";
+        String path = "../../../../resources/fxml/" + page + ".fxml";
         try {
             root = FXMLLoader.load(getClass().getResource(path));
         } catch (IOException e) {

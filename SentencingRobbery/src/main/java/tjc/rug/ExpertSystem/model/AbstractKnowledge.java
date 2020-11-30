@@ -1,7 +1,5 @@
 package tjc.rug.ExpertSystem.model;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
 public abstract class AbstractKnowledge {
@@ -86,7 +84,7 @@ public abstract class AbstractKnowledge {
      * @param facts     The ArrayList to check for the fact
      * @return          True of if the fact is present, else false
      */
-    private boolean factPresent(Fact req, @NotNull ArrayList<Fact> facts) {
+    private boolean factPresent(Fact req, ArrayList<Fact> facts) {
         boolean conditionMet = false;
         for (Fact fact: facts) {
             if (req.equals(fact)) {

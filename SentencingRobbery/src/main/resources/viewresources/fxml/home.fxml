@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.layout.AnchorPane?>
-
-
-<AnchorPane maxHeight="600.0" maxWidth="640.0" minHeight="600.0" minWidth="640.0" prefHeight="600.0" prefWidth="640.0" style="-fx-background-color: #22223B;" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="tjc.rug.ExpertSystem.controller.Controller">
-
-</AnchorPane>
