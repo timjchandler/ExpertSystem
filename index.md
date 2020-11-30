@@ -4,6 +4,8 @@
 
 This calculator reads in rules from xml files and implements them via a gui
 
+### Download
+
 An executable .jar of the current version _PROTOTYPE_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/raw/main/SentencingRobbery-PROTOTYPE.jar)
 
 ## Documentation
