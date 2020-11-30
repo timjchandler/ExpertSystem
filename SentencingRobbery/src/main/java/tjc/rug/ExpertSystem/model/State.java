@@ -18,8 +18,7 @@ public class State {
      * Sets other member variables to their defaults
      */
     public State() {
-//        rules = new RuleParser("../../../../resources/knowledgebase/rules.xml").getRules();
-        rules = new RuleParser("/resources/knowledgebase/questions.xml").getRules();
+        rules = new RuleParser("/resources/knowledgebase/rules.xml").getRules();
         facts = new ArrayList<>();
         implications = new ArrayList<>();
         currentBase = new float[2];
@@ -42,10 +41,8 @@ public class State {
      */
     private void updateImplications() {
         if (recentlyUpdated) {
-            System.out.println("Already updated");
             return;
         }
-        System.out.println("Updating");
         for (Rule rule: rules) {
             if (rule.meetsRequirements(facts) &&
                     !implications.contains(rule.getImplication())) {
@@ -97,7 +94,6 @@ public class State {
         float[] recommendation = getRecommendation();
         boolean first = true;
         for (float f: recommendation) {
-            System.out.println(f);
             int weight = f < 2 ? 4 : 2;
             f = Math.min(((float) Math.round(f * weight) / weight), 20);
             int years = (int) f;

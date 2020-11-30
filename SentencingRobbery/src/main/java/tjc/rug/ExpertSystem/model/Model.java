@@ -22,7 +22,6 @@ public class Model {
      * Reads in the questions.xml, sets the member variables
      */
     public void restart() {
-//        QuestionParser qp = new QuestionParser("../../../../resources/knowledgebase/questions.xml");
         QuestionParser qp = new QuestionParser("/resources/knowledgebase/questions.xml");
         questions = qp.getQuestions();
         title = qp.getTitle();
@@ -42,7 +41,6 @@ public class Model {
                     return question;
                 }
             }
-            System.out.println("No more questions");
             return null;
         }
         else {

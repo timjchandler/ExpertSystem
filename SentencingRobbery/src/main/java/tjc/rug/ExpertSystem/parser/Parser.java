@@ -1,6 +1,5 @@
 package tjc.rug.ExpertSystem.parser;
 
-import org.xml.sax.SAXException;
 import tjc.rug.ExpertSystem.model.AbstractKnowledge;
 import tjc.rug.ExpertSystem.model.Fact;
 import org.w3c.dom.Document;
@@ -9,9 +8,6 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -26,7 +22,6 @@ public abstract class Parser {
      */
     public Parser(String file) {
         input = getClass().getResourceAsStream(file);
-        System.out.println(input);
     }
 
     /**
