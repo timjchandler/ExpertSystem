@@ -1,0 +1,224 @@
+<questions>
+    <title>Sentencing calculator for robbery</title>
+<!--Qualified?-->
+    <question>
+        <heading>Ascertaining the penalty frame</heading>
+        <text>For what type of robbery was the individual convicted?</text>
+        <type>single</type>
+        <response>
+            <text>Simple robbery</text>
+            <then>
+                <fact name="robbery-type">simple</fact>
+            </then>
+        </response>
+        <response>
+            <text>Qualified robbery</text>
+            <then>
+                <fact name="robbery-type">qualified</fact>
+            </then>
+        </response>
+    </question>
+<!--Type of qualified?-->
+    <question>
+        <heading>Ascertaining the penalty frame</heading>
+        <text>In what manner was the robbery qualified?</text>
+        <type>multi</type>
+        <requires>
+            <fact name="robbery-type">qualified</fact>
+        </requires>
+        <response>
+            <text>Using a firearm or dangerous weapon</text>
+            <then>
+                <fact name="qualified-type">weapon</fact>
+            </then>
+        </response>
+        <response>
+            <text>As part of a group formed for the purpose of robbery or theft</text>
+            <then>
+                <fact name="qualified-type">group</fact>
+            </then>
+        </response>
+        <response>
+            <text>In a manner that endangered life or was otherwise cruel</text>
+            <then>
+                <fact name="qualified-type">cruel</fact>
+            </then>
+        </response>
+    </question>
+<!--Multi offence?-->
+    <question>
+        <heading>Ascertaining the penalty frame</heading>
+        <text>Has the individual been convicted of more than one offence by the trial in question?</text>
+        <type>single</type>
+        <requires>
+            <or>
+                <fact name="robbery-type">simple</fact>
+                <fact name="qualified-type">not-null</fact>
+            </or>
+        </requires>
+        <response>
+            <text>Yes</text>
+            <then>
+                <fact name="multi-offence">yes</fact>
+            </then>
+        </response>
+        <response>
+            <text>No</text>
+            <then>
+                <fact name="multi-offence">no</fact>
+            </then>
+        </response>
+    </question>
+<!--Other offence(s) type-->
+    <question>
+        <heading>Ascertaining the penalty frame</heading>
+        <text>For what other crimes was the individual convicted during the trial in question?</text>
+        <type>multi</type>
+        <requires>
+            <fact name="multi-offence">yes</fact>
+        </requires>
+        <response>
+            <text>Theft</text>
+            <then>
+                <fact name="other-offence">theft</fact>
+            </then>
+        </response>
+        <response>
+            <text>Placeholder</text>
+            <then>
+                <fact name="other-offence">placeholder</fact>
+            </then>
+        </response>
+    </question>
+<!--Mitigating circumstances-->
+    <question>
+        <heading>Ascertaining the penalty frame</heading>
+        <text>Are there any of the following mitigating circumstances?</text>
+        <type>multi</type>
+        <requires>
+            <or>
+                <fact name="multi-offence">no</fact>
+                <fact name="other-offence">not-null</fact>
+            </or>
+        </requires>
+        <response>
+            <text>The offence was committed for honourable motives</text>
+            <then>
+                <fact name="mitigating">honourable</fact>
+            </then>
+        </response>
+        <response>
+            <text>The individual was suffering serious distress</text>
+            <then>
+                <fact name="mitigating">distress</fact>
+            </then>
+        </response>
+        <response>
+            <text>The individual was under serious threat</text>
+            <then>
+                <fact name="mitigating">threat</fact>
+            </then>
+        </response>
+        <response>
+            <text>At the behest of someone to whom the individual was duty bound, or dependent</text>
+            <then>
+                <fact name="mitigating">behest</fact>
+            </then>
+        </response>
+        <response>
+            <text>After serious provocation from the victim</text>
+            <then>
+                <fact name="mitigating">provoked</fact>
+            </then>
+        </response>
+        <response>
+            <text>In a state of extreme emotion or serious psychological stress</text>
+            <then>
+                <fact name="mitigating">stress</fact>
+            </then>
+        </response>
+        <response>
+            <text>The individual has shown genuine remorse, and has made reparations</text>
+            <then>
+                <fact name="mitigating">remorse</fact>
+            </then>
+        </response>
+        <response>
+            <text>The need for punishment has been substantially reduced due to time elapsed since the offence</text>
+            <then>
+                <fact name="mitigating">time</fact>
+            </then>
+        </response>
+        <response>
+            <text>None of the above</text>
+            <then>
+                <fact name="mitigating">none</fact>
+            </then>
+        </response>
+    </question>
+<!--Extent of success-->
+<!--Needs clarification, wording?-->
+    <question>
+        <heading>Ascertaining placement within base sentence</heading>
+        <text>What is the extent of the success?</text>
+        <type>single</type>
+        <requires>
+            <fact name="mitigating">not-null</fact>
+        </requires>
+        <response>
+            <text>Low</text>
+            <then>
+                <fact name="success">light</fact>
+            </then>
+        </response>
+        <response>
+            <text>Medium</text>
+            <then>
+                <fact name="success">medium</fact>
+            </then>
+        </response>
+        <response>
+            <text>High</text>
+            <then>
+                <fact name="success">severe</fact>
+            </then>
+        </response>
+    </question>
+<!--Seriousness of Danger-->
+<!--Needs clarification, only for qualified?-->
+    <question>
+        <heading>Ascertaining placement within base sentence</heading>
+        <text>How serious was the potential danger?</text>
+        <type>single</type>
+        <requires>
+            <and>
+                <fact name="success">not-null</fact>
+                <fact name="robbery-type">qualified</fact>
+            </and>
+        </requires>
+        <response>
+            <text>Low</text>
+            <then>
+                <fact name="danger">low</fact>
+            </then>
+        </response>
+        <response>
+            <text>Medium</text>
+            <then>
+                <fact name="danger">medium</fact>
+            </then>
+        </response>
+        <response>
+            <text>Severe</text>
+            <then>
+                <fact name="danger">severe</fact>
+            </then>
+        </response>
+        <response>
+            <text>Very Severe</text>
+            <then>
+                <fact name="danger">very-severe</fact>
+            </then>
+        </response>
+    </question>
+</questions>
