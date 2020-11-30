@@ -4,7 +4,7 @@
 
 This calculator reads in rules from xml files and implements them via a gui
 
-An executable .jar of the current version _PROTOTYPE_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-PROTOTYPE.jar)
+An executable .jar of the current version _PROTOTYPE_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/raw/main/SentencingRobbery-PROTOTYPE.jar)
 
 ## Documentation
 
@@ -23,50 +23,53 @@ The xml for the knowledge base may be found here:
 
 ```bash
 .
-├── SentencingRobbery.iml
-├── knowledgebase
-│   ├── questions.xml
-│   └── rules.xml
-├── pom.xml
-└── src
-    ├── main
-    │   ├── java
-    │   │   ├── ExpertSystem
-    │   │   │   ├── Main.java
-    │   │   │   ├── controller
-    │   │   │   │   ├── Controller.java
-    │   │   │   │   └── HomeController.java
-    │   │   │   ├── model
-    │   │   │   │   ├── AbstractKnowledge.java
-    │   │   │   │   ├── Fact.java
-    │   │   │   │   ├── Model.java
-    │   │   │   │   ├── Question.java
-    │   │   │   │   ├── Rule.java
-    │   │   │   │   └── State.java
-    │   │   │   ├── parser
-    │   │   │   │   ├── Parser.java
-    │   │   │   │   ├── QuestionParser.java
-    │   │   │   │   └── RuleParser.java
-    │   │   │   └── view
-    │   │   │       ├── css
-    │   │   │       │   ├── exit.css
-    │   │   │       │   ├── question.css
-    │   │   │       │   └── style.css
-    │   │   │       └── fxml
-    │   │   │           ├── exitScreen.fxml
-    │   │   │           ├── home.fxml
-    │   │   │           ├── main.fxml
-    │   │   │           ├── questionArea.fxml
-    │   │   │           └── trace.fxml
-    │   │   ├── META-INF
-    │   │   │   └── MANIFEST.MF
-    │   │   └── tests
-    │   │       ├── KnowledgeTest.java
-    │   │       ├── ModelTest.java
-    │   │       ├── ParserTest.java
-    │   │       └── StateTest.java
-    │   └── resources
-    └── test
-        └── java
+├── README.md
+└── SentencingRobbery
+    ├── SentencingRobbery.iml
+    ├── pom.xml
+    └── src
+        ├── main
+        │   ├── java
+        │   │   └── tjc
+        │   │       └── rug
+        │   │           ├── ExpertSystem
+        │   │           │   ├── Main.java
+        │   │           │   ├── controller
+        │   │           │   │   ├── Controller.java
+        │   │           │   │   └── HomeController.java
+        │   │           │   ├── model
+        │   │           │   │   ├── AbstractKnowledge.java
+        │   │           │   │   ├── Fact.java
+        │   │           │   │   ├── Model.java
+        │   │           │   │   ├── Question.java
+        │   │           │   │   ├── Rule.java
+        │   │           │   │   └── State.java
+        │   │           │   └── parser
+        │   │           │       ├── Parser.java
+        │   │           │       ├── QuestionParser.java
+        │   │           │       └── RuleParser.java
+        │   │           └── META-INF
+        │   │               └── MANIFEST.MF
+        │   └── resources
+        │       └── resources
+        │           ├── css
+        │           │   ├── exit.css
+        │           │   ├── question.css
+        │           │   └── style.css
+        │           ├── fxml
+        │           │   ├── exitScreen.fxml
+        │           │   ├── home.fxml
+        │           │   ├── main.fxml
+        │           │   ├── questionArea.fxml
+        │           │   └── trace.fxml
+        │           └── knowledgebase
+        │               ├── questions.xml
+        │               └── rules.xml
+        └── test
+            ├── KnowledgeTest.java
+            ├── ModelTest.java
+            ├── ParserTest.java
+            └── StateTest.java
+            
             
 ```
