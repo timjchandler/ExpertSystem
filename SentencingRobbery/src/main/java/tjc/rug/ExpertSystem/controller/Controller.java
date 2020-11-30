@@ -1,9 +1,6 @@
 package tjc.rug.ExpertSystem.controller;
 
-import tjc.rug.ExpertSystem.model.Fact;
 import tjc.rug.ExpertSystem.model.Model;
-import tjc.rug.ExpertSystem.model.Question;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,25 +9,21 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    private enum CurrentView { QUESTIONS, TRACE, HOME, SETTINGS }
+    protected enum CurrentView { QUESTIONS, TRACE, HOME, SETTINGS }
 
+    protected static Model model;
+    protected static Node prevPane = null;
     private CurrentView currentView;
-    protected Model model;
     private BorderPane questionPane = null;
-    private static Node prevPane = null;
+
 
     @FXML
     BorderPane mainPane;
@@ -50,12 +43,6 @@ public class Controller implements Initializable {
     @FXML
     Button btnExit;
 
-    @FXML
-    Button exitNo;
-
-    @FXML
-    AnchorPane questionAP;
-
     /**
      * Loads the model
      * @param location      Not used
@@ -63,7 +50,7 @@ public class Controller implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.model = new Model();
+        model = new Model();
     }
 
     /**
@@ -75,8 +62,7 @@ public class Controller implements Initializable {
         else if (event.getSource().equals(btnSide1)) trace();
         else if (event.getSource().equals(btnSide2)) System.out.println(btnSide2.getText());
         else if (event.getSource().equals(btnSide3)) System.out.println(btnSide3.getText());
-        else if (event.getSource().equals(btnExit)) exit(true);
-        else if (event.getSource().equals(exitNo)) exit(false);
+        else if (event.getSource().equals(btnExit)) exit();
     }
 
     /**
@@ -95,21 +81,15 @@ public class Controller implements Initializable {
      */
     private void trace() {
         if (currentView == CurrentView.TRACE) {
-            if (questionPane != null) {
-                currentView = CurrentView.QUESTIONS;
-                mainPane.setCenter(questionPane);
-            }
+            btnSide1.setText("Trace");
+            currentView = CurrentView.QUESTIONS;
+            mainPane.setCenter(prevPane);
         }
         else {
-            questionPane = (BorderPane) mainPane.getCenter();
             currentView = CurrentView.TRACE;
-            Label temp = new Label(model.getTrace());
-            temp.setStyle("-fx-background-color: #6B818C");
-            temp.setMinSize(640, 600);
-            temp.setPadding(new Insets(50, 50, 50, 50));
-            ScrollPane sp = new ScrollPane();
-            sp.setContent(temp);
-            mainPane.setCenter(sp);
+            prevPane = mainPane.getCenter();
+            btnSide1.setText("Hide Trace");
+            loadPage("trace");
         }
     }
 
@@ -129,23 +109,10 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Shuts down the gui and terminates the program
+     * Switches the main view to the exit screen
      */
-    public void exitFR() {
-        Platform.exit();
-        System.exit(0);
-    }
-
-    /**
-     * Changes the exit button text to "back" (or resets it to "exit") switches screen to and from
-     * the exit screen
-     */
-    private void exit(Boolean toPage) {
-        if (toPage) {
-            prevPane = mainPane.getCenter();
-            loadPage("exitScreen");
-
-        }
-        else ((BorderPane) questionAP.getParent()).setCenter(prevPane);
+    private void exit() {
+        prevPane = mainPane.getCenter();
+        loadPage("exitScreen");
     }
 }

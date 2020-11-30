@@ -34,6 +34,7 @@ public class QuestionController extends Controller {
     @FXML
     Label bannerLabel;
 
+
     /**
      * React to the button "next" being pressed. If no options were selected, present a prompt
      * to select something. Pass over to methods that record new facts and set the button arrays
@@ -82,12 +83,6 @@ public class QuestionController extends Controller {
         questionVBox.getChildren().clear();
     }
 
-//    private boolean checkSelected(ArrayList<ButtonBase> buttons) {
-//        for (ButtonBase button: buttons) {
-//            if (button.isSelected())
-//        }
-//    }
-
     /**
      * Check the CheckBox ArrayList for new facts, add them to the model.
      * @return      True if facts obtained, false otherwise
@@ -121,7 +116,7 @@ public class QuestionController extends Controller {
         }
         return out;
     }
-    
+
     /**
      * Generates the buttons to display: RadioButtons for single choice answers or CheckBoxes for multi choice
      * Stores the buttons in the relevant ArrayList and adds them to the VBox

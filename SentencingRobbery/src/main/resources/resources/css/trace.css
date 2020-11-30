@@ -1,0 +1,25 @@
+.label
+{
+-fx-text-fill           : #BDEDE0;
+}
+.scrollpane
+{
+-fx-background          : #444140;
+-fx-background-color    : #444140;
+}
+.pane
+{
+-fx-background-color    : #565656;
+}
+.textarea .content
+{
+-fx-background-opacity  : 0.5;
+-fx-background-color    : #444140;
+}
+.textarea
+{
+-fx-border-color        : #444140;
+-fx-text-fill           : #C5CDD3;
+-fx-min-width           : 610;
+-fx-min-height          : 470;
+}
