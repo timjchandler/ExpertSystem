@@ -6,7 +6,7 @@
 
     <groupId>tjc.rug</groupId>
     <artifactId>SentencingRobbery</artifactId>
-    <version>1.0-PROTOTYPE</version>
+    <version>PROTOTYPE</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -97,37 +97,7 @@
                     <mainClass>tjc.rug.ExpertSystem.Main</mainClass>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-shade-plugin</artifactId>-->
-<!--                <version>3.0.0</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>shade</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <transformers>-->
-<!--                                <transformer-->
-<!--                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
-<!--                                    <mainClass>tjc.rug.ExpertSystem.Main</mainClass>-->
-<!--                                </transformer>-->
-<!--                            </transformers>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
         </plugins>
-<!--        <resources>-->
-<!--            <resource>-->
-<!--                <filtering>false</filtering>-->
-<!--                <directory>target/classes/resources/knowledgebase</directory>-->
-<!--                <includes>-->
-<!--                    <include>*.xml</include>-->
-<!--                </includes>-->
-<!--            </resource>-->
-<!--        </resources>-->
     </build>
 
 
