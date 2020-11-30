@@ -8,29 +8,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600" minWidth="640" prefHeight="600.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ExpertSystem.controller.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600" minWidth="640" prefHeight="600.0" prefWidth="640.0" stylesheets="@../css/question.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ExpertSystem.controller.Controller">
    <center>
-      <VBox fx:id="questionVBox" prefHeight="363.0" prefWidth="261.0" BorderPane.alignment="CENTER" />
+      <VBox fx:id="questionVBox" prefHeight="363.0" prefWidth="261.0" styleClass="vbox" stylesheets="@../css/question.css" BorderPane.alignment="CENTER" />
    </center>
    <left>
-      <Pane fx:id="leftPane" prefHeight="363.0" prefWidth="170.0" BorderPane.alignment="CENTER" />
+      <Pane fx:id="leftPane" prefHeight="363.0" prefWidth="170.0" styleClass="pane" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <Pane fx:id="rightPane" prefHeight="363.0" prefWidth="170.0" BorderPane.alignment="CENTER" />
+      <Pane fx:id="rightPane" prefHeight="363.0" prefWidth="170.0" styleClass="pane" BorderPane.alignment="CENTER" />
    </right>
    <top>
-      <VBox prefHeight="168.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="160.0" prefWidth="640.0" styleClass="vbox" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="topPane" prefHeight="90.0" prefWidth="640.0">
+            <Pane fx:id="topPane" prefHeight="100.0" prefWidth="640.0">
                <children>
-                  <Label fx:id="bannerLabel" contentDisplay="CENTER" layoutX="28.0" layoutY="17.0" prefHeight="53.0" prefWidth="549.0" textFill="#e36414">
+                  <Label fx:id="bannerLabel" contentDisplay="CENTER" layoutX="28.0" layoutY="17.0" prefHeight="60.0" prefWidth="549.0" textFill="#e36414">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Label fx:id="questionLabel" alignment="BOTTOM_LEFT" prefHeight="83.0" prefWidth="649.0" wrapText="true">
+            <Label fx:id="questionLabel" alignment="BOTTOM_LEFT" prefHeight="60.0" prefWidth="649.0" style="-fx-background-color: #22333B;" text="Sentencing calculator for robbery  in Swiss law" wrapText="true">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -45,14 +45,14 @@
       </VBox>
    </top>
    <bottom>
-      <VBox prefHeight="98.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="98.0" prefWidth="640.0" styleClass="vbox" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="next" mnemonicParsing="false" onAction="#next" prefHeight="39.0" prefWidth="180.0" text="First Question">
+            <Button fx:id="next" mnemonicParsing="false" onAction="#next" prefHeight="39.0" prefWidth="180.0" stylesheets="@../css/question.css" text="Begin">
                <VBox.margin>
                   <Insets left="230.0" right="230.0" />
                </VBox.margin>
             </Button>
-            <Label fx:id="labelBelowNext" textFill="#ae0000">
+            <Label fx:id="labelBelowNext" styleClass="errlabel" textFill="#ae0000">
                <VBox.margin>
                   <Insets left="257.0" top="10.0" />
                </VBox.margin>

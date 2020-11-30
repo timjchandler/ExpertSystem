@@ -1,32 +1,37 @@
+/* BUTTONS */
 .button
 {
--fx-background-color : #912104;
+-fx-background-color    : #353535;
+-fx-border-color        : #353535;
+-fx-text-fill           : #E0E1DD;
 }
 .button:hover
 {
--fx-background-color : #711912;
+-fx-background-color    : #656565;
+-fx-border-color        : #656565;
 }
 .button:pressed
 {
--fx-background-color : #A12F24;
+-fx-background-color    : #D9D9D9;
+-fx-border-color        : #D9D9D9;
 }
-
-#boxBanner
+/* VBOX */
+.vbox
 {
--fx-background-color : #383D3B;
+-fx-background-color    : #353535;
 }
-
-.label
+/* PANE */
+.pane
 {
--fx-text-fill : #F8F3F2;
+-fx-background-color    : #22333B
 }
-
-.check-box:determinate
+/* ANCHOR PANE */
+.anchor
 {
--fx-text-fill : #383D3B;
+-fx-background-color    : #284B63
 }
-
-.radio-button
+/* ANIMATED ELEMENTS */
+.spinnerOne
 {
--fx-text-fill : #383D3B;
+-fx-background-color    : #415A77
 }
