@@ -28,29 +28,9 @@ public class Controller implements Initializable {
     private enum CurrentView { QUESTIONS, TRACE, HOME, SETTINGS }
 
     private CurrentView currentView;
-    private Model model;
-    private ArrayList<RadioButton> rbArray = null;
-    private ArrayList<CheckBox> cbArray = null;
+    protected Model model;
     private BorderPane questionPane = null;
     private static Node prevPane = null;
-
-    @FXML
-    Label labelBelowNext;
-
-    @FXML
-    VBox questionVBox;
-
-    @FXML
-    Label questionLabel;
-
-    @FXML
-    Button next;
-
-    @FXML
-    Pane topPane;
-
-    @FXML
-    Label bannerLabel;
 
     @FXML
     BorderPane mainPane;
@@ -110,25 +90,6 @@ public class Controller implements Initializable {
     }
 
     /**
-     * React to the button "next" being pressed. If no options were selected, present a prompt
-     * to select something. Pass over to methods that record new facts and set the button arrays
-     * to null
-     */
-    public void next() {
-        boolean selectionMade = false;
-        if (rbArray != null) selectionMade = checkRB();
-        if (cbArray != null) selectionMade = checkCB();
-        if (!selectionMade && (rbArray != null || cbArray != null)) {
-            labelBelowNext.setText("Please select an answer");
-            return;
-        }
-        labelBelowNext.setText("");
-        rbArray = null;
-        cbArray = null;
-        buildScene(model.getQuestion(true));
-    }
-
-    /**
      * Generate and show the trace of gathered facts and implications. If the trace
      * is already shown, hide it
      */
@@ -165,104 +126,6 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
         mainPane.setCenter(root);
-    }
-
-    /**
-     * Check the CheckBox ArrayList for new facts, add them to the model.
-     * @return      True if facts obtained, false otherwise
-     */
-    private boolean checkCB() {
-        if (model.getQuestion(false) == null) return false;
-        boolean out = false;
-        for (CheckBox cb: cbArray) {
-            if (cb.isSelected()) {
-                Fact fact = model.getQuestion(false).getAnswerFacts().get(cbArray.indexOf(cb));
-                model.addFact(fact);
-                out = true;
-            }
-        }
-        return out;
-    }
-
-    /**
-     * Check the RadioButton ArrayList for new facts, add them to the model.
-     * @return      True if facts obtained, false otherwise
-     */
-    private boolean checkRB() {
-        if (model.getQuestion(false) == null) return false;
-        boolean out = false;
-        for (RadioButton rb: rbArray) {
-            if (rb.isSelected()) {
-                Fact fact = model.getQuestion(false).getAnswerFacts().get(rbArray.indexOf(rb));
-                model.addFact(fact);
-                out = true;
-            }
-        }
-        return out;
-    }
-
-    /**
-     * Build the main question panel, update the question text and pass to other methods to add buttons.
-     * If no new questions available shows a summary of gathered information
-     * @param question      The question to build around
-     */
-    private void buildScene(Question question) {
-        if (question == null) {
-            showSummary();
-            return;
-        }
-        questionLabel.setText(question.getQuestionText());
-        bannerLabel.setText(question.getHeading());
-        next.setText("Next");
-        questionVBox.getChildren().clear();
-        if (question.getType() == Question.QuestionType.MULTI) buildMulti(question);
-        else if (question.getType() == Question.QuestionType.SINGLE) buildSingle(question);
-    }
-
-    /**
-     * Changes the visuals of the question pane to indicate the end, shows the calculated recommended
-     * sentence
-     */
-    private void showSummary() {
-        questionLabel.setText(model.getSentence());
-        topPane.setStyle("-fx-background-color: #1E1E24");
-        bannerLabel.setText("Recommended Sentence:");
-        bannerLabel.setTextFill(Color.web("#9A031E"));
-        questionVBox.getChildren().clear();
-    }
-
-    /**
-     * Adds the buttons for a single choice question
-     * @param question  The question to add
-     */
-    private void buildSingle(Question question) {
-        ToggleGroup group = new ToggleGroup();
-        rbArray = new ArrayList<>();
-        for (String answer: question.getAnswers()) {
-            RadioButton rb = new RadioButton(answer);
-            rb.setToggleGroup(group);
-            rb.getStyleClass().add("radiobutton");
-            rb.setWrapText(true);
-            rbArray.add(rb);
-            rb.setPadding(new Insets(0, 0, 10, 0));
-            questionVBox.getChildren().add(rb);
-        }
-    }
-
-    /**
-     * Adds the buttons for a multi choice question
-     * @param question  The question to add
-     */
-    private void buildMulti(Question question) {
-        cbArray = new ArrayList<>();
-        for (String answer: question.getAnswers()) {
-            CheckBox cb = new CheckBox(answer);
-            cbArray.add(cb);
-            cb.getStyleClass().add("checkbox");
-            cb.setWrapText(true);
-            cb.setPadding(new Insets(0, 0, 10, 0));
-            questionVBox.getChildren().add(cb);
-        }
     }
 
     /**
