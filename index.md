@@ -6,7 +6,7 @@ This calculator reads in rules from xml files and implements them via a gui
 
 ### Download
 
-_<span style="color:grey; font-size:3em">File pdated 30/11/20</span>_
+<span style="color:grey; font-size:3em">File updated: 30/11/20</span>
 
 An executable .jar of the current version _PROTOTYPE_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/raw/main/SentencingRobbery-PROTOTYPE.jar)
 
