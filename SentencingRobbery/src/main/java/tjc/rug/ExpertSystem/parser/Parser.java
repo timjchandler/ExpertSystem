@@ -1,5 +1,6 @@
 package tjc.rug.ExpertSystem.parser;
 
+import org.xml.sax.SAXException;
 import tjc.rug.ExpertSystem.model.AbstractKnowledge;
 import tjc.rug.ExpertSystem.model.Fact;
 import org.w3c.dom.Document;
@@ -8,13 +9,15 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public abstract class Parser {
 
-    protected File xmlFile;
+    protected InputStream input;
     protected NodeList nodeList;
 
     /**
@@ -22,8 +25,8 @@ public abstract class Parser {
      * @param file  the file to be parsed
      */
     public Parser(String file) {
-        String path = getClass().getResource("").getPath();
-        this.xmlFile = new File(path + file);
+        input = getClass().getResourceAsStream(file);
+        System.out.println(input);
     }
 
     /**
@@ -84,7 +87,7 @@ public abstract class Parser {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
-            document = documentBuilder.parse(xmlFile);
+            document = documentBuilder.parse(input);
             document.getDocumentElement().normalize();
             nodeList = document.getElementsByTagName(tag);
         } catch (Exception e) {

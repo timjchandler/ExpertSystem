@@ -119,6 +119,15 @@
 <!--                </executions>-->
 <!--            </plugin>-->
         </plugins>
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <filtering>false</filtering>-->
+<!--                <directory>target/classes/resources/knowledgebase</directory>-->
+<!--                <includes>-->
+<!--                    <include>*.xml</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
+<!--        </resources>-->
     </build>
 
 

@@ -18,7 +18,8 @@ public class State {
      * Sets other member variables to their defaults
      */
     public State() {
-        rules = new RuleParser("../../../../resources/knowledgebase/rules.xml").getRules();
+//        rules = new RuleParser("../../../../resources/knowledgebase/rules.xml").getRules();
+        rules = new RuleParser("/resources/knowledgebase/questions.xml").getRules();
         facts = new ArrayList<>();
         implications = new ArrayList<>();
         currentBase = new float[2];
