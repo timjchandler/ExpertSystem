@@ -74,7 +74,7 @@
                             <goal>repackage</goal>
                         </goals>
                         <configuration>
-                            <layout>NONE</layout>
+                            <layout>JAR</layout>
                             <classifier>spring-boot</classifier>
                             <mainClass>tjc.rug.ExpertSystem.Main</mainClass>
                         </configuration>
