@@ -10,7 +10,9 @@ import tjc.rug.ExpertSystem.model.Fact;
 import tjc.rug.ExpertSystem.model.Question;
 import tjc.rug.ExpertSystem.model.Sentence;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class QuestionController extends Controller {
 
@@ -35,6 +37,9 @@ public class QuestionController extends Controller {
     @FXML
     Label bannerLabel;
 
+    public void initialize(URL location, ResourceBundle resources) {
+        next();
+    }
 
     /**
      * React to the button "next" being pressed. If no options were selected, present a prompt

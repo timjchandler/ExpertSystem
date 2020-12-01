@@ -5,12 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import tjc.rug.ExpertSystem.model.Sentence;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,11 +16,11 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    protected enum CurrentView { QUESTIONS, TRACE, HOME, SETTINGS }
+    protected enum CurrentView { LOAD, QUESTIONS, TRACE, HOME, SETTINGS }
 
     protected static Model model;
     protected static Node prevPane = null;
-    private CurrentView currentView;
+    private static CurrentView currentView = CurrentView.LOAD;
     private BorderPane questionPane = null;
 
 
@@ -52,6 +50,10 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model = new Model();
+        if (currentView == CurrentView.LOAD) {
+            loadPage("home");
+            currentView = CurrentView.HOME;
+        }
     }
 
     /**
@@ -70,11 +72,18 @@ public class Controller implements Initializable {
      * Restart the system, reloading the model and resetting the view
      */
     private void restart() {
-        currentView = CurrentView.QUESTIONS;
-        btnSide0.setText("Restart");
-        btnSide1.setText("Trace");
-        model.restart();
-        loadPage("questionArea");
+        if (currentView == CurrentView.HOME) {
+            btnSide0.setText("Restart");
+            currentView = CurrentView.QUESTIONS;
+            loadPage("questionArea");
+        }
+        else {
+            currentView = CurrentView.HOME;
+            btnSide0.setText("Start");
+            btnSide1.setText("Trace");
+            model.restart();
+            loadPage("home");
+        }
     }
 
     /**
@@ -101,7 +110,7 @@ public class Controller implements Initializable {
      */
     private void loadPage(String page) {
         Parent root = null;
-        String path = "../../../../resources/fxml/" + page + ".fxml";
+        String path = "/resources/fxml/" + page + ".fxml";
         try {
             root = FXMLLoader.load(getClass().getResource(path));
         } catch (IOException e) {

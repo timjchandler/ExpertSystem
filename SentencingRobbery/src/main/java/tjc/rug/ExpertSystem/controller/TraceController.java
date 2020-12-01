@@ -1,10 +1,14 @@
 package tjc.rug.ExpertSystem.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import tjc.rug.ExpertSystem.model.Response;
 import tjc.rug.ExpertSystem.model.Sentence;
 
@@ -14,7 +18,7 @@ import java.util.ResourceBundle;
 public class TraceController extends Controller {
 
     private VBox qaBox;
-    private TextArea factArea;
+    private Text factText;
 
     @FXML
     private ScrollPane scrollPane;
@@ -22,28 +26,43 @@ public class TraceController extends Controller {
     @FXML
     private Label bannerLabel;
 
+    @FXML
+    private Button qButton;
+
+    @FXML
+    private Button fButton;
+
+    @FXML
+    private AnchorPane traceAP;
+
     public void initialize(URL location, ResourceBundle resources) {
         bannerLabel.setText(model.getSentence());
         factTrace();
         questionTrace();
         scrollPane.setContent(qaBox);
-//        scrollPane.setContent(factArea);
     }
 
     private void factTrace() {
-        factArea = new TextArea();
-        factArea.setWrapText(true);
-        factArea.setText(model.getTrace());
-        factArea.getStyleClass().add("textarea");
+        factText = new Text(model.getTrace());
+        factText.getStyleClass().add("facttext");
     }
 
-    // TODO: Set text box to minimum relative size
+    public void tabSelect(ActionEvent e) {
+        if (e.getSource().equals(qButton) && !scrollPane.getContent().equals(qaBox)) {
+            scrollPane.setContent(qaBox);
+            traceAP.setStyle("-fx-background-color: #353535");
+        } else if (e.getSource().equals(fButton) && !scrollPane.getContent().equals(factText)) {
+            scrollPane.setContent(factText);
+            traceAP.setStyle("-fx-background-color: #1B1B1B");
+        }
+    }
+
     private void questionTrace() {
         qaBox = new VBox();
         qaBox.getStyleClass().add("vbox");
         for (Response response: Sentence.getResponses()) {
             Label q = new Label(response.getQText());
-            TextArea a = new TextArea();
+            Label a = new Label();
             q.getStyleClass().add("question");
             a.getStyleClass().add("answer");
             boolean multiAns = false;

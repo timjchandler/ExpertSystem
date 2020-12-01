@@ -2,11 +2,6 @@
 {
 -fx-text-fill           : #BDEDE0;
 }
-.scrollpane
-{
--fx-background          : #444140;
--fx-background-color    : #444140;
-}
 .pane
 {
 -fx-background-color    : #565656;
@@ -16,29 +11,75 @@
 -fx-background-opacity  : 0.5;
 -fx-background-color    : #444140;
 }
-.textarea
-{
--fx-border-color        : #444140;
--fx-text-fill           : #C5CDD3;
--fx-min-width           : 610;
--fx-min-height          : 470;
-}
 .question
 {
+-fx-max-width           : 580;
+-fx-wrap-text           : true;
+-fx-padding             : 12px 0px 0px 0px;
 -fx-font-size           : 18px;
 -fx-background          : #C5CDD3;
 -fx-text-fill           : #EE6C4D;
 }
 .answer
 {
--fx-control-inner-background    : #444140;
--fx-text-fill           : #A8DADC;
--fx-min-width           : 470;
+-fx-padding             : 5px 5px 5px 5px;
+-fx-border-color        : #748694;
+-fx-border-width        : 2px;
+-fx-background-color    : #405364;
+-fx-text-fill           : #D1D7DC;
+-fx-pref-width          : 580;
 -fx-font-size           : 12px;
 }
 .vbox
 {
--fx-background-color    : #444140;
+-fx-background-color    : transparent;
+}
+.hbox
+{
 -fx-background          : #444140;
--fx-border-color        : #444140;
+-fx-background-color    : #444140;
+}
+.buttona
+{
+-fx-min-width           : 320;
+-fx-min-height          : 60;
+-fx-border-color        : #353535;
+-fx-background-color    : #353535;
+-fx-border-width        : 2;
+-fx-text-fill           : #CFCFCF;
+}
+.buttona:hover
+{
+-fx-border-color        : #49494C;
+-fx-background-color    : #49494C;
+}
+.buttonb
+{
+-fx-min-width           : 320;
+-fx-min-height          : 60;
+-fx-border-color        : #1B1B1B;
+-fx-background-color    : #1B1B1B;
+-fx-border-width        : 2;
+-fx-text-fill           : #CFCFCF;
+}
+.buttonb:hover
+{
+-fx-border-color        : #49494C;
+-fx-background-color    : #49494C;
+}
+.scrollpane
+{
+-fx-background-color    : transparent;
+}
+.scrollpane .viewport
+{
+-fx-background-color    : transparent;
+}
+.anchor
+{
+-fx-background-color    : #353535;
+}
+.facttext
+{
+-fx-fill                : #FCBF49;
 }

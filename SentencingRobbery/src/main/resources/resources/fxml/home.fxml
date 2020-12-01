@@ -1,8 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="600.0" maxWidth="640.0" minHeight="600.0" minWidth="640.0" prefHeight="600.0" prefWidth="640.0" style="-fx-background-color: #22223B;" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="tjc.rug.ExpertSystem.controller.Controller">
-
+<AnchorPane fx:id="apHome" maxHeight="600.0" maxWidth="640.0" minHeight="600.0" minWidth="640.0" prefHeight="600.0" prefWidth="640.0" styleClass="anchor" stylesheets="@../css/home.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tjc.rug.ExpertSystem.controller.HomeController">
+   <children>
+      <ImageView fx:id="bgImage" fitHeight="600.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Circle fx:id="circle1" fill="DODGERBLUE" layoutX="540.0" layoutY="41.0" radius="259.0" stroke="BLACK" strokeType="INSIDE">
+         <styleClass>
+            <String fx:value="circle" />
+            <String fx:value="circleone" />
+         </styleClass>
+      </Circle>
+      <Circle fx:id="circle3" fill="DODGERBLUE" layoutX="327.0" layoutY="746.0" radius="344.0" stroke="BLACK" strokeType="INSIDE">
+         <styleClass>
+            <String fx:value="circle" />
+            <String fx:value="circlethree" />
+         </styleClass>
+      </Circle>
+      <Circle fx:id="circle2" fill="DODGERBLUE" layoutX="165.0" layoutY="266.0" radius="116.0" stroke="BLACK" strokeType="INSIDE">
+         <styleClass>
+            <String fx:value="circle" />
+            <String fx:value="circletwo" />
+         </styleClass>
+      </Circle>
+      <Label layoutX="120.0" layoutY="215.0" prefHeight="73.0" prefWidth="284.0" text="Expert System" textFill="#80ffdb">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="165.0" layoutY="248.0" prefHeight="73.0" prefWidth="284.0" text="Calculating Robbery Sentencing" textFill="#85caee">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>

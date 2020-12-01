@@ -1,8 +1,8 @@
 /* BUTTONS */
 .button
 {
--fx-background-color    : #353535;
--fx-border-color        : #353535;
+-fx-background-color    : linear-gradient(to right, #333333, #1B1B1B);
+-fx-border-color        : linear-gradient(to right, #333333, #1B1B1B);
 -fx-text-fill           : #E0E1DD;
 }
 .button:hover
@@ -18,12 +18,12 @@
 /* VBOX */
 .vbox
 {
--fx-background-color    : #353535;
+-fx-background-color    : linear-gradient(to right, #333333, #1B1B1B);
 }
 /* PANE */
 .pane
 {
--fx-background-color    : #22333B
+-fx-background-color    : linear-gradient(to left, #1B1B1B, #2F4550);
 }
 /* ANCHOR PANE */
 .anchor
