@@ -76,6 +76,7 @@ public class QuestionController extends Controller {
      * sentence
      */
     private void showSummary() {
+        System.out.println(model.getSentence());
         questionLabel.setText(model.getSentence());
         topPane.setStyle("-fx-background-color: #1E1E24");
         bannerLabel.setText("Recommended Sentence:");
@@ -126,6 +127,7 @@ public class QuestionController extends Controller {
         boolean multi = question.getType() == Question.QuestionType.MULTI;
         if (multi) cbArray = new ArrayList<>();
         else rbArray = new ArrayList<>();
+        ToggleGroup group = new ToggleGroup();
         for (String answer: question.getAnswers()) {
             ButtonBase btn = multi ? new CheckBox(answer) : new RadioButton(answer);
             btn.getStyleClass().add("optionbutton");
@@ -133,7 +135,10 @@ public class QuestionController extends Controller {
             btn.setPadding(new Insets(0, 0, 10, 0));
             questionVBox.getChildren().add(btn);
             if (multi) cbArray.add((CheckBox) btn);
-            else rbArray.add((RadioButton) btn);
+            else {
+                ((RadioButton) btn).setToggleGroup(group);
+                rbArray.add((RadioButton) btn);
+            }
         }
     }
 }

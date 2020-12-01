@@ -26,6 +26,7 @@ public class Model {
         questions = qp.getQuestions();
         title = qp.getTitle();
         state = new State();
+        Sentence.clearQA();
     }
 
     /**
@@ -69,7 +70,7 @@ public class Model {
      * @return  The trace as a string
      */
     public String getTrace() {
-        return state.toString();
+        return state.getSentenceString();
     }
 
     /**

@@ -2,14 +2,35 @@ package tjc.rug.ExpertSystem.model;
 public class Fact {
 
     /**
-     * The implication of a rule:
-     *      NONE : This rule does not directly imply a change to sentencing
-     *      BASE : This rule implies a certain base sentence
-     *      MULTI: This rule implies a multiplication to a base sentence
-     *      ADD  : This rule implies an addition to a base sentence
-     *      SUB  : This rule implies a subtraction from a base sentence
+     * The implication of a rule with comparison method:
+     *      NONE    : This rule does not directly imply a change to sentencing
+     *      BASE    : This rule implies a certain base sentence
+     *      MULTI   : This rule implies a multiplication to a base sentence
+     *      SEGMENT : This rule regards the segment of the sentence to select
+     *      ADD     : This rule implies an addition to a base sentence
+     *      SUB     : This rule implies a subtraction from a base sentence
+     *      MAX     : This rule applies an upper limit to the sentence
      */
-    protected enum Implication { NONE, BASE, MULTI, ADD, SUB }
+    protected enum Implication {
+        NONE(0),
+        BASE(1),
+        MULTI(2),
+        SEGMENT(3),
+        ADD(4),
+        SUB(5),
+        MAX(6);
+
+        private int i;
+
+        Implication(int i) {
+            this.i = i;
+        }
+
+        public boolean lessEqTo(Implication imp) {
+            System.out.println(this.i <= imp.i);
+            return this.i <= imp.i;
+        }
+    }
 
     protected final int NOT_APPLICABLE = -1;
 
@@ -17,7 +38,7 @@ public class Fact {
     private final String value;
     private float minValue = NOT_APPLICABLE;
     private float maxValue = NOT_APPLICABLE;
-    private float multiplier = NOT_APPLICABLE;
+    private float multiplier = 1;
     private Implication implication;
 
     /**
@@ -28,8 +49,10 @@ public class Fact {
     public Fact(String name, String value) {
         this.name = name;
         this.value = value;
-        this.implication = Implication.NONE;
-        manageNumbers();
+        implication = Implication.NONE;
+        if (name.equals("segment")) implication = Implication.SEGMENT;
+        else if (name.equals("max")) implication = Implication.MAX;
+        else manageNumbers();
     }
 
     /**
@@ -57,20 +80,26 @@ public class Fact {
         return implication;
     }
 
-    /**
-     * Converts the rule into a string
-     * @return A string representing the rule
-     */
+//    /**
+//     * Converts the rule into a string
+//     * @return A string representing the rule
+//     */
+//    public String toString() {
+//        StringBuilder out = new StringBuilder();
+//        out.append("[").append(name).append("] has the value: ");
+//        if (minValue != NOT_APPLICABLE && maxValue != NOT_APPLICABLE) {
+//            out.append("From ").append(minValue).append(" to ");
+//            out.append(maxValue).append(" years");
+//        } else if (multiplier != NOT_APPLICABLE) {
+//            out.append("Multiplier of ").append(multiplier);
+//        } else out.append(value);
+//        out.append("\n");
+//        return out.toString();
+//    }
+
     public String toString() {
         StringBuilder out = new StringBuilder();
-        out.append("[").append(name).append("] has the value: ");
-        if (minValue != NOT_APPLICABLE && maxValue != NOT_APPLICABLE) {
-            out.append("From ").append(minValue).append(" to ");
-            out.append(maxValue).append(" years");
-        } else if (multiplier != NOT_APPLICABLE) {
-            out.append("Multiplier of ").append(multiplier);
-        } else out.append(value);
-        out.append("\n");
+        out.append("[").append(name).append("]\t has the value: \t{ ").append(value).append(" }\n");
         return out.toString();
     }
 
@@ -139,5 +168,21 @@ public class Fact {
      */
     public boolean equals(Fact fact) {
         return fact.equals(name, value);
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public float getMinValue() {
+        return minValue;
+    }
+
+    public float getMaxValue() {
+        return maxValue;
+    }
+
+    public float getMultiplier() {
+        return multiplier;
     }
 }

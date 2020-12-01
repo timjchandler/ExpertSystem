@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import tjc.rug.ExpertSystem.model.Sentence;
 
 import java.io.IOException;
 import java.net.URL;
@@ -71,6 +72,7 @@ public class Controller implements Initializable {
     private void restart() {
         currentView = CurrentView.QUESTIONS;
         btnSide0.setText("Restart");
+        btnSide1.setText("Trace");
         model.restart();
         loadPage("questionArea");
     }
