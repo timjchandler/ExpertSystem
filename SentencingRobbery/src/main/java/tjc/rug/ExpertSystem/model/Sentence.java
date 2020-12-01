@@ -1,14 +1,11 @@
 package tjc.rug.ExpertSystem.model;
 
-import com.sun.tools.javac.util.List;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Sentence {
 
-    private static ArrayList<String> asked = null;      // TODO: use questions instead so that more info can be gathered
-    private static ArrayList<String> answered = null;
+    private static ArrayList<Response> responses = null;
     private Fact.Implication completion;
     private ArrayList<Fact> facts;
     private final float[] base = new float[2];
@@ -17,19 +14,18 @@ public class Sentence {
     private float multiUp = 1;
     private float multiDown = 1;
 
-    public Sentence(String question, String answer) {
-        this(question, new ArrayList<>(List.of(answer)));
-    }
 
-    public Sentence(String question, ArrayList<String> answers) {
-        if (asked == null) {
-            asked = new ArrayList<>();
-            answered = new ArrayList<>();
+    public Sentence(Question question, int idx) {
+        if (responses == null) responses = new ArrayList<>();
+        boolean questionPresent = false;
+        for (Response response: responses) {
+            if (response.getQText().equals(question.getQuestionText())) {
+                response.addAnswer(question, idx);
+                questionPresent = true;
+                break;
+            }
         }
-        for (String answer: answers) {
-            asked.add(question);
-            answered.add(answer);
-        }
+        if (!questionPresent) responses.add(new Response(question, idx));
     }
 
     public Sentence(ArrayList<Fact> facts) {
@@ -171,23 +167,11 @@ public class Sentence {
     }
 
 
-    public static void clearQA() {
-        asked = null;
-        answered = null;
+    public static void clearResponses() {
+        responses = null;
     }
 
-    public static String getQA() {
-        String prev = "n/a";
-        StringBuilder out = new StringBuilder();
-        if (asked == null || answered == null) out.append("No questions yet asked.\n");
-        else {
-            for (int idx = 0; idx < asked.size(); ++idx) {
-                out.append(prev.equals(asked.get(idx)) ? "" : "\n\n" + asked.get(idx));
-                out.append("\n\t- ").append(answered.get(idx));
-                prev = asked.get(idx);
-            }
-        }
-        return out.toString();
+    public static  ArrayList<Response> getResponses() {
+        return responses;
     }
-
 }

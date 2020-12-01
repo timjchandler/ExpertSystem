@@ -20,7 +20,7 @@ public class Fact {
         SUB(5),
         MAX(6);
 
-        private int i;
+        private final int i;
 
         Implication(int i) {
             this.i = i;
@@ -98,23 +98,21 @@ public class Fact {
 //    }
 
     public String toString() {
-        StringBuilder out = new StringBuilder();
-        out.append("[").append(name).append("]\t has the value: \t{ ").append(value).append(" }\n");
-        return out.toString();
+        return "[" + name + "]\t has the value: \t{ " + value + " }\n";
     }
 
-    /**
-     * Updates a given base time with regards to this rule, if applicable
-     * @param current   The base time to be updated
-     * @return          The updated base time
-     */
-    public float[] adjustBaseTime(float[] current) {
-        if (implication == Implication.BASE) {
-            current[0] = Math.max(minValue, current[0]);
-            current[1] = Math.max(maxValue, current[1]);
-        }
-        return current;
-    }
+//    /**
+//     * Updates a given base time with regards to this rule, if applicable
+//     * @param current   The base time to be updated
+//     * @return          The updated base time
+//     */
+//    public float[] adjustBaseTime(float[] current) {
+//        if (implication == Implication.BASE) {
+//            current[0] = Math.max(minValue, current[0]);
+//            current[1] = Math.max(maxValue, current[1]);
+//        }
+//        return current;
+//    }
 
     /**
      * Ascertains whether this rule is null
@@ -139,15 +137,15 @@ public class Fact {
         return name;
     }
 
-    /**
-     * Updates a given multiplier with regards to this rule, if applicable
-     * @param current   The multiplier to be updated
-     * @return          The updated multiplier
-     */
-    public float adjustMultiplier(float current) {
-        if (multiplier < 0) return current;
-        return Math.max(current + multiplier - 1, 0);
-    }
+//    /**
+//     * Updates a given multiplier with regards to this rule, if applicable
+//     * @param current   The multiplier to be updated
+//     * @return          The updated multiplier
+//     */
+//    public float adjustMultiplier(float current) {
+//        if (multiplier < 0) return current;
+//        return Math.max(current + multiplier - 1, 0);
+//    }
 
     /**
      * Ascertains whether this fact is equal to a fact consisting of two given strings. Since

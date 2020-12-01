@@ -26,7 +26,7 @@ public class Model {
         questions = qp.getQuestions();
         title = qp.getTitle();
         state = new State();
-        Sentence.clearQA();
+        Sentence.clearResponses();
     }
 
     /**

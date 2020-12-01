@@ -8,6 +8,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import tjc.rug.ExpertSystem.model.Fact;
 import tjc.rug.ExpertSystem.model.Question;
+import tjc.rug.ExpertSystem.model.Sentence;
 
 import java.util.ArrayList;
 
@@ -94,6 +95,7 @@ public class QuestionController extends Controller {
         for (CheckBox cb: cbArray) {
             if (cb.isSelected()) {
                 Fact fact = model.getQuestion(false).getAnswerFacts().get(cbArray.indexOf(cb));
+                new Sentence(model.getQuestion(false), cbArray.indexOf(cb));
                 model.addFact(fact);
                 out = true;
             }
@@ -111,6 +113,7 @@ public class QuestionController extends Controller {
         for (RadioButton rb: rbArray) {
             if (rb.isSelected()) {
                 Fact fact = model.getQuestion(false).getAnswerFacts().get(rbArray.indexOf(rb));
+                new Sentence(model.getQuestion(false), rbArray.indexOf(rb));
                 model.addFact(fact);
                 out = true;
             }

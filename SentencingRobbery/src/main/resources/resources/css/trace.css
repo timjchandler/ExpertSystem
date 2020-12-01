@@ -23,3 +23,22 @@
 -fx-min-width           : 610;
 -fx-min-height          : 470;
 }
+.question
+{
+-fx-font-size           : 18px;
+-fx-background          : #C5CDD3;
+-fx-text-fill           : #EE6C4D;
+}
+.answer
+{
+-fx-control-inner-background    : #444140;
+-fx-text-fill           : #A8DADC;
+-fx-min-width           : 470;
+-fx-font-size           : 12px;
+}
+.vbox
+{
+-fx-background-color    : #444140;
+-fx-background          : #444140;
+-fx-border-color        : #444140;
+}
