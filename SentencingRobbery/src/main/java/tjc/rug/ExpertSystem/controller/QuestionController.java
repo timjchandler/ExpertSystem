@@ -37,6 +37,11 @@ public class QuestionController extends Controller {
     @FXML
     Label bannerLabel;
 
+    /**
+     * Load the first question
+     * @param location      Not used
+     * @param resources     Not used
+     */
     public void initialize(URL location, ResourceBundle resources) {
         next();
     }

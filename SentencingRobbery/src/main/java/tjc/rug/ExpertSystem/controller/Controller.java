@@ -21,8 +21,6 @@ public class Controller implements Initializable {
     protected static Model model;
     protected static Node prevPane = null;
     private static CurrentView currentView = CurrentView.LOAD;
-    private BorderPane questionPane = null;
-
 
     @FXML
     BorderPane mainPane;
@@ -69,7 +67,8 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Restart the system, reloading the model and resetting the view
+     * Restart the system, reloading the model and moving to the home page. If on the home page already
+     * move to questions
      */
     private void restart() {
         if (currentView == CurrentView.HOME) {

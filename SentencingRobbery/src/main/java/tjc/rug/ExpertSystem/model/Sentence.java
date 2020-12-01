@@ -10,11 +10,16 @@ public class Sentence {
     private ArrayList<Fact> facts;
     private final float[] base = new float[2];
     private int segment = 0;
-    private int maxLength = 20; // Placeholder
+    private int maxLength = 20; // TODO: Placeholder, add a fact that implements this
     private float multiUp = 1;
     private float multiDown = 1;
 
-
+    /**
+     * Initialises the static responses ArrayList if required. Checks if a given question has already been recorded
+     * and if not adds the response derived from the question
+     * @param question  The question to add information from
+     * @param idx       The index of the answer within the question
+     */
     public Sentence(Question question, int idx) {
         if (responses == null) responses = new ArrayList<>();
         boolean questionPresent = false;
@@ -28,6 +33,11 @@ public class Sentence {
         if (!questionPresent) responses.add(new Response(question, idx));
     }
 
+    /**
+     * Sets the facts member variable, sets the base array to [0.0, 0.0] sets the state completion to NONE, passes to
+     * init
+     * @param facts The facts to build the sentence from
+     */
     public Sentence(ArrayList<Fact> facts) {
         this.facts = facts;
         Arrays.fill(base, 0);
@@ -35,6 +45,10 @@ public class Sentence {
         init();
     }
 
+    /**
+     * Returns the calculated sentence as a string
+     * @return  A string representing the calculated sentence
+     */
     public String getSentence() {
         float[] temp = base;
         temp[0] *= multiUp * multiDown;
@@ -42,27 +56,30 @@ public class Sentence {
         return calculateSegment(temp);
     }
 
-    //TODO: implement this
-//    public String getSentence(boolean verbose) {
-//        StringBuilder out = new StringBuilder();
-//        String baseStr = sentenceStr(base);
-//        if (completion.lessEqTo(Fact.Implication.MULTI)) return baseStr;
-//        float[] temp = base;
-//        temp[0] *= multiUp * multiDown;
-//        temp[1] *= multiUp * multiDown;
-//        String multiStr = sentenceStr(temp);
-//    }
-
+    /**
+     * Calculates which segment of the sentence to recommend. If no sentence fact has been applied, returns the full
+     * range.
+     * @param current   The current sentence
+     * @return          The adjusted segment of sentence
+     */
     private String calculateSegment(float[] current) {
         if (segment == 0) return sentenceStr(current);
-        float modifier = (Math.min(current[1], maxLength) - current[0]) / 4; // Tired, check this
+        float modifier = (Math.min(current[1], maxLength) - current[0]) / 4;
         current[1] = current[0] + segment * modifier;
         current[0] = current[0] + (segment - 1) * modifier;
         return sentenceStr(current);
     }
-    
+
+    /**
+     * Tidies the sentence and returns it as a string. If the current sentence is [0.0, 0.0] returns a message that more
+     * information is needed. Otherwise adjusts both bounds of the sentence, normalising them to the nearest 3 months if
+     * under 2 years long, 6 months if under 10 years long or nearest year otherwise. Then builds a string representation
+     * of the tidied sentence.
+     * @param current   The current sentence
+     * @return          The string representation of the tidied sentence.
+     */
     private String sentenceStr(float[] current) {
-        if (current[0] + current[1] == 0) return "Not enough information";
+        if (current[0] + current[1] == 0) return "Not enough information. Please answer more questions.";
         StringBuilder out = new StringBuilder();
         boolean first = true;
         for (float f: current) {
@@ -81,6 +98,11 @@ public class Sentence {
         return out.toString();
     }
 
+    /**
+     * Passes each known fact to its relevant handler in order to build the components of the sentence.
+     * If the fact is regarding the maximum sentence length the member variable is directly updated in the
+     * case of an increase.
+     */
     private void init() {
         for (Fact fact: facts) {
             switch (fact.getImplication()) {
@@ -105,18 +127,33 @@ public class Sentence {
         }
     }
 
+    /**
+     * Updates the base sentence range
+     * @param fact  The fact from which to update the base sentence. Updates
+     * the completion variable if required to denote greater information available.
+     */
     private void updateBase(Fact fact) {
         base[0] = Math.max(base[0], fact.getMinValue());
         base[1] = Math.max(base[0], fact.getMaxValue());
         if (completion.lessEqTo(Fact.Implication.BASE)) completion = Fact.Implication.BASE;
     }
 
+    /**
+     * Updates the sentence multipliers, selecting the maximum for an increase, and the minimum for a decrease. Updates
+     * the completion variable if required to denote greater information available.
+     * @param fact  The fact from which to update the multipliers.
+     */
     private void updateMulti(Fact fact) {
         if (fact.getMultiplier() > 1) multiUp = Math.max(fact.getMultiplier(), multiUp);
         if (fact.getMultiplier() < 1) multiDown = Math.min(fact.getMultiplier(), multiDown);
         if (completion.lessEqTo(Fact.Implication.MULTI)) completion = Fact.Implication.MULTI;
     }
 
+    /**
+     * Updates the segment member variable. This denotes which slice of the sentence will be recommended. Updates
+     * the completion variable if required to denote greater information available.
+     * @param fact  The fact from which to update the segment information
+     */
     private void updateSegment(Fact fact) {
         int severity = 0;
         switch (fact.getValue()) {
@@ -137,14 +174,26 @@ public class Sentence {
         if (completion.lessEqTo(Fact.Implication.SEGMENT)) completion = Fact.Implication.SEGMENT;
     }
 
+    /**
+     * TODO: Add rules regarding this and implement
+     * @param fact  The fact from which to make the update
+     */
     private void updateAdd(Fact fact) {
         System.out.println("updateAdd not yet implemented\n" + fact.toString());
     }
 
+    /**
+     * TODO: Add rules regarding this and implement
+     * @param fact  The fact from which to make the update
+     */
     private void updateSub(Fact fact) {
         System.out.println("updateSub not yet implemented\n" + fact.toString());
     }
 
+    /**
+     * Builds a string of known facts. TODO: Add more information
+     * @return  The string of known facts
+     */
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
@@ -166,11 +215,17 @@ public class Sentence {
         return out.toString();
     }
 
-
+    /**
+     * Sets the static responses variable to null
+     */
     public static void clearResponses() {
         responses = null;
     }
 
+    /**
+     * Static getter for the ArrayList of responses
+     * @return  The responses
+     */
     public static  ArrayList<Response> getResponses() {
         return responses;
     }

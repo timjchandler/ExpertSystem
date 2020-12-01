@@ -26,10 +26,18 @@ public class State {
         if (!facts.contains(fact)) facts.add(fact);
     }
 
+    /**
+     * Overloaded method.
+     * Passes to the recursive updateImplications function with the size of the facts ArrayList
+     */
     public void updateImplications() {
         updateImplications(facts.size());
     }
 
+    /**
+     * Overloaded method. Recursive. Updates the known facts, repeating until an iteration where no new facts are added.
+     * @param size  The size of the previous iterations ArrayList of facts
+     */
     public void updateImplications(int size) {
         for (Rule rule: rules) {
             if (rule.meetsRequirements(facts) &&
@@ -42,6 +50,10 @@ public class State {
         updateImplications(rules.size());
     }
 
+    /**
+     * Returns the sentence as a string.
+     * @return  The string representation of the sentence
+     */
     public String getSentenceString() {
         return new Sentence(facts).toString();
     }

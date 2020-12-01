@@ -90,6 +90,7 @@ public class Question extends AbstractKnowledge {
      * @param facts     The facts to check against the rule
      * @return          True if the list of facts satisfies the requirements, false otherwise
      */
+    @Override
     public boolean meetsRequirements(ArrayList<Fact> facts) {
         for (Fact fact: facts) if (fact.getName().equals(answerFacts.get(0).getName())) return false;
         return super.meetsRequirements(facts);

@@ -1,4 +1,5 @@
 package tjc.rug.ExpertSystem.model;
+
 public class Fact {
 
     /**
@@ -27,7 +28,6 @@ public class Fact {
         }
 
         public boolean lessEqTo(Implication imp) {
-            System.out.println(this.i <= imp.i);
             return this.i <= imp.i;
         }
     }
@@ -80,39 +80,14 @@ public class Fact {
         return implication;
     }
 
-//    /**
-//     * Converts the rule into a string
-//     * @return A string representing the rule
-//     */
-//    public String toString() {
-//        StringBuilder out = new StringBuilder();
-//        out.append("[").append(name).append("] has the value: ");
-//        if (minValue != NOT_APPLICABLE && maxValue != NOT_APPLICABLE) {
-//            out.append("From ").append(minValue).append(" to ");
-//            out.append(maxValue).append(" years");
-//        } else if (multiplier != NOT_APPLICABLE) {
-//            out.append("Multiplier of ").append(multiplier);
-//        } else out.append(value);
-//        out.append("\n");
-//        return out.toString();
-//    }
-
+    /**
+     * Generates a string representation of the fact in human readable form.
+     * @return  The string representing the fact.
+     */
+    @Override
     public String toString() {
         return "[" + name + "]\t has the value: \t{ " + value + " }\n";
     }
-
-//    /**
-//     * Updates a given base time with regards to this rule, if applicable
-//     * @param current   The base time to be updated
-//     * @return          The updated base time
-//     */
-//    public float[] adjustBaseTime(float[] current) {
-//        if (implication == Implication.BASE) {
-//            current[0] = Math.max(minValue, current[0]);
-//            current[1] = Math.max(maxValue, current[1]);
-//        }
-//        return current;
-//    }
 
     /**
      * Ascertains whether this rule is null
@@ -137,16 +112,6 @@ public class Fact {
         return name;
     }
 
-//    /**
-//     * Updates a given multiplier with regards to this rule, if applicable
-//     * @param current   The multiplier to be updated
-//     * @return          The updated multiplier
-//     */
-//    public float adjustMultiplier(float current) {
-//        if (multiplier < 0) return current;
-//        return Math.max(current + multiplier - 1, 0);
-//    }
-
     /**
      * Ascertains whether this fact is equal to a fact consisting of two given strings. Since
      * all other member variables are derived from the two input strings, and cannot be externally
@@ -168,18 +133,34 @@ public class Fact {
         return fact.equals(name, value);
     }
 
+    /**
+     * Getter for the value
+     * @return  The value
+     */
     public String getValue() {
         return value;
     }
 
+    /**
+     * Getter for the min value
+     * @return  The min value
+     */
     public float getMinValue() {
         return minValue;
     }
 
+    /**
+     * Getter for the max value
+     * @return  The max value
+     */
     public float getMaxValue() {
         return maxValue;
     }
 
+    /**
+     * Getter for the multiplier value
+     * @return  The multiplier
+     */
     public float getMultiplier() {
         return multiplier;
     }

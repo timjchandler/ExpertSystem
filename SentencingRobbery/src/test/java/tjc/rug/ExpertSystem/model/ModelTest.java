@@ -1,6 +1,5 @@
 package tjc.rug.ExpertSystem.model;
 
-import tjc.rug.ExpertSystem.model.Model;
 import org.junit.jupiter.api.Test;
 
 class ModelTest {

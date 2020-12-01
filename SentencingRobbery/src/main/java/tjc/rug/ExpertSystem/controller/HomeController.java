@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,6 +30,11 @@ public class HomeController implements Initializable {
     @FXML
     private Circle circle3;
 
+    /**
+     * Loads the home image, sets the animation in motion
+     * @param location  Unused
+     * @param resources Unused
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -45,6 +49,13 @@ public class HomeController implements Initializable {
 
     }
 
+    /**
+     * Causes a circle to rotate
+     * @param c         The circle to animate
+     * @param reverse   Whether the direction will revers
+     * @param angle     The total degrees to move in a given time
+     * @param duration  The duration before reversing
+     */
     private void setRotate(Circle c, boolean reverse, int angle, int duration) {
         RotateTransition rt = new RotateTransition(Duration.seconds(duration), c);
         rt.setAutoReverse(reverse);
