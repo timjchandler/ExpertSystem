@@ -36,6 +36,7 @@ public class Model {
      */
     public Question getQuestion(boolean next) {
         if (next) {
+            if (new Sentence(state.getImplications()).checkMistaken()) return null; // TODO: Very inefficient, fix this
             for (Question question : questions) {
                 if (question.meetsRequirements(state.getFacts())) {
                     current = question;

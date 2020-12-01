@@ -1,5 +1,11 @@
 <rules>
     <rule>
+        <section>always</section>
+        <then>
+            <fact name="max">20</fact>
+        </then>
+    </rule>
+    <rule>
         <section>penalty-frame</section>
         <if>
             <fact name="robbery-type">simple</fact>
@@ -204,6 +210,15 @@
         </if>
         <then>
             <fact name="segment">very-severe</fact>
+        </then>
+    </rule>
+    <rule>
+        <section>special</section>
+        <if>
+            <fact name="mental-lucidity">not-lucid</fact>
+        </if>
+        <then>
+            <fact name="mistaken-verdict">true</fact>
         </then>
     </rule>
 </rules>

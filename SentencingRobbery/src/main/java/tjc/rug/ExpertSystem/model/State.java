@@ -67,6 +67,11 @@ public class State {
         return new Sentence(facts).getSentence();
     }
 
+    public ArrayList<Fact> getImplications() {
+        updateImplications();
+        return facts;   // TODO: Check if this is redundant (maybe just add update to get facts?)
+    }
+
     /**
      * Gets the current list of obtained facts
      * @return  The list of facts

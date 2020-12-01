@@ -20,8 +20,6 @@ public class Response {
         section = question.getHeading();
         facts = new ArrayList<>();
         answers = new ArrayList<>();
-//        facts.add(question.getAnswerFacts().get(idx));    // TODO: test if it runs well without these
-//        answers.add(question.getAnswers().get(idx));      // TODO: test if it runs well without these
         addAnswer(question, idx);
     }
 

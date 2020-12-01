@@ -221,4 +221,343 @@
             </then>
         </response>
     </question>
+<!--    UPDATE 01-12-20 CHECK WITH DOMINIQUE (REQUIREMENTS PARTICULARLY)                -->
+<!--    Also, improve wording: low/medium/severe/very severe to none/low/medium/high?   -->
+<!--    Also, look over requirements of each fact and improve                           -->
+    <question>
+        <heading>Ascertaining placement within base sentence</heading>
+        <text>How high was the likelihood of the potential danger happening?</text>
+        <type>single</type>
+        <requires>
+            <and>
+                <fact name="success">not-null</fact>
+                <fact name="robbery-type">qualified</fact>
+            </and>
+        </requires>
+        <response>
+            <text>Low</text>
+            <then>
+                <fact name="real-danger">low</fact>
+            </then>
+        </response>
+        <response>
+            <text>Medium</text>
+            <then>
+                <fact name="real-danger">medium</fact>
+            </then>
+        </response>
+        <response>
+            <text>Severe</text>
+            <then>
+                <fact name="real-danger">severe</fact>
+            </then>
+        </response>
+        <response>
+            <text>Very Severe</text>
+            <then>
+                <fact name="real-danger">very-severe</fact>
+            </then>
+        </response>
+    </question>
+    <question>
+        <heading>Ascertaining placement within base sentence</heading>
+        <text>How high was the number of people (natural and legal entities) injured?</text>
+        <type>single</type>
+        <requires>
+            <and>
+                <fact name="real-danger">not-null</fact>
+                <fact name="robbery-type">qualified</fact>
+            </and>
+        </requires>
+        <response>
+            <text>None</text>
+            <then>
+                <fact name="injuries">none</fact>
+            </then>
+        </response>
+        <response>
+            <text>Low</text>
+            <then>
+                <fact name="injuries">low</fact>
+            </then>
+        </response>
+        <response>
+            <text>Medium</text>
+            <then>
+                <fact name="injuries">medium</fact>
+            </then>
+        </response>
+        <response>
+            <text>Severe</text>
+            <then>
+                <fact name="injuries">severe</fact>
+            </then>
+        </response>
+        <response>
+            <text>Very Severe</text>
+            <then>
+                <fact name="injuries">very-severe</fact>
+            </then>
+        </response>
+    </question>
+    <question>
+        <heading>Ascertaining placement within base sentence</heading>
+        <text>How severe was the physical damage to natural people?</text>
+        <type>single</type>
+        <requires>
+            <and>
+                <fact name="robbery-type">qualified</fact>
+                <fact name="injuries">not-null</fact>
+            </and>
+        </requires>
+        <response>
+            <text>None</text>
+            <then>
+                <fact name="physical-damage">none</fact>
+            </then>
+        </response>
+        <response>
+            <text>Low</text>
+            <then>
+                <fact name="physical-damage">low</fact>
+            </then>
+        </response>
+        <response>
+            <text>Medium</text>
+            <then>
+                <fact name="physical-damage">medium</fact>
+            </then>
+        </response>
+        <response>
+            <text>Severe</text>
+            <then>
+                <fact name="physical-damage">severe</fact>
+            </then>
+        </response>
+        <response>
+            <text>Very Severe</text>
+            <then>
+                <fact name="physical-damage">very-severe</fact>
+            </then>
+        </response>
+    </question>
+    <question>
+        <heading>Ascertaining placement within base sentence</heading>
+        <text>How severe was the psychological damage to natural people?</text>
+        <type>single</type>
+        <requires>
+            <and>
+                <fact name="robbery-type">qualified</fact>
+                <fact name="physical-damage">not-null</fact>
+            </and>
+        </requires>
+        <response>
+            <text>None</text>
+            <then>
+                <fact name="psychological">none</fact>
+            </then>
+        </response>
+        <response>
+            <text>Low</text>
+            <then>
+                <fact name="psychological">low</fact>
+            </then>
+        </response>
+        <response>
+            <text>Medium</text>
+            <then>
+                <fact name="psychological">medium</fact>
+            </then>
+        </response>
+        <response>
+            <text>Severe</text>
+            <then>
+                <fact name="psychological">severe</fact>
+            </then>
+        </response>
+        <response>
+            <text>Very Severe</text>
+            <then>
+                <fact name="psychological">very-severe</fact>
+            </then>
+        </response>
+    </question>
+    <question>
+        <heading>Ascertaining placement within base sentence</heading>
+        <text>How severe was the damage to property?</text>
+        <type>single</type>
+        <requires>
+            <and>
+                <fact name="robbery-type">qualified</fact>
+                <fact name="psychological">not-null</fact>
+            </and>
+        </requires>
+        <response>
+            <text>None</text>
+            <then>
+                <fact name="property-damage">none</fact>
+            </then>
+        </response>
+        <response>
+            <text>Low</text>
+            <then>
+                <fact name="property-damage">low</fact>
+            </then>
+        </response>
+        <response>
+            <text>Medium</text>
+            <then>
+                <fact name="property-damage">medium</fact>
+            </then>
+        </response>
+        <response>
+            <text>Severe</text>
+            <then>
+                <fact name="property-damage">severe</fact>
+            </then>
+        </response>
+        <response>
+            <text>Very Severe</text>
+            <then>
+                <fact name="property-damage">very-severe</fact>
+            </then>
+        </response>
+    </question>
+    <question>
+        <heading>Ascertaining placement within base sentence</heading>
+        <text>How brutal were the perpetrators actions?</text>
+        <type>single</type>
+        <requires>
+            <and>
+                <fact name="robbery-type">qualified</fact>
+                <fact name="property-damage">not-null</fact>
+            </and>
+        </requires>
+        <response>
+            <text>None</text>
+            <then>
+                <fact name="brutality">none</fact>
+            </then>
+        </response>
+        <response>
+            <text>Low</text>
+            <then>
+                <fact name="brutality">low</fact>
+            </then>
+        </response>
+        <response>
+            <text>Medium</text>
+            <then>
+                <fact name="brutality">medium</fact>
+            </then>
+        </response>
+        <response>
+            <text>Severe</text>
+            <then>
+                <fact name="brutality">severe</fact>
+            </then>
+        </response>
+        <response>
+            <text>Very Severe</text>
+            <then>
+                <fact name="brutality">very-severe</fact>
+            </then>
+        </response>
+    </question>
+    <question>
+        <heading>Ascertaining placement within base sentence</heading>
+        <text>To what extent was the perpetrator able to avoid the danger or injury?</text>
+        <type>single</type>
+        <requires>
+            <fact name="brutality">not-null</fact>
+        </requires>
+        <response>
+            <text>Low</text>
+            <then>
+                <fact name="avoidable-danger">low</fact>
+            </then>
+        </response>
+        <response>
+            <text>Medium</text>
+            <then>
+                <fact name="avoidable-danger">medium</fact>
+            </then>
+        </response>
+        <response>
+            <text>High</text>
+            <then>
+                <fact name="avoidable-danger">severe</fact>
+            </then>
+        </response>
+    </question>
+<!--    MOTIVES                                                                         -->
+    <question>
+        <heading>Ascertaining placement within base sentence</heading>
+        <text>What category do the perpetrators motives fall under?</text>
+        <type>multi</type>
+        <requires>
+            <and>
+                <fact name="mitigating">not-null</fact>
+            </and>
+        </requires>
+        <response>
+            <text>Personal Enrichment</text>
+            <then>
+                <fact name="motives">personal-gain</fact>
+            </then>
+        </response>
+        <response>
+            <text>Emotional Reasons</text>
+            <then>
+                <fact name="motives">emotional</fact>
+            </then>
+        </response>
+        <response>
+            <text>Mental Impairment</text>
+            <then>
+                <fact name="motives">mental</fact>
+            </then>
+        </response>
+    </question>
+    <question>
+        <heading>Special case: Mental Impairment</heading>
+        <text>Was the perpetrator lucid when committing the crime?</text>
+        <requires>
+            <fact name="motives">mental</fact>
+        </requires>
+        <type>single</type>
+        <response>
+            <text>Yes</text>
+            <then>
+                <fact name="mental-lucidity">lucid</fact>
+            </then>
+        </response>
+        <response>
+            <text>No</text>
+            <then>
+                <fact name="mental-lucidity">not-lucid</fact>
+            </then>
+        </response>
+    </question>
+<!--    RECORD                                                                          -->
+    <question>
+        <heading>Calculating increases to the sentence</heading>
+        <text>Does the perpetrator have a past record?</text>
+        <type>single</type>
+        <requires>
+            <fact name="motives">not-null</fact>
+        </requires>
+        <response>
+            <text>Yes</text>
+            <then>
+                <fact name="past-record">yes</fact>
+            </then>
+        </response>
+        <response>
+            <text>No</text>
+            <then>
+                <fact name="past-record">yes</fact>
+            </then>
+        </response>
+    </question>
 </questions>

@@ -15,8 +15,8 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
 
-    @FXML
-    private AnchorPane apHome;
+//    @FXML
+//    private AnchorPane apHome;    //TODO Check if this was needed
 
     @FXML
     private ImageView bgImage;

@@ -1,8 +1,10 @@
 package tjc.rug.ExpertSystem.model;
 
+import java.util.ArrayList;
+
 public class Rule extends AbstractKnowledge {
 
-    public enum Section { FRAME, INCREASE, DECREASE, UNKNOWN }
+    public enum Section { ALWAYS, FRAME, INCREASE, DECREASE, UNKNOWN }
 
     private Section section;
     private Fact then;
@@ -21,6 +23,7 @@ public class Rule extends AbstractKnowledge {
      * @param section   The section to set
      */
     public void setSection(String section) {
+        if (section.equals("always")) this.section = Section.ALWAYS;
         if (section.equals("penalty-frame")) this.section = Section.FRAME;
         else this.section = Section.UNKNOWN;
     }
@@ -39,6 +42,10 @@ public class Rule extends AbstractKnowledge {
      */
     public Fact getImplication() {
         return then;
+    }
+
+    public boolean meetsRequirements(ArrayList<Fact> facts) {
+        return super.meetsRequirements(facts) || section == Section.ALWAYS;
     }
 
     /**

@@ -30,13 +30,13 @@ public abstract class AbstractKnowledge {
         requiredFacts.addAll(facts);
     }
 
-    /**
-     * Adds a single fact to the ArrayList requiredFacts
-     * @param fact  The fact to add
-     */
-    public void addFact(Fact fact) {
-        requiredFacts.add(fact);
-    }
+//    /** TODO: REMOVE? never used
+//     * Adds a single fact to the ArrayList requiredFacts
+//     * @param fact  The fact to add
+//     */
+//    public void addFact(Fact fact) {
+//        requiredFacts.add(fact);
+//    }
 
     /**
      * Check if the input ArrayList of facts meets the requirements of this rule

@@ -10,7 +10,7 @@ public class Sentence {
     private ArrayList<Fact> facts;
     private final float[] base = new float[2];
     private int segment = 0;
-    private int maxLength = 20; // TODO: Placeholder, add a fact that implements this
+    private int maxLength = 0; // TODO: Placeholder, add a fact that implements this
     private float multiUp = 1;
     private float multiDown = 1;
 
@@ -50,10 +50,16 @@ public class Sentence {
      * @return  A string representing the calculated sentence
      */
     public String getSentence() {
+        if (checkMistaken()) return "No sentence: The answers provided suggest that the verdict should have been NOT-GUILTY";
         float[] temp = base;
         temp[0] *= multiUp * multiDown;
         temp[1] *= multiUp * multiDown;
         return calculateSegment(temp);
+    }
+
+    protected boolean checkMistaken() {
+        for (Fact f: facts) if (f.equals(new Fact("mistaken-verdict", "true"))) return true;
+        return false;
     }
 
     /**
