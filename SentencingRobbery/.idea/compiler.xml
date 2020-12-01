@@ -25,7 +25,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="SentencingRobbery" options="-parameters" />
+      <module name="SentencingRobbery" options="" />
     </option>
   </component>
 </project>

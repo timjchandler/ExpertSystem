@@ -13,6 +13,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Model model = new Model();
+//        // TODO: TEST THIS METHOD INSTEAD
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/main.fxml"));
+//        loader.setController(new Controller());
+//        Parent root = loader.load();
+//        // TODO: END
+
         Parent root = FXMLLoader.load(getClass().getResource("/resources/fxml/main.fxml"));
         primaryStage.setTitle(model.getTitle());
         primaryStage.initStyle(StageStyle.UNDECORATED);
