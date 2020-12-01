@@ -6,7 +6,7 @@ This calculator reads in rules from xml files and implements them via a gui
 
 ### Download
 _<span style="color:grey; font-size:10px">File updated: 30/11/20</span>_  
-An executable .jar of the current version _PROTOTYPE_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-PROTOTYPE.jar)
+An executable .jar of the current version _PROTOTYPE_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-PROTOTYPE.jar)   
 Alternatively run the following command from the directory that it is stored in: ```java -jar SentencingRobbery-PROTOTYPE.jar```
 
 It should run simply by double clicking on it.
