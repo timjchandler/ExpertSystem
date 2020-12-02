@@ -5,7 +5,7 @@
 This calculator reads in rules from xml files and implements them via a gui
 
 ### Download   
-_<span style="color:grey; font-size:10px">File updated: 01/12/20</span>_    
+_<span style="color:grey; font-size:10px">File updated: 02/12/20</span>_    
 The latest version: _PROTOTYPE-V2_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-PROTOTYPE-V2.jar)   
 _<span style="color:grey; font-size:10px">Created: 01/12/20</span>_    
 The version _PROTOTYPE_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-PROTOTYPE.jar)    
