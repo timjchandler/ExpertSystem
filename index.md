@@ -4,9 +4,11 @@
 
 This calculator reads in rules from xml files and implements them via a gui
 
-### Download
-_<span style="color:grey; font-size:10px">File updated: 01/12/20</span>_  
-An executable .jar of the current version _PROTOTYPE_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-PROTOTYPE.jar)   
+### Download   
+_<span style="color:grey; font-size:10px">File updated: 01/12/20</span>_    
+The latest version: _PROTOTYPE-V2_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-PROTOTYPE-V2.jar)   
+_<span style="color:grey; font-size:10px">Created: 01/12/20</span>_    
+The version _PROTOTYPE_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-PROTOTYPE.jar)    
 
 It should run simply by double clicking on it. Alternatively run the following command from the directory that it is stored in:  
 ```java -jar SentencingRobbery-PROTOTYPE.jar```
