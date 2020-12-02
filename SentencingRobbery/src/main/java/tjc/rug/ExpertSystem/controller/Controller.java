@@ -1,5 +1,8 @@
 package tjc.rug.ExpertSystem.controller;
 
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import tjc.rug.ExpertSystem.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,14 +19,28 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    protected enum CurrentView { LOAD, QUESTIONS, TRACE, HOME, SETTINGS }
+    private static Stage primaryStage = null;
+
+    protected enum CurrentView { LOAD, QUESTIONS, TRACE, HOME, SETTINGS, EXIT }
 
     protected static Model model;
     protected static Node prevPane = null;
+    protected static BorderPane homePane = null;
     private static CurrentView currentView = CurrentView.LOAD;
+    private double xOffset;
+    private double yOffset;
 
     @FXML
     BorderPane mainPane;
+
+    @FXML
+    Pane topLeftPane;
+
+    @FXML
+    Circle minCircle;
+
+    @FXML
+    Circle closeCircle;
 
     @FXML
     Button btnSide0;
@@ -40,6 +57,13 @@ public class Controller implements Initializable {
     @FXML
     Button btnExit;
 
+    public Controller() {
+    }
+
+    public Controller(Stage primaryStage) {
+        Controller.primaryStage = primaryStage;
+    }
+
     /**
      * Loads the model
      * @param location      Not used
@@ -52,6 +76,23 @@ public class Controller implements Initializable {
             loadPage("home");
             currentView = CurrentView.HOME;
         }
+        initDraggable();
+    }
+
+//    public void toPrevPane() {
+//        if (prevPane == null) return;
+//        mainPane.setCenter(prevPane);
+//    }
+
+    private void initDraggable() {
+        topLeftPane.setOnMousePressed(event -> {
+            xOffset = primaryStage.getX() - event.getScreenX();
+            yOffset = primaryStage.getY() - event.getScreenY();
+        });
+        topLeftPane.setOnMouseDragged(event -> {
+            primaryStage.setX(event.getScreenX() + xOffset);
+            primaryStage.setY(event.getScreenY() + yOffset);
+        });
     }
 
     /**
@@ -121,8 +162,20 @@ public class Controller implements Initializable {
     /**
      * Switches the main view to the exit screen
      */
-    private void exit() {
-        prevPane = mainPane.getCenter();
-        loadPage("exitScreen");
+    public void exit() {
+        if (currentView == CurrentView.EXIT) {
+            currentView = CurrentView.QUESTIONS;
+            homePane.setCenter(prevPane);
+        }
+        else {
+            currentView = CurrentView.EXIT;
+            prevPane = mainPane.getCenter();
+            homePane = mainPane;
+            loadPage("exit");
+        }
+    }
+
+    public void minimise() {
+        primaryStage.setIconified(true);
     }
 }

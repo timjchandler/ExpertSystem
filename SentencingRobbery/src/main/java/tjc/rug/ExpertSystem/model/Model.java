@@ -34,7 +34,7 @@ public class Model {
      * @param next  True if a new question requested, false if current question requested
      * @return      The requested question
      */
-    public Question getQuestion(boolean next) {
+    public static Question getQuestion(boolean next) {
         if (next) {
             if (new Sentence(state.getImplications()).checkMistaken()) return null; // TODO: Very inefficient, fix this
             for (Question question : questions) {
@@ -62,7 +62,7 @@ public class Model {
      * Passes a fact to state to be added
      * @param fact  The fact to add
      */
-    public void addFact(Fact fact) {
+    public static void addFact(Fact fact) {
         state.addFact(fact);
     }
 
@@ -70,7 +70,7 @@ public class Model {
      * Get the current trace of known and inferred facts from the state
      * @return  The trace as a string
      */
-    public String getTrace() {
+    public static String getTrace() {
         return state.getSentenceString();
     }
 
@@ -78,7 +78,7 @@ public class Model {
      * Get the current calculated sentence from the state
      * @return  The sentence as a string
      */
-    public String getSentence() {
+    public static String getSentence() {
         return state.getSentence();
     }
 }

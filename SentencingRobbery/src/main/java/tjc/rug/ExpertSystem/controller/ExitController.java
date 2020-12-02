@@ -1,42 +1,51 @@
 package tjc.rug.ExpertSystem.controller;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
+import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Circle;
 
-public class ExitController extends Controller {
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import static tjc.rug.ExpertSystem.controller.AnimateElement.setRotate;
+
+public class ExitController implements Initializable {
 
     @FXML
-    AnchorPane questionAP;
+    ImageView imageView;
 
     @FXML
-    Button exitNo;
+    Circle circle0;
 
-    /**
-     * Extends the supers method for clicks on the "No" button on the exit screen
-     * @param event     The event representing the mouse click
-     */
-    public void mouseClicked(ActionEvent event) {
-        super.mouseClicked(event);
-        if (event.getSource().equals(exitNo)) back();
+    @FXML
+    Circle circle1;
+
+    @FXML
+    Circle circle2;
+
+    public void back() {
+        new Controller().exit();
     }
 
-    /**
-     * Shuts down the gui and terminates the program
-     */
     public void exitFR() {
         Platform.exit();
         System.exit(0);
     }
 
-    /**
-     * Returns to the previous screen
-     */
-    private void back() {
-        ((BorderPane) questionAP.getParent()).setCenter(prevPane);
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            InputStream in = getClass().getResourceAsStream("/resources/media/scales.png");
+            imageView.setImage(new Image(in));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        setRotate(circle0, true, 120, 20);
+        setRotate(circle1, true, 180, 15);
+        setRotate(circle2, true,240, 12);
     }
-
 }

@@ -13,10 +13,9 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HomeController implements Initializable {
+import static tjc.rug.ExpertSystem.controller.AnimateElement.setRotate;
 
-//    @FXML
-//    private AnchorPane apHome;    //TODO Check if this was needed
+public class HomeController implements Initializable {
 
     @FXML
     private ImageView bgImage;
@@ -47,22 +46,5 @@ public class HomeController implements Initializable {
         setRotate(circle2, true, 120, 10);
         setRotate(circle3, true, 90, 12);
 
-    }
-
-    /**
-     * Causes a circle to rotate
-     * @param c         The circle to animate
-     * @param reverse   Whether the direction will revers
-     * @param angle     The total degrees to move in a given time
-     * @param duration  The duration before reversing
-     */
-    private void setRotate(Circle c, boolean reverse, int angle, int duration) {
-        RotateTransition rt = new RotateTransition(Duration.seconds(duration), c);
-        rt.setAutoReverse(reverse);
-        rt.setByAngle(angle);
-        rt.setDelay(Duration.seconds(0));
-        rt.setRate(3);
-        rt.setCycleCount(18);
-        rt.play();
     }
 }

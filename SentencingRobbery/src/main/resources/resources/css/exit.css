@@ -1,11 +1,10 @@
 .pane
 {
--fx-background-color    : #202124;
+-fx-background-color    : linear-gradient(to right, #1B1B1B, #333333);
 }
-.shape
+.toppane
 {
--fx-background-color    : #565656;
--fx-opacity             : 0.1;
+-fx-background-color    : linear-gradient(to right, #1B1B1B, #2F4550);
 }
 .button
 {
@@ -20,4 +19,23 @@
 .label
 {
 -fx-text-fill           : #D9D9D9;
+}
+/*  The circles for animation */
+.circle
+{
+-fx-fill                : transparent;
+-fx-stroke-dash-array   : 70;
+-fx-stroke-width        : 20;
+}
+.circleone
+{
+-fx-stroke              : rgba(252, 191, 73, 0.1);
+}
+.circletwo
+{
+-fx-stroke              : rgba(176, 70, 32, 0.1);
+}
+.circlethree
+{
+-fx-stroke              : rgba(62, 163, 142, 0.1);
 }

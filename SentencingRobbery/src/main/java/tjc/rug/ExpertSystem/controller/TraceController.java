@@ -2,19 +2,21 @@ package tjc.rug.ExpertSystem.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import tjc.rug.ExpertSystem.model.Model;
 import tjc.rug.ExpertSystem.model.Response;
 import tjc.rug.ExpertSystem.model.Sentence;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TraceController extends Controller {
+public class TraceController implements Initializable {
 
     private VBox qaBox;
     private Text factText;
@@ -41,7 +43,7 @@ public class TraceController extends Controller {
      * @param resources     Not used
      */
     public void initialize(URL location, ResourceBundle resources) {
-        bannerLabel.setText(model.getSentence());
+        bannerLabel.setText(Model.getSentence());
         factTrace();
         questionTrace();
         scrollPane.setContent(qaBox);
@@ -51,7 +53,7 @@ public class TraceController extends Controller {
      * Loads the trace of facts as a string to the factText Text object, sets the style css
      */
     private void factTrace() {
-        factText = new Text(model.getTrace());
+        factText = new Text(Model.getTrace());
         factText.getStyleClass().add("facttext");
     }
 

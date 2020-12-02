@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import tjc.rug.ExpertSystem.model.Fact;
+import tjc.rug.ExpertSystem.model.Model;
 import tjc.rug.ExpertSystem.model.Question;
 import tjc.rug.ExpertSystem.model.Sentence;
 
@@ -14,7 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class QuestionController extends Controller {
+public class QuestionController {
 
     private ArrayList<RadioButton> rbArray = null;
     private ArrayList<CheckBox> cbArray = null;
@@ -62,7 +63,7 @@ public class QuestionController extends Controller {
         labelBelowNext.setText("");
         rbArray = null;
         cbArray = null;
-        buildScene(model.getQuestion(true));
+        buildScene(Model.getQuestion(true));
     }
 
     /**
@@ -87,8 +88,8 @@ public class QuestionController extends Controller {
      * sentence
      */
     private void showSummary() {
-        System.out.println(model.getSentence());
-        questionLabel.setText(model.getSentence());
+        System.out.println(Model.getSentence());
+        questionLabel.setText(Model.getSentence());
         topPane.setStyle("-fx-background-color: #1E1E24");
         bannerLabel.setText("Recommended Sentence:");
         bannerLabel.setTextFill(Color.web("#9A031E"));
@@ -100,13 +101,13 @@ public class QuestionController extends Controller {
      * @return      True if facts obtained, false otherwise
      */
     private boolean checkCB() {
-        if (model.getQuestion(false) == null) return false;
+        if (Model.getQuestion(false) == null) return false;
         boolean out = false;
         for (CheckBox cb: cbArray) {
             if (cb.isSelected()) {
-                Fact fact = model.getQuestion(false).getAnswerFacts().get(cbArray.indexOf(cb));
-                new Sentence(model.getQuestion(false), cbArray.indexOf(cb));
-                model.addFact(fact);
+                Fact fact = Model.getQuestion(false).getAnswerFacts().get(cbArray.indexOf(cb));
+                new Sentence(Model.getQuestion(false), cbArray.indexOf(cb));
+                Model.addFact(fact);
                 out = true;
             }
         }
@@ -118,13 +119,13 @@ public class QuestionController extends Controller {
      * @return      True if facts obtained, false otherwise
      */
     private boolean checkRB() {
-        if (model.getQuestion(false) == null) return false;
+        if (Model.getQuestion(false) == null) return false;
         boolean out = false;
         for (RadioButton rb: rbArray) {
             if (rb.isSelected()) {
-                Fact fact = model.getQuestion(false).getAnswerFacts().get(rbArray.indexOf(rb));
-                new Sentence(model.getQuestion(false), rbArray.indexOf(rb));
-                model.addFact(fact);
+                Fact fact = Model.getQuestion(false).getAnswerFacts().get(rbArray.indexOf(rb));
+                new Sentence(Model.getQuestion(false), rbArray.indexOf(rb));
+                Model.addFact(fact);
                 out = true;
             }
         }
@@ -145,7 +146,8 @@ public class QuestionController extends Controller {
             ButtonBase btn = multi ? new CheckBox(answer) : new RadioButton(answer);
             btn.getStyleClass().add("optionbutton");
             btn.setWrapText(true);
-            btn.setPadding(new Insets(0, 0, 10, 0));
+            if (question.getAnswers().size() < 5) btn.setPadding(new Insets(0, 0, 10, 0));
+            else btn.setPadding(new Insets(0, 0, 5, 0));
             questionVBox.getChildren().add(btn);
             if (multi) cbArray.add((CheckBox) btn);
             else {

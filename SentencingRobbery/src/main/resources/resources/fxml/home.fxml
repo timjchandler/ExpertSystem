@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="apHome" maxHeight="600.0" maxWidth="640.0" minHeight="600.0" minWidth="640.0" prefHeight="600.0" prefWidth="640.0" styleClass="anchor" stylesheets="@../css/home.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tjc.rug.ExpertSystem.controller.HomeController">
+<AnchorPane fx:id="apHome" maxHeight="600.0" maxWidth="640.0" minHeight="600.0" minWidth="640.0" prefHeight="600.0" prefWidth="640.0" styleClass="anchor" stylesheets="@../css/home.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="tjc.rug.ExpertSystem.controller.HomeController">
    <children>
       <ImageView fx:id="bgImage" fitHeight="600.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Circle fx:id="circle1" fill="DODGERBLUE" layoutX="540.0" layoutY="41.0" radius="259.0" stroke="BLACK" strokeType="INSIDE">

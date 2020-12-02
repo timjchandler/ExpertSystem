@@ -46,7 +46,6 @@ public class State {
             }
         }
         if (rules.size() <= size) return;
-        System.out.println("check for infinite loop");
         updateImplications(rules.size());
     }
 
