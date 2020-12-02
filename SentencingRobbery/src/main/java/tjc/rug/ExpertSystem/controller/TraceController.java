@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import tjc.rug.ExpertSystem.model.Model;
@@ -66,11 +67,18 @@ public class TraceController implements Initializable {
     public void tabSelect(ActionEvent e) {
         if (e.getSource().equals(qButton) && !scrollPane.getContent().equals(qaBox)) {
             scrollPane.setContent(qaBox);
-            traceAP.setStyle("-fx-background-color: #353535");
+            traceAP.setStyle("-fx-background-color: linear-gradient(to top right, #100A0E, #565656)");
+            setButton(fButton, qButton);
         } else if (e.getSource().equals(fButton) && !scrollPane.getContent().equals(factText)) {
             scrollPane.setContent(factText);
-            traceAP.setStyle("-fx-background-color: #1B1B1B");
+            traceAP.setStyle("-fx-background-color: linear-gradient(to top left, #100A0E, #565656)");
+            setButton(qButton, fButton);
         }
+    }
+
+    private void setButton(Button on, Button off) {
+        on.setStyle("-fx-background-color: rgba(27, 27, 27, 1); -fx-border-width: 2;");
+        off.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
     }
 
     /**

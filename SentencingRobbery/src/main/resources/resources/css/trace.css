@@ -4,7 +4,7 @@
 }
 .pane
 {
--fx-background-color    : #565656;
+-fx-background-color    : linear-gradient(to right, #1B1B1B, #2F4550);
 }
 .textarea .content
 {
@@ -36,35 +36,33 @@
 }
 .hbox
 {
--fx-background          : #444140;
--fx-background-color    : #444140;
+-fx-background          : transparent;
+-fx-background-color    : transparent;
 }
 .buttona
 {
 -fx-min-width           : 320;
 -fx-min-height          : 60;
--fx-border-color        : #353535;
--fx-background-color    : #353535;
--fx-border-width        : 2;
+-fx-border-color        : rgba(27, 27, 27, 1);
+-fx-background-color    : transparent;
+-fx-border-width        : 0;
 -fx-text-fill           : #CFCFCF;
 }
 .buttona:hover
 {
--fx-border-color        : #49494C;
 -fx-background-color    : #49494C;
 }
 .buttonb
 {
 -fx-min-width           : 320;
 -fx-min-height          : 60;
--fx-border-color        : #1B1B1B;
--fx-background-color    : #1B1B1B;
--fx-border-width        : 2;
+-fx-border-color        : rgba(27, 27, 27, 1);
+-fx-background-color    : rgba(27, 27, 27, 0.5);
+-fx-border-width        : 0;
 -fx-text-fill           : #CFCFCF;
 }
 .buttonb:hover
 {
--fx-border-color        : #49494C;
 -fx-background-color    : #49494C;
 }
 .scrollpane
@@ -77,7 +75,7 @@
 }
 .anchor
 {
--fx-background-color    : #353535;
+-fx-background-color    : linear-gradient(to right, #100A0E, #565656);
 }
 .facttext
 {

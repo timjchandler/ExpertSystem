@@ -8,8 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="traceAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="640.0" prefHeight="600.0" prefWidth="640.0" styleClass="anchor" stylesheets="@../css/trace.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="tjc.rug.ExpertSystem.controller.TraceController">
+<AnchorPane fx:id="traceAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="640.0" prefHeight="600.0" prefWidth="640.0" styleClass="anchor" stylesheets="@../css/trace.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tjc.rug.ExpertSystem.controller.TraceController">
    <children>
+      <Pane fx:id="traceArea" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
       <ScrollPane fx:id="scrollPane" layoutX="17.0" layoutY="175.0" prefHeight="409.0" prefWidth="604.0" styleClass="scrollpane" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="175.0" />
       <Pane prefHeight="100.0" prefWidth="640.0" styleClass="pane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>

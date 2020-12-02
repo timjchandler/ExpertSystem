@@ -14,11 +14,19 @@
 }
 .vbox
 {
--fx-background-color    : #415A77;
+-fx-background-color    : rgba(0, 0, 0, 0);
 }
 .pane
 {
--fx-background-color    : #415A77;
+-fx-background-color    : rgba(0, 0, 0, 0);
+}
+.qpane
+{
+-fx-background-color    : linear-gradient(to right, #1B1B1B, #2F4550);
+}
+.bpane
+{
+-fx-background-color    : linear-gradient(to top left, #415A77, #2D3142);
 }
 .label
 {
