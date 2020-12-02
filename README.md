@@ -73,16 +73,6 @@
 │   │   │               ├── icon3.png
 │   │   │               └── scales.png
 │   │   └── test
-│   │       └── java
-│   │           └── tjc
-│   │               └── rug
-│   │                   └── ExpertSystem
-│   │                       └── model
-│   │                           ├── KnowledgeTest.java
-│   │                           ├── ModelTest.java
-│   │                           ├── ParserTest.java
-│   │                           ├── SentenceTest.java
-│   │                           └── StateTest.java
 │   └── target
 ├── SentencingRobbery-PROTOTYPE-V2.jar
 └── SentencingRobbery-PROTOTYPE.jar
