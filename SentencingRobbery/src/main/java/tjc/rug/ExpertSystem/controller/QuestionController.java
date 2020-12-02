@@ -1,11 +1,13 @@
 package tjc.rug.ExpertSystem.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import tjc.rug.ExpertSystem.model.Fact;
 import tjc.rug.ExpertSystem.model.Model;
 import tjc.rug.ExpertSystem.model.Question;
@@ -13,9 +15,10 @@ import tjc.rug.ExpertSystem.model.Sentence;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class QuestionController {
+public class QuestionController implements Initializable {
 
     private ArrayList<RadioButton> rbArray = null;
     private ArrayList<CheckBox> cbArray = null;
@@ -94,6 +97,10 @@ public class QuestionController {
         bannerLabel.setText("Recommended Sentence:");
         bannerLabel.setTextFill(Color.web("#9A031E"));
         questionVBox.getChildren().clear();
+        Text temp = new Text("For a more detailed summary of how this recommendation was reached, view the trace.");
+        temp.getStyleClass().add("endtext");
+        questionVBox.getChildren().add(temp);
+        next.setVisible(false);
     }
 
     /**
@@ -105,7 +112,7 @@ public class QuestionController {
         boolean out = false;
         for (CheckBox cb: cbArray) {
             if (cb.isSelected()) {
-                Fact fact = Model.getQuestion(false).getAnswerFacts().get(cbArray.indexOf(cb));
+                Fact fact = Objects.requireNonNull(Model.getQuestion(false)).getAnswerFacts().get(cbArray.indexOf(cb));
                 new Sentence(Model.getQuestion(false), cbArray.indexOf(cb));
                 Model.addFact(fact);
                 out = true;
@@ -123,7 +130,7 @@ public class QuestionController {
         boolean out = false;
         for (RadioButton rb: rbArray) {
             if (rb.isSelected()) {
-                Fact fact = Model.getQuestion(false).getAnswerFacts().get(rbArray.indexOf(rb));
+                Fact fact = Objects.requireNonNull(Model.getQuestion(false)).getAnswerFacts().get(rbArray.indexOf(rb));
                 new Sentence(Model.getQuestion(false), rbArray.indexOf(rb));
                 Model.addFact(fact);
                 out = true;

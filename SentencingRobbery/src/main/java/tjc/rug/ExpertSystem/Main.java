@@ -22,7 +22,7 @@ public class Main extends Application {
         primaryStage.setTitle(model.getTitle());
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 800, 600));
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/media/icon.png")));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/media/icon3.png")));
 
         new Controller(primaryStage);
         primaryStage.show();
@@ -30,7 +30,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         try {
-            URL iconURL = Main.class.getResource("/resources/media/icon.png");
+            URL iconURL = Main.class.getResource("/resources/media/icon3.png");
             java.awt.Image image = new ImageIcon(iconURL).getImage();
             com.apple.eawt.Application.getApplication().setDockIconImage(image);
         } catch (Exception e) {

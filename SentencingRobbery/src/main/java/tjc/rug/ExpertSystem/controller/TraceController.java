@@ -67,7 +67,7 @@ public class TraceController implements Initializable {
     public void tabSelect(ActionEvent e) {
         if (e.getSource().equals(qButton) && !scrollPane.getContent().equals(qaBox)) {
             scrollPane.setContent(qaBox);
-            traceAP.setStyle("-fx-background-color: linear-gradient(to top right, #100A0E, #565656)");
+            traceAP.setStyle("-fx-background-color: linear-gradient(to top left, #565656, #100A0E)");
             setButton(fButton, qButton);
         } else if (e.getSource().equals(fButton) && !scrollPane.getContent().equals(factText)) {
             scrollPane.setContent(factText);

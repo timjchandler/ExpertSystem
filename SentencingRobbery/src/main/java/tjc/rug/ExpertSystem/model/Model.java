@@ -15,7 +15,12 @@ public class Model {
      * Calls the reset method if member variables are not set
      */
     public Model() {
-        if (questions == null && state == null && title == null) restart();
+        if (questions == null && state == null && title == null) {
+            System.out.println("[OPEN] Loading Questions and Rules");
+            restart();
+            System.out.println("[OPEN] ---------------------------");
+            System.out.println("[OPEN] Loading Complete");
+        }
     }
 
     /**

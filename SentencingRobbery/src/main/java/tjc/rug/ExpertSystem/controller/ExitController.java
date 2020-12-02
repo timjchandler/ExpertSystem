@@ -33,6 +33,7 @@ public class ExitController implements Initializable {
 
     public void exitFR() {
         Platform.exit();
+        System.out.println("[EXIT] ---------------------------\n[EXIT] Shutting down");
         System.exit(0);
     }
 

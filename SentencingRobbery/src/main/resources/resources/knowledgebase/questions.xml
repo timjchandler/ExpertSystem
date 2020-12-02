@@ -33,7 +33,7 @@
             </then>
         </response>
         <response>
-            <text>As part of a group formed for the purpose of robbery or theft</text>
+            <text>As part of a group formed for the purpose of robbery or theft, or, if the perpetrator represents a particular danger in any other way due to the manner in which they committed robbery.</text>
             <then>
                 <fact name="qualified-type">group</fact>
             </then>
@@ -160,13 +160,13 @@
 <!--Needs clarification, wording?-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
-        <text>What is the extent of the success?</text>
+        <text>What was the value of the stolen items?</text>
         <type>single</type>
         <requires>
             <fact name="mitigating">not-null</fact>
         </requires>
         <response>
-            <text>Low</text>
+            <text>Low (CHF 300 or lower)</text>
             <then>
                 <fact name="success">light</fact>
             </then>
@@ -178,7 +178,7 @@
             </then>
         </response>
         <response>
-            <text>High</text>
+            <text>High (CHF 10000 or higher)</text>
             <then>
                 <fact name="success">severe</fact>
             </then>
@@ -288,13 +288,13 @@
             </then>
         </response>
         <response>
-            <text>Severe</text>
+            <text>High</text>
             <then>
                 <fact name="injuries">severe</fact>
             </then>
         </response>
         <response>
-            <text>Very Severe</text>
+            <text>Very high</text>
             <then>
                 <fact name="injuries">very-severe</fact>
             </then>
@@ -494,7 +494,7 @@
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>What category do the perpetrators motives fall under?</text>
-        <type>multi</type>
+        <type>single</type>
         <requires>
             <and>
                 <fact name="mitigating">not-null</fact>
