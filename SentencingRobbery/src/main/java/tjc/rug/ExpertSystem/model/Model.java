@@ -81,4 +81,12 @@ public class Model {
     public static String getSentence() {
         return state.getSentence();
     }
+
+    /**
+     * Checks if the questions variable has been initialised.
+     * @return  True if the questions variable is null, else false
+     */
+    public static boolean isNull() {
+        return questions == null;
+    }
 }

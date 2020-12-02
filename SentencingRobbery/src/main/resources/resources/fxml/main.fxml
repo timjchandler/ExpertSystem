@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainPane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tjc.rug.ExpertSystem.controller.Controller">
+<BorderPane fx:id="mainPane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="tjc.rug.ExpertSystem.controller.Controller">
    <left>
       <VBox prefHeight="600.0" prefWidth="160.0" styleClass="vbox" stylesheets="@../css/primary.css" BorderPane.alignment="CENTER">
          <children>

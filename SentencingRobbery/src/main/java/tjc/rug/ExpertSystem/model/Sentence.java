@@ -235,4 +235,8 @@ public class Sentence {
     public static  ArrayList<Response> getResponses() {
         return responses;
     }
+
+    public static boolean isNull() {
+        return (responses == null);
+    }
 }

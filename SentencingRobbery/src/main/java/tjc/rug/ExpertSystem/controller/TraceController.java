@@ -53,8 +53,10 @@ public class TraceController implements Initializable {
      * Loads the trace of facts as a string to the factText Text object, sets the style css
      */
     private void factTrace() {
-        factText = new Text(Model.getTrace());
+        factText = new Text();
         factText.getStyleClass().add("facttext");
+        if (Model.isNull() || Sentence.isNull()) return;
+        factText.setText(Model.getTrace());
     }
 
     /**
@@ -78,6 +80,7 @@ public class TraceController implements Initializable {
     private void questionTrace() {
         qaBox = new VBox();
         qaBox.getStyleClass().add("vbox");
+        if (Model.isNull() || Sentence.isNull()) return;
         for (Response response: Sentence.getResponses()) {
             Label q = new Label(response.getQText());
             Label a = new Label();

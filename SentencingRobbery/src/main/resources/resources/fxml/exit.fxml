@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="600.0" maxWidth="640.0" minHeight="600.0" minWidth="640.0" prefHeight="600.0" prefWidth="640.0" styleClass="pane" stylesheets="@../css/exit.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tjc.rug.ExpertSystem.controller.ExitController">
+<AnchorPane maxHeight="600.0" maxWidth="640.0" minHeight="600.0" minWidth="640.0" prefHeight="600.0" prefWidth="640.0" styleClass="pane" stylesheets="@../css/exit.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="tjc.rug.ExpertSystem.controller.ExitController">
    <Pane prefHeight="100.0" prefWidth="640.0" styleClass="toppane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    <ImageView fx:id="imageView" fitHeight="600.0" fitWidth="640.0" layoutX="89.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    <Circle fx:id="circle0" fill="DODGERBLUE" layoutX="450.0" layoutY="350.0" radius="408.0" stroke="BLACK" strokeType="INSIDE">

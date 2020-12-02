@@ -4,6 +4,10 @@ import javafx.animation.RotateTransition;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
+/**
+ * Used to animate elements within the GUI. Currently just consists of a method to rotate circles, however
+ * more may be added.
+ */
 public class AnimateElement {
 
     /**
@@ -22,5 +26,4 @@ public class AnimateElement {
         rt.setCycleCount(18);
         rt.play();
     }
-
 }
