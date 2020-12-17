@@ -13,56 +13,68 @@
     - Add more rules
     - Add more questions
 
+### Relevant Structure
 
 ```Bash
 .
 ├── README.md
-└── SentencingRobbery
-    ├── SentencingRobbery.iml
-    ├── pom.xml
-    └── src
-        ├── main
-        │   ├── java
-        │   │   └── tjc
-        │   │       └── rug
-        │   │           ├── ExpertSystem
-        │   │           │   ├── Main.java
-        │   │           │   ├── controller
-        │   │           │   │   ├── Controller.java
-        │   │           │   │   └── HomeController.java
-        │   │           │   ├── model
-        │   │           │   │   ├── AbstractKnowledge.java
-        │   │           │   │   ├── Fact.java
-        │   │           │   │   ├── Model.java
-        │   │           │   │   ├── Question.java
-        │   │           │   │   ├── Rule.java
-        │   │           │   │   └── State.java
-        │   │           │   └── parser
-        │   │           │       ├── Parser.java
-        │   │           │       ├── QuestionParser.java
-        │   │           │       └── RuleParser.java
-        │   │           └── META-INF
-        │   │               └── MANIFEST.MF
-        │   └── resources
-        │       └── resources
-        │           ├── css
-        │           │   ├── exit.css
-        │           │   ├── question.css
-        │           │   └── style.css
-        │           ├── fxml
-        │           │   ├── exitScreen.fxml
-        │           │   ├── home.fxml
-        │           │   ├── main.fxml
-        │           │   ├── questionArea.fxml
-        │           │   └── trace.fxml
-        │           └── knowledgebase
-        │               ├── questions.xml
-        │               └── rules.xml
-        └── test
-            ├── KnowledgeTest.java
-            ├── ModelTest.java
-            ├── ParserTest.java
-            ├── StateTest.java
-            └── java
-            
+├── SentencingRobbery
+│   ├── pom.xml
+│   ├── src
+│   │   ├── main
+│   │   │   ├── java
+│   │   │   │   └── tjc
+│   │   │   │       └── rug
+│   │   │   │           ├── ExpertSystem
+│   │   │   │           │   ├── FatJarMain.java
+│   │   │   │           │   ├── Main.java
+│   │   │   │           │   ├── controller
+│   │   │   │           │   │   ├── AnimateElement.java
+│   │   │   │           │   │   ├── Controller.java
+│   │   │   │           │   │   ├── ExitController.java
+│   │   │   │           │   │   ├── HomeController.java
+│   │   │   │           │   │   ├── QuestionController.java
+│   │   │   │           │   │   └── TraceController.java
+│   │   │   │           │   ├── model
+│   │   │   │           │   │   ├── AbstractKnowledge.java
+│   │   │   │           │   │   ├── Fact.java
+│   │   │   │           │   │   ├── Model.java
+│   │   │   │           │   │   ├── Question.java
+│   │   │   │           │   │   ├── Response.java
+│   │   │   │           │   │   ├── Rule.java
+│   │   │   │           │   │   ├── Sentence.java
+│   │   │   │           │   │   └── State.java
+│   │   │   │           │   └── parser
+│   │   │   │           │       ├── Parser.java
+│   │   │   │           │       ├── QuestionParser.java
+│   │   │   │           │       └── RuleParser.java
+│   │   │   │           └── META-INF
+│   │   │   │               └── MANIFEST.MF
+│   │   │   └── resources
+│   │   │       └── resources
+│   │   │           ├── css
+│   │   │           │   ├── exit.css
+│   │   │           │   ├── home.css
+│   │   │           │   ├── primary.css
+│   │   │           │   ├── question.css
+│   │   │           │   └── trace.css
+│   │   │           ├── fxml
+│   │   │           │   ├── exit.fxml
+│   │   │           │   ├── home.fxml
+│   │   │           │   ├── main.fxml
+│   │   │           │   ├── questionArea.fxml
+│   │   │           │   └── trace.fxml
+│   │   │           ├── knowledgebase
+│   │   │           │   ├── questions.xml
+│   │   │           │   └── rules.xml
+│   │   │           └── media
+│   │   │               ├── home.png
+│   │   │               ├── icon.png
+│   │   │               ├── icon2.png
+│   │   │               ├── icon3.png
+│   │   │               └── scales.png
+│   │   └── test
+│   └── target
+├── SentencingRobbery-PROTOTYPE-V2.jar
+└── SentencingRobbery-PROTOTYPE.jar
 ```
