@@ -91,7 +91,6 @@ public class QuestionController implements Initializable {
      * sentence
      */
     private void showSummary() {
-        System.out.println(Model.getSentence());
         questionLabel.setText(Model.getSentence());
         topPane.setStyle("-fx-background-color: #1E1E24");
         bannerLabel.setText("Recommended Sentence:");

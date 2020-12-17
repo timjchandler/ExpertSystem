@@ -1,6 +1,6 @@
 <questions>
     <title>Sentencing calculator for robbery</title>
-<!--Qualified?-->
+<!--1:Qualified?-->
     <question>
         <heading>Ascertaining the penalty frame</heading>
         <text>For what type of robbery was the individual convicted?</text>
@@ -18,7 +18,7 @@
             </then>
         </response>
     </question>
-<!--Type of qualified?-->
+<!--2:Type of qualified?-->
     <question>
         <heading>Ascertaining the penalty frame</heading>
         <text>In what manner was the robbery qualified?</text>
@@ -45,16 +45,49 @@
             </then>
         </response>
     </question>
-<!--Multi offence?-->
+<!--3:Crimes consumed by this offence-->
     <question>
         <heading>Ascertaining the penalty frame</heading>
-        <text>Has the individual been convicted of more than one offence by the trial in question?</text>
-        <type>single</type>
+        <text>Were any of the following crimes consumed by the robbery?</text>
+        <type>multi</type>
         <requires>
             <or>
                 <fact name="robbery-type">simple</fact>
                 <fact name="qualified-type">not-null</fact>
             </or>
+        </requires>
+        <response>
+            <text>Common Assault</text>
+            <then>
+                <fact name="consumed">common</fact>
+            </then>
+        </response>
+        <response>
+            <text>Uncommon Assault</text>
+            <then>
+                <fact name="consumed">uncommon</fact>
+            </then>
+        </response>
+        <response>
+            <text>Criminal Damage</text>
+            <then>
+                <fact name="consumed">damage</fact>
+            </then>
+        </response>
+        <response>
+            <text>None of the above</text>
+            <then>
+                <fact name="consumed">none</fact>
+            </then>
+        </response>
+    </question>
+<!--4:Multi offence?-->
+    <question>
+        <heading>Ascertaining the penalty frame</heading>
+        <text>Has the individual been convicted of more than one offence by the trial in question?</text>
+        <type>single</type>
+        <requires>
+            <fact name="consumed">not-null</fact>
         </requires>
         <response>
             <text>Yes</text>
@@ -69,7 +102,7 @@
             </then>
         </response>
     </question>
-<!--Other offence(s) type-->
+<!--5:Other offence(s) type-->
     <question>
         <heading>Ascertaining the penalty frame</heading>
         <text>For what other crimes was the individual convicted during the trial in question?</text>
@@ -90,7 +123,7 @@
             </then>
         </response>
     </question>
-<!--Mitigating circumstances-->
+<!--6:Mitigating circumstances-->
     <question>
         <heading>Ascertaining the penalty frame</heading>
         <text>Are there any of the following mitigating circumstances?</text>
@@ -156,8 +189,7 @@
             </then>
         </response>
     </question>
-<!--Extent of success-->
-<!--Needs clarification, wording?-->
+<!--7:Value of items-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>What was the value of the stolen items?</text>
@@ -184,8 +216,7 @@
             </then>
         </response>
     </question>
-<!--Seriousness of Danger-->
-<!--Needs clarification, only for qualified?-->
+<!--8:Seriousness of Danger-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How serious was the potential danger?</text>
@@ -221,18 +252,13 @@
             </then>
         </response>
     </question>
-<!--    UPDATE 01-12-20 CHECK WITH DOMINIQUE (REQUIREMENTS PARTICULARLY)                -->
-<!--    Also, improve wording: low/medium/severe/very severe to none/low/medium/high?   -->
-<!--    Also, look over requirements of each fact and improve                           -->
+<!--9:Likelihood of potential danger happening-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How high was the likelihood of the potential danger happening?</text>
         <type>single</type>
         <requires>
-            <and>
-                <fact name="success">not-null</fact>
-                <fact name="robbery-type">qualified</fact>
-            </and>
+            <fact name="success">not-null</fact>
         </requires>
         <response>
             <text>Low</text>
@@ -259,22 +285,17 @@
             </then>
         </response>
     </question>
+<!--10:Number of people injured-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How high was the number of people (natural and legal entities) injured?</text>
         <type>single</type>
         <requires>
-            <and>
-                <fact name="real-danger">not-null</fact>
-                <fact name="robbery-type">qualified</fact>
-            </and>
+            <or>
+                <fact name="consumed">common</fact>
+                <fact name="consumed">uncommon</fact>
+            </or>
         </requires>
-        <response>
-            <text>None</text>
-            <then>
-                <fact name="injuries">none</fact>
-            </then>
-        </response>
         <response>
             <text>Low</text>
             <then>
@@ -300,22 +321,17 @@
             </then>
         </response>
     </question>
+<!--11:Severity of injury-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How severe was the physical damage to natural people?</text>
         <type>single</type>
         <requires>
-            <and>
-                <fact name="robbery-type">qualified</fact>
-                <fact name="injuries">not-null</fact>
-            </and>
+            <or>
+                <fact name="consumed">common</fact>
+                <fact name="consumed">uncommon</fact>
+            </or>
         </requires>
-        <response>
-            <text>None</text>
-            <then>
-                <fact name="physical-damage">none</fact>
-            </then>
-        </response>
         <response>
             <text>Low</text>
             <then>
@@ -341,15 +357,13 @@
             </then>
         </response>
     </question>
+<!--12:Psychological damage-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How severe was the psychological damage to natural people?</text>
         <type>single</type>
         <requires>
-            <and>
-                <fact name="robbery-type">qualified</fact>
-                <fact name="physical-damage">not-null</fact>
-            </and>
+            <fact name="mitigating">not-null</fact>
         </requires>
         <response>
             <text>None</text>
@@ -382,15 +396,13 @@
             </then>
         </response>
     </question>
+<!--13:Property damage-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How severe was the damage to property?</text>
         <type>single</type>
         <requires>
-            <and>
-                <fact name="robbery-type">qualified</fact>
-                <fact name="psychological">not-null</fact>
-            </and>
+            <fact name="consumed">damage</fact>
         </requires>
         <response>
             <text>None</text>
@@ -423,14 +435,14 @@
             </then>
         </response>
     </question>
+<!--14:Brutality of actions-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How brutal were the perpetrators actions?</text>
         <type>single</type>
         <requires>
             <and>
-                <fact name="robbery-type">qualified</fact>
-                <fact name="property-damage">not-null</fact>
+                <fact name="mitigating">not-null</fact>
             </and>
         </requires>
         <response>
@@ -464,12 +476,18 @@
             </then>
         </response>
     </question>
+<!--15:Possibility of avoiding danger or injury-->
+<!--    ONLY FOR assault/damage?    -->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>To what extent was the perpetrator able to avoid the danger or injury?</text>
         <type>single</type>
         <requires>
-            <fact name="brutality">not-null</fact>
+            <or>
+                <fact name="consumed">common</fact>
+                <fact name="consumed">uncommon</fact>
+                <fact name="consumed">damage</fact>
+            </or>
         </requires>
         <response>
             <text>Low</text>
@@ -490,7 +508,7 @@
             </then>
         </response>
     </question>
-<!--    MOTIVES                                                                         -->
+<!--16:Category of motive-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>What category do the perpetrators motives fall under?</text>
@@ -519,6 +537,7 @@
             </then>
         </response>
     </question>
+<!--17:Special case: mental impairment-->
     <question>
         <heading>Special case: Mental Impairment</heading>
         <text>Was the perpetrator lucid when committing the crime?</text>
@@ -539,7 +558,8 @@
             </then>
         </response>
     </question>
-<!--    RECORD                                                                          -->
+<!--    TODO: Check FOR INCREASE - CAN IT GO OVER MAX? (assuming nor for now)-->
+<!--18:Past Record-->
     <question>
         <heading>Calculating increases to the sentence</heading>
         <text>Does the perpetrator have a past record?</text>
@@ -550,13 +570,124 @@
         <response>
             <text>Yes</text>
             <then>
-                <fact name="past-record">yes</fact>
+                <fact name="past-record">10%</fact>
             </then>
         </response>
         <response>
             <text>No</text>
             <then>
-                <fact name="past-record">yes</fact>
+                <fact name="past-record">none</fact>
+            </then>
+        </response>
+    </question>
+<!--19:Cooperation-->
+    <question>
+        <heading>Calculating an increase or decrease to the sentence</heading>
+        <text>Has the perpetrator cooperated with the authorities?</text>
+        <type>single</type>
+        <requires>
+            <fact name="past-record">not-null</fact>
+        </requires>
+        <response>
+            <text>Yes</text>
+            <then>
+                <fact name="cooperated">yes</fact>
+            </then>
+        </response>
+        <response>
+            <text>No</text>
+            <then>
+                <fact name="cooperated">no</fact>
+            </then>
+        </response>
+    </question>
+<!--20:Cooperated yes - why-->
+    <question>
+        <heading>Calculating a decrease to the sentence</heading>
+        <text>In what situation did the perpetrator cooperate with the authorities?</text>
+        <type>single</type>
+        <requires>
+            <fact name="cooperated">yes</fact>
+        </requires>
+        <response>
+            <text>Because the amount of proof was overwhelming</text>
+            <then>
+                <fact name="cooperated-implication">none</fact>
+            </then>
+        </response>
+        <response>
+            <text>Despite there being little or no proof</text>
+            <then>
+                <fact name="cooperated-implication">-30%</fact>
+            </then>
+        </response>
+    </question>
+<!--21:Cooperated no - why-->
+    <question>
+        <heading>Calculating an increase to the sentence</heading>
+        <text>In what manner did the perpetrator not cooperate?</text>
+        <type>single</type>
+        <requires>
+            <fact name="cooperated">no</fact>
+        </requires>
+        <response>
+            <text>By behaving passively</text>
+            <then>
+                <fact name="cooperated-implication">none</fact>
+            </then>
+        </response>
+        <response>
+            <text>By actively hindering or disrupting the authorities</text>
+            <then>
+                <fact name="cooperated-implication">10%</fact>
+            </then>
+        </response>
+    </question>
+<!--22:Dependents-->
+    <question>
+        <heading>Calculating a decrease in the sentence</heading>
+        <text>Does the perpetrator have people dependent on their care?</text>
+        <type>single</type>
+        <requires>
+            <fact name="cooperated-type">not-null</fact>
+        </requires>
+        <response>
+            <text>Yes</text>
+            <then>
+                <fact name="dependents">-30%</fact>
+            </then>
+        </response>
+        <response>
+            <text>No</text>
+            <then>
+                <fact name="dependents">none</fact>
+            </then>
+        </response>
+    </question>
+<!--23:Effect of punishment-->
+    <question>
+        <heading>Calculating a decrease in the sentence</heading>
+        <text>How negatively impactful is the presumed effect of the punishment on the perpetrators future life?</text>
+        <type>single</type>
+        <requires>
+            <fact name="dependents">not-null</fact>
+        </requires>
+        <response>
+            <text>Less than average</text>
+            <then>
+                <fact name="negative-impact">none</fact>
+            </then>
+        </response>
+        <response>
+            <text>Average</text>
+            <then>
+                <fact name="negative-impact">none</fact>
+            </then>
+        </response>
+        <response>
+            <text>Above average</text>
+            <then>
+                <fact name="negative-impact">-10%</fact>
             </then>
         </response>
     </question>

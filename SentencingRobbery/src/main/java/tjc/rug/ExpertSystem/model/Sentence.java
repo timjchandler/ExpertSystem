@@ -54,7 +54,13 @@ public class Sentence {
         float[] temp = base;
         temp[0] *= multiUp * multiDown;
         temp[1] *= multiUp * multiDown;
-        return calculateSegment(temp);
+        temp = calculateSegment(temp);
+        temp = percentageChange(temp);
+        return sentenceStr(temp);
+    }
+
+    private float[] percentageChange(float[] temp) {
+        return temp;
     }
 
     protected boolean checkMistaken() {
@@ -68,12 +74,12 @@ public class Sentence {
      * @param current   The current sentence
      * @return          The adjusted segment of sentence
      */
-    private String calculateSegment(float[] current) {
-        if (segment == 0) return sentenceStr(current);
+    private float[] calculateSegment(float[] current) {
+        if (segment == 0) return current;
         float modifier = (Math.min(current[1], maxLength) - current[0]) / 4;
         current[1] = current[0] + segment * modifier;
         current[0] = current[0] + (segment - 1) * modifier;
-        return sentenceStr(current);
+        return current;
     }
 
     /**
@@ -95,9 +101,9 @@ public class Sentence {
             int months  = (int) ((f - years) * 12);
             if (years > 0 || months == 0) out.append(years).append(" years ");
             if (years > 0 && months > 0) out.append("and ");
-            if (months > 0) out.append(months).append(" months");
+            if (months > 0) out.append(months).append(" months ");
             if (first) {
-                out.append(" to ");
+                out.append("to ");
                 first = false;
             }
         }

@@ -79,11 +79,9 @@ public class Controller implements Initializable {
         initDraggable();
     }
 
-//    public void toPrevPane() {
-//        if (prevPane == null) return;
-//        mainPane.setCenter(prevPane);
-//    }
-
+    /**
+     * Allows the gui to be moved around the screen by clicking and dragging on the top left corner
+     */
     private void initDraggable() {
         topLeftPane.setOnMousePressed(event -> {
             xOffset = primaryStage.getX() - event.getScreenX();
@@ -175,6 +173,9 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Minimises the gui to the tak/start bar
+     */
     public void minimise() {
         primaryStage.setIconified(true);
     }

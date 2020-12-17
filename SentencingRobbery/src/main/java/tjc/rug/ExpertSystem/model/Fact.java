@@ -64,7 +64,7 @@ public class Fact {
             minValue = Float.parseFloat(value.split(",")[0]);
             maxValue = Float.parseFloat(value.split(",")[1]);
             this.implication = Implication.BASE;
-        } else if (value.contains(".") || value.contains("1")) {
+        } else if (value.contains(".") || value.equals("1")) {
             multiplier = Float.parseFloat(value);
             this.implication = Implication.MULTI;
         }

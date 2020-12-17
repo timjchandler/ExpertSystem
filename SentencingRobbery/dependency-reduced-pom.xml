@@ -17,7 +17,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>tjc.rug.ExpertSystem.FatJarMain</mainClass>
+                  <mainClass>tjc.rug.ExpertSystem.ExpertSystemMain</mainClass>
                 </transformer>
               </transformers>
             </configuration>

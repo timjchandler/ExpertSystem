@@ -1,10 +1,25 @@
 <rules>
+<!--1:Set max penalty - simple-->
     <rule>
-        <section>always</section>
+        <section>penalty-frame</section>
+        <if>
+            <fact name="robbery-type">simple</fact>
+        </if>
         <then>
-            <fact name="max">20</fact>
+            <fact name="max">10</fact>
         </then>
     </rule>
+<!--2:Set max penalty - qualified-->
+    <rule>
+        <section>penalty-frame</section>
+        <if>
+            <fact name="robbery-type">qualified</fact>
+        </if>
+        <then>
+            <fact name="max">25</fact>
+        </then>
+    </rule>
+<!--3:Penalty frame simple-->
     <rule>
         <section>penalty-frame</section>
         <if>
@@ -14,6 +29,7 @@
             <fact name="penalty-frame">0.5,10</fact>
         </then>
     </rule>
+<!--4:Penalty frame qualified-->
     <rule>
         <section>penalty-frame</section>
         <if>
@@ -26,6 +42,7 @@
             <fact name="penalty-frame">1,20</fact>
         </then>
     </rule>
+<!--5:Penalty frame qualified 2-->
     <rule>
         <section>penalty-frame</section>
         <if>
@@ -38,6 +55,7 @@
             <fact name="penalty-frame">2,20</fact>
         </then>
     </rule>
+<!--6:Penalty frame qualified 3-->
     <rule>
         <section>penalty-frame</section>
         <if>
@@ -50,6 +68,7 @@
             <fact name="penalty-frame">5,20</fact>
         </then>
     </rule>
+<!--7:No frame multiplier-->
     <rule>
         <section>penalty-frame</section>
         <if>
@@ -59,6 +78,7 @@
             <fact name="frame-multiplier">1</fact>
         </then>
     </rule>
+<!--8:Frame multiplier theft-->
     <rule>
         <section>penalty-frame</section>
         <if>
@@ -71,6 +91,7 @@
             <fact name="frame-multiplier">1.1</fact>
         </then>
     </rule>
+<!--9:Frame multiplier placeholder .............. -->
     <rule>
         <section>penalty-frame</section>
         <if>
