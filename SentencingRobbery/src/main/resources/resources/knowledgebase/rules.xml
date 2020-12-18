@@ -7,6 +7,7 @@
         </if>
         <then>
             <fact name="max">10</fact>
+<!--            TODO: Add a description field for the output  (also add to parser), (also add new object?)-->
         </then>
     </rule>
 <!--2:Set max penalty - qualified-->
@@ -16,7 +17,7 @@
             <fact name="robbery-type">qualified</fact>
         </if>
         <then>
-            <fact name="max">25</fact>
+            <fact name="max">20</fact>
         </then>
     </rule>
 <!--3:Penalty frame simple-->

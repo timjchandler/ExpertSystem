@@ -1,27 +1,50 @@
 package tjc.rug.ExpertSystem.controller;
 
+// Writing to pdf
+import com.itextpdf.text.*;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfWriter;
+
+// GUI
+import com.itextpdf.text.pdf.draw.LineSeparator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+
+// Local
 import tjc.rug.ExpertSystem.model.Fact;
 import tjc.rug.ExpertSystem.model.Model;
 import tjc.rug.ExpertSystem.model.Question;
 import tjc.rug.ExpertSystem.model.Sentence;
 
+// Other
+import java.awt.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class QuestionController implements Initializable {
 
+    private boolean finished = false;
     private ArrayList<RadioButton> rbArray = null;
     private ArrayList<CheckBox> cbArray = null;
+    private TextField userName = null;
+    private TextField caseNumberField = null;
+    private TextField fileName = null;
 
     @FXML
     Label labelBelowNext;
@@ -56,6 +79,10 @@ public class QuestionController implements Initializable {
      * to null
      */
     public void next() {
+        if (finished) {
+            savePDF();
+            return;
+        }
         boolean selectionMade = false;
         if (rbArray != null) selectionMade = checkRB();
         if (cbArray != null) selectionMade = checkCB();
@@ -76,6 +103,7 @@ public class QuestionController implements Initializable {
      */
     private void buildScene(Question question) {
         if (question == null) {
+            finished = true;
             showSummary();
             return;
         }
@@ -96,10 +124,40 @@ public class QuestionController implements Initializable {
         bannerLabel.setText("Recommended Sentence:");
         bannerLabel.setTextFill(Color.web("#9A031E"));
         questionVBox.getChildren().clear();
-        Text temp = new Text("For a more detailed summary of how this recommendation was reached, view the trace.");
+        Text temp = new Text("To view the summary as a pdf click below\n\n");
         temp.getStyleClass().add("endtext");
         questionVBox.getChildren().add(temp);
-        next.setVisible(false);
+        questionVBox.getChildren().add(buildFields());
+        next.setText("Summary");
+        next.setStyle("-fx-background-color: #e09f3e");
+    }
+
+    private VBox buildFields() {
+        VBox fieldBox = new VBox();
+        fieldBox.setSpacing(15);
+        Text user = new Text("Enter your name:");
+        userName = new TextField();
+        userName.setPromptText("Optional field");
+
+        Text caseNumber = new Text(("Enter the case number:"));
+        caseNumberField = new TextField();
+        caseNumberField.setPromptText("Optional field");
+
+        Text file = new Text("Enter the name to save the file under:");
+        fileName = new TextField("summary");
+
+        user.setStyle("-fx-fill: #D9D9D9;");
+        caseNumber.setStyle("-fx-fill: #D9D9D9;");
+        file.setStyle("-fx-fill: #D9D9D9;");
+
+        fieldBox.getChildren().add(user);
+        fieldBox.getChildren().add(userName);
+        fieldBox.getChildren().add(caseNumber);
+        fieldBox.getChildren().add(caseNumberField);
+        fieldBox.getChildren().add(file);
+        fieldBox.getChildren().add(fileName);
+
+        return fieldBox;
     }
 
     /**
@@ -160,6 +218,89 @@ public class QuestionController implements Initializable {
                 ((RadioButton) btn).setToggleGroup(group);
                 rbArray.add((RadioButton) btn);
             }
+        }
+    }
+
+    private void savePDF() {
+        Document document = new Document();
+        String filename = fileName.getText().replaceAll("[^A-Za-z]+", "");
+        if (filename.equals("")) filename = "output";
+        try
+        {
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filename + ".pdf"));
+            buildDocument(document);
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        openPDF(filename);
+        labelBelowNext.setText("Summary saved as " + filename + ".pdf");
+    }
+
+    private void buildDocument(Document doc) throws DocumentException, IOException {
+        Font smallFont = FontFactory.getFont(FontFactory.HELVETICA, 8, Font.ITALIC);
+        Font titleFont = FontFactory.getFont(FontFactory.HELVETICA, 20);
+        Font subheading = FontFactory.getFont(FontFactory.HELVETICA, 16);
+        Font body = FontFactory.getFont(FontFactory.HELVETICA, 11);
+        Font sentenceFont = FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLD);
+        Font subsubheading = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.UNDERLINE);
+
+        doc.open();
+
+        // Title, timestamp and logo
+        doc.add(new Paragraph("\nSentence Calculation\n", titleFont));
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        doc.add(new Paragraph("Calculated at: " + timestamp, smallFont));
+        doc.add(new Paragraph("\n\n"));
+        URL iconURL = getClass().getResource("/resources/media/icon.jpg");
+        Image logo = Image.getInstance(iconURL);
+        logo.scaleAbsolute(80, 86);
+        logo.setAbsolutePosition(460, 710);
+        doc.add(logo);
+
+        // Line separators, user name, case number
+        doc.add(Chunk.NEWLINE);
+        doc.add(new LineSeparator());
+        String caseNumber, userNameString;
+        if (caseNumberField.getText().equals("")) caseNumber = "";
+        else caseNumber = caseNumberField.getText() + " ";
+        if (userName.getText().equals("")) userNameString = "";
+        else userNameString = "presided by " + userName.getText();
+        if (!(caseNumber.equals("") && userNameString.equals(""))) {
+            doc.add(new Paragraph("Case " + caseNumber + userNameString));
+            doc.add(Chunk.NEWLINE);
+            doc.add(new LineSeparator());
+        }
+
+        // Summary
+        doc.add(new Paragraph("\n" + Model.getSentence(), sentenceFont));
+        doc.add(new Paragraph("\nThis sentence was calculated in the following manner:", subheading));
+
+        doc.add(new Paragraph("Initial Sentence Frame:\n", subsubheading));
+        String frameString = "NEEDS FUNCTION\n";
+        doc.add(new Paragraph(frameString, body));
+
+        doc.add(new Paragraph("Modified Sentence Frame:\n", subsubheading));
+        String modString = "NEEDS FUNCTION\n";
+        doc.add(new Paragraph(modString, body));
+
+        doc.add(new Paragraph("Segment of Sentence Frame:\n", subsubheading));
+        String segmentString = "NEEDS FUNCTION\n";
+        doc.add(new Paragraph(segmentString, body));
+
+        doc.add(new Paragraph("Increases and/or Decreases to Sentence:", subsubheading));
+        String incDecString = "NEEDS FUNCTION\n";
+        doc.add(new Paragraph(incDecString, body));
+
+        doc.close();
+    }
+
+    private void openPDF(String filename) {
+        try {
+            File myFile = new File(filename + ".pdf");
+            Desktop.getDesktop().open(myFile);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

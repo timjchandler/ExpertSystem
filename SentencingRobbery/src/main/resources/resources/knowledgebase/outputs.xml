@@ -1,3 +1,18 @@
 <outputs>
 <!--    Output values    -->
+<!--    Simple Robbery   -->
+    <output>
+        <if>
+            <fact name="max">10</fact>
+        </if>
+        <then>
+            <desciption>Simple robbery, as defined in Art 140 ciph. 1 StGB has a maximum sentence length of 10 years.</desciption>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name=""
+        </if>
+    </output>
+
 </outputs>

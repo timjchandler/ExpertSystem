@@ -1,5 +1,6 @@
 package tjc.rug.ExpertSystem.controller;
 
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -10,10 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -100,9 +101,25 @@ public class Controller implements Initializable {
     public void mouseClicked(ActionEvent event) {
         if (event.getSource().equals(btnSide0)) restart();
         else if (event.getSource().equals(btnSide1)) trace();
-        else if (event.getSource().equals(btnSide2)) System.out.println(btnSide2.getText());
-        else if (event.getSource().equals(btnSide3)) System.out.println(btnSide3.getText());
+        else if (event.getSource().equals(btnSide2)) help();
+        else if (event.getSource().equals(btnSide3)) temporary();
         else if (event.getSource().equals(btnExit)) exit();
+    }
+
+    /**
+     * Opens the readme in github pages through the preferred browser
+     */
+    private void help() {
+        try {
+            URI u = new URI("https://timjchandler.github.io/ExpertSystem/");
+            java.awt.Desktop.getDesktop().browse(u);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void temporary() {
+        System.out.println("This has not yet be implemented");
     }
 
     /**
