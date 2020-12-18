@@ -1,6 +1,4 @@
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">T
-
-his system provides a recommended sentence for cases in which the convicted has committed robbery.
+This system provides a recommended sentence for cases in which the convicted has committed robbery.
 
 * TOC
 {:toc} 
