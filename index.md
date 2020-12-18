@@ -5,12 +5,8 @@
 This calculator reads in rules from xml files and implements them via a gui
 
 
-## Contents:
-[How to use the system](#-how-to-use-the-system)  
-[Download](#-download)  
-[JavaDoc](#-javadoc)  
-[Knowledge Base](#-knowledge-base)  
-[Structure](#-structure)  
+* TOC
+{:toc} 
 
 
 # How to use the system
