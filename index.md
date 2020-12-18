@@ -6,27 +6,27 @@ This calculator reads in rules from xml files and implements them via a gui
 
 
 #### Contents:
-[How to use the system](###-how-to-use-the-system)  
-[Download](### Download)  
-[JavaDoc](### Documentation)  
-[Knowledge Base](### Knowledge Base)  
-[Structure](### Structure)  
+[How to use the system](###how-to-use-the-system)  
+[Download](###download)  
+[JavaDoc](###documentation)  
+[Knowledge Base](###knowledge-base)  
+[Structure](###structure)  
 
 
-### How to use the system
+###How to use the system
 
-### Download   
+###Download   
 _<span style="color:grey; font-size:10px">File updated: 18/12/20</span>_     
 The latest version, _PROTOTYPE_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-PROTOTYPE.jar)    
 
 It should run simply by double clicking on it. Alternatively run the following command from the directory that it is stored in:  
 ```java -jar SentencingRobbery-PROTOTYPE.jar```
 
-### JavaDoc
+###JavaDoc
 
 The JavaDoc for this system may be found [here](https://timjchandler.github.io/ExpertSystem/JavaDoc/overview-summary.html)
 
-### Knowledge Base
+###Knowledge Base
 
 The xml for the knowledge base may be found here:
 
@@ -37,7 +37,7 @@ The xml for the knowledge base may be found here:
 + The [outputs](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery/src/main/resources/resources/knowledgebase/outputs.xml)  
 
 
-## Structure
+###Structure
 
 Below is a tree of the relevant structure. Test and target directories are not expanded.     
 _<span style="color:grey; font-size:10px">Last updated: 18/12/20</span>_   
