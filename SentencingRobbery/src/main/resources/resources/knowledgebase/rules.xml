@@ -252,4 +252,13 @@
             <fact name="mistaken-verdict">true</fact>
         </then>
     </rule>
+<!--    <rule>-->
+<!--        <if>-->
+<!--            <and>-->
+<!--                <fact name="cooperated-implication">-30%</fact>-->
+<!--                <fact name="dependents">-30%</fact>-->
+<!--                <fact name=""-->
+<!--            </and>-->
+<!--        </if>-->
+<!--    </rule>-->
 </rules>

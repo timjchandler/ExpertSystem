@@ -81,5 +81,112 @@
             <section>Modified</section>
         </then>
     </output>
-
+<!--   Segment -->
+<!--   IncDec -->
+<!--Cooperation-->
+    <output>
+        <if>
+            <and>
+                <fact name="cooperated-implication">none</fact>
+                <fact name="cooperated">yes</fact>
+            </and>
+        </if>
+        <then>
+            <description>Whilst the offender cooperated with the authorities, this was in a situation where the amount of proof was overwhelming. Therefore no deduction from the sentence is made.</description>
+            <section>IncDec</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <and>
+                <fact name="cooperated-implication">none</fact>
+                <fact name="cooperated">no</fact>
+            </and>
+        </if>
+        <then>
+            <description>Whilst the offender did not cooperate with the authorities, they did this through passive behaviour and as such no addition is made to the sentence</description>
+            <section>IncDec</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <and>
+                <fact name="cooperated-implication">-30%</fact>
+                <fact name="cooperated">yes</fact>
+            </and>
+        </if>
+        <then>
+            <description>The offender cooperated with the authorities, despite there being little or no proof. This results in a 30% deduction from the final sentence.</description>
+            <section>IncDec</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <and>
+                <fact name="cooperated-implication">10%</fact>
+                <fact name="cooperated">no</fact>
+            </and>
+        </if>
+        <then>
+            <description>The offender actively hindered or disrupted the authorities, resulting in a 10% increase in the sentence.</description>
+            <section>IncDec</section>
+        </then>
+    </output>
+<!--Past record-->
+    <output>
+        <if>
+            <fact name="past-record">none</fact>
+        </if>
+        <then>
+            <section>IncDec</section>
+            <description>The offender has no past record, this results in no increase to the sentence.</description>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="past-record">10%</fact>
+        </if>
+        <then>
+            <section>IncDec</section>
+            <description>Due to the offenders past record, the sentence is increased by 10%.</description>
+        </then>
+    </output>
+<!--Dependents-->
+    <output>
+        <if>
+            <fact name="dependents">-30%</fact>
+        </if>
+        <then>
+            <section>IncDec</section>
+            <description>The offender has people dependent on their care, this leads to a 30% reduction in the sentence.</description>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="dependents">none</fact>
+        </if>
+        <then>
+            <section>IncDec</section>
+            <description>As the offender has no one dependent on their care, no reduction is made to the sentence.</description>
+        </then>
+    </output>
+<!--Effect-->
+    <output>
+        <if>
+            <fact name="negative-impact">none</fact>
+        </if>
+        <then>
+            <section>IncDec</section>
+            <description>Due to the perceived impact of the punishment having normal, or below average impact on the offender, no reduction is made to the sentence.</description>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="negative-impact">-10%</fact>
+        </if>
+        <then>
+            <section>IncDec</section>
+            <description>Due to the perceived above average negative impact on the offenders future life, the sentence is reduced by 10%.</description>
+        </then>
+    </output>
 </outputs>

@@ -130,8 +130,8 @@
         <type>multi</type>
         <requires>
             <or>
-                <fact name="multi-offence">no</fact>
-                <fact name="other-offence">not-null</fact>
+                <fact name="multi-offence">not-null</fact>
+<!--                <fact name="other-offence">not-null</fact>-->
             </or>
         </requires>
         <response>
@@ -558,7 +558,6 @@
             </then>
         </response>
     </question>
-<!--    TODO: Check FOR INCREASE - CAN IT GO OVER MAX? (assuming nor for now)-->
 <!--18:Past Record-->
     <question>
         <heading>Calculating increases to the sentence</heading>
@@ -649,7 +648,7 @@
         <text>Does the perpetrator have people dependent on their care?</text>
         <type>single</type>
         <requires>
-            <fact name="cooperated-type">not-null</fact>
+            <fact name="cooperated-implication">not-null</fact>
         </requires>
         <response>
             <text>Yes</text>
