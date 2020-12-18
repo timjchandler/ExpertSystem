@@ -1,0 +1,192 @@
+<outputs>
+<!--    Output values    -->
+<!--    Simple Robbery   -->
+    <output>
+        <if>
+            <fact name="max">10</fact>
+        </if>
+        <then>
+            <description>Simple robbery, as defined in Art 140 ciph. 1 StGB provides a sentence length with a minimum 6 months and maximum of 10 years. The maximum may be increased by later developments, but may never exceed 20 years.</description>
+            <section>Initial</section>
+            <link>
+                <text>Art 140 StGB</text>
+                <url>https://www.admin.ch/opc/en/classified-compilation/19370083/index.html</url>
+            </link>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="max">20</fact>
+        </if>
+        <then>
+            <description>Robbery can be qualified in three main ways. All of these hold a maximum sentence length of 20 years. This cannot be exceeded by any further developments under [TODO: add link]. If the robbery was qualified in more than one way,then the highest sentence holds.</description>
+            <section>Initial</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="penalty-frame">1,20</fact>
+        </if>
+        <then>
+            <description>As described in Art 140 ciph. 2 StGB, the usage of a firearm or other dangerous weapon in a robbery results in a sentence of 1 to 20 years.</description>
+            <section>Initial</section>
+            <link>
+                <text>Art 140 StGB</text>
+                <url>https://www.admin.ch/opc/en/classified-compilation/19370083/index.html</url>
+            </link>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="penalty-frame">2,20</fact>
+        </if>
+        <then>
+            <description>As described in Art 140 ciph. 3 StGB, if the offender commits robbery as part of a group organised for the purpose of robbery, or if the offender represents a particular danger in the way the robbery was committed then the resulting sentence is from 2 to 20 years.</description>
+            <section>Initial</section>
+            <link>
+                <text>Art 140 StGB</text>
+                <url>https://www.admin.ch/opc/en/classified-compilation/19370083/index.html</url>
+            </link>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="penalty-frame">5,20</fact>
+        </if>
+        <then>
+            <description>As described in Art 140 ciph. 4 StGB, if the offender endangered the life of a victim during the robbery, then the resulting sentence if from 5 to 20 years.</description>
+            <section>Initial</section>
+            <link>
+                <text>Art 140 StGB</text>
+                <url>https://www.admin.ch/opc/en/classified-compilation/19370083/index.html</url>
+            </link>
+        </then>
+    </output>
+<!--    Modified  -->
+    <output>
+        <if>
+            <fact name="frame-multiplier">1</fact>
+        </if>
+        <then>
+            <description>No additional crimes are included in this sentencing, leading to no increase in the penalty frame.</description>
+            <section>Modified</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="frame-multiplier">1.5</fact>
+        </if>
+        <then>
+            <description>Additional crimes with lesser base sentences were included in this sentencing. This leads to an increase of 50% in the sentence length, in accordance with [add reference].</description>
+            <section>Modified</section>
+        </then>
+    </output>
+<!--   Segment -->
+<!--   IncDec -->
+<!--Cooperation-->
+    <output>
+        <if>
+            <and>
+                <fact name="cooperated-implication">none</fact>
+                <fact name="cooperated">yes</fact>
+            </and>
+        </if>
+        <then>
+            <description>Whilst the offender cooperated with the authorities, this was in a situation where the amount of proof was overwhelming. Therefore no deduction from the sentence is made.</description>
+            <section>IncDec</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <and>
+                <fact name="cooperated-implication">none</fact>
+                <fact name="cooperated">no</fact>
+            </and>
+        </if>
+        <then>
+            <description>Whilst the offender did not cooperate with the authorities, they did this through passive behaviour and as such no addition is made to the sentence</description>
+            <section>IncDec</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <and>
+                <fact name="cooperated-implication">-30%</fact>
+                <fact name="cooperated">yes</fact>
+            </and>
+        </if>
+        <then>
+            <description>The offender cooperated with the authorities, despite there being little or no proof. This results in a 30% deduction from the final sentence.</description>
+            <section>IncDec</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <and>
+                <fact name="cooperated-implication">10%</fact>
+                <fact name="cooperated">no</fact>
+            </and>
+        </if>
+        <then>
+            <description>The offender actively hindered or disrupted the authorities, resulting in a 10% increase in the sentence.</description>
+            <section>IncDec</section>
+        </then>
+    </output>
+<!--Past record-->
+    <output>
+        <if>
+            <fact name="past-record">none</fact>
+        </if>
+        <then>
+            <section>IncDec</section>
+            <description>The offender has no past record, this results in no increase to the sentence.</description>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="past-record">10%</fact>
+        </if>
+        <then>
+            <section>IncDec</section>
+            <description>Due to the offenders past record, the sentence is increased by 10%.</description>
+        </then>
+    </output>
+<!--Dependents-->
+    <output>
+        <if>
+            <fact name="dependents">-30%</fact>
+        </if>
+        <then>
+            <section>IncDec</section>
+            <description>The offender has people dependent on their care, this leads to a 30% reduction in the sentence.</description>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="dependents">none</fact>
+        </if>
+        <then>
+            <section>IncDec</section>
+            <description>As the offender has no one dependent on their care, no reduction is made to the sentence.</description>
+        </then>
+    </output>
+<!--Effect-->
+    <output>
+        <if>
+            <fact name="negative-impact">none</fact>
+        </if>
+        <then>
+            <section>IncDec</section>
+            <description>Due to the perceived impact of the punishment having normal, or below average impact on the offender, no reduction is made to the sentence.</description>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="negative-impact">-10%</fact>
+        </if>
+        <then>
+            <section>IncDec</section>
+            <description>Due to the perceived above average negative impact on the offenders future life, the sentence is reduced by 10%.</description>
+        </then>
+    </output>
+</outputs>

@@ -1,0 +1,51 @@
+/* BUTTONS */
+.button
+{
+-fx-background-color    : linear-gradient(to right, #333333, #1B1B1B);
+-fx-border-color        : linear-gradient(to right, #333333, #1B1B1B);
+-fx-text-fill           : #E0E1DD;
+}
+.button:hover
+{
+-fx-background-color    : #656565;
+-fx-border-color        : #656565;
+}
+.button:pressed
+{
+-fx-background-color    : #D9D9D9;
+-fx-border-color        : #D9D9D9;
+}
+/* VBOX */
+.vbox
+{
+-fx-background-color    : linear-gradient(to right, #333333, #1B1B1B);
+}
+/* PANE */
+.pane
+{
+-fx-background-color    : linear-gradient(to left, #1B1B1B, #2F4550);
+}
+/* ANCHOR PANE */
+.anchor
+{
+-fx-background-color    : #284B63;
+}
+/* CIRCLES FOR BUTTONS */
+.circleClose
+{
+-fx-fill                : radial-gradient(focus-distance 0% , center 50% 50% , radius 55% , #9E2A2B, #81171B);
+-fx-stroke              : #9E2A2B;
+}
+.circleMin
+{
+-fx-fill                : radial-gradient(focus-distance 0% , center 50% 50% , radius 55% , #FFBA08, #F48C06);
+-fx-stroke              : #FFBA08;
+}
+.circleMin:hover
+{
+-fx-fill                : #73BA9B;
+}
+.circleClose:hover
+{
+-fx-fill                : #EA8C55;
+}
