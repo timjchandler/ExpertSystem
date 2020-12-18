@@ -7,7 +7,6 @@
         </if>
         <then>
             <fact name="max">10</fact>
-<!--            TODO: Add a description field for the output  (also add to parser), (also add new object?)-->
         </then>
     </rule>
 <!--2:Set max penalty - qualified-->
@@ -79,32 +78,42 @@
             <fact name="frame-multiplier">1</fact>
         </then>
     </rule>
+<!--8:Frame multiplier-->
+    <rule>
+        <section>penalty-frame</section>
+        <if>
+            <fact name="multi-offence">yes</fact>
+        </if>
+        <then>
+            <fact name="frame-multiplier">1.5</fact>
+        </then>
+    </rule>
 <!--8:Frame multiplier theft-->
-    <rule>
-        <section>penalty-frame</section>
-        <if>
-            <and>
-                <fact name="multi-offence">yes</fact>
-                <fact name="other-offence">theft</fact>
-            </and>
-        </if>
-        <then>
-            <fact name="frame-multiplier">1.1</fact>
-        </then>
-    </rule>
-<!--9:Frame multiplier placeholder .............. -->
-    <rule>
-        <section>penalty-frame</section>
-        <if>
-            <and>
-                <fact name="multi-offence">yes</fact>
-                <fact name="other-offence">placeholder</fact>
-            </and>
-        </if>
-        <then>
-            <fact name="frame-multiplier">1.3</fact>
-        </then>
-    </rule>
+<!--    <rule>-->
+<!--        <section>penalty-frame</section>-->
+<!--        <if>-->
+<!--            <and>-->
+<!--                <fact name="multi-offence">yes</fact>-->
+<!--                <fact name="other-offence">theft</fact>-->
+<!--            </and>-->
+<!--        </if>-->
+<!--        <then>-->
+<!--            <fact name="frame-multiplier">1.1</fact>-->
+<!--        </then>-->
+<!--    </rule>-->
+<!--&lt;!&ndash;9:Frame multiplier placeholder .............. &ndash;&gt;-->
+<!--    <rule>-->
+<!--        <section>penalty-frame</section>-->
+<!--        <if>-->
+<!--            <and>-->
+<!--                <fact name="multi-offence">yes</fact>-->
+<!--                <fact name="other-offence">placeholder</fact>-->
+<!--            </and>-->
+<!--        </if>-->
+<!--        <then>-->
+<!--            <fact name="frame-multiplier">1.3</fact>-->
+<!--        </then>-->
+<!--    </rule>-->
 <!--  ALL OF THE <THEN> SECTIONS ARE GUESSES  -->
     <rule>
         <section>penalty-frame</section>

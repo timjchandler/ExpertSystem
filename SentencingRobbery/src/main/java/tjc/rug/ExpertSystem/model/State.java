@@ -1,13 +1,16 @@
 package tjc.rug.ExpertSystem.model;
 
+import tjc.rug.ExpertSystem.parser.OutputParser;
 import tjc.rug.ExpertSystem.parser.RuleParser;
 
 import java.util.ArrayList;
 
 public class State {
 
-    private final ArrayList<Fact> facts;
-    private final ArrayList<Rule> rules;
+    // TODO: CHECK everything still works with facts/rules static
+    private static ArrayList<Fact> facts;
+    private static ArrayList<Rule> rules;
+    private static ArrayList<Output> outputs = null;
 
     /**
      * Reads in rules from the xml file via the parser, initialises the facts and implications lists
@@ -15,6 +18,8 @@ public class State {
      */
     public State() {
         rules = new RuleParser("/resources/knowledgebase/rules.xml").getRules();
+        outputs = new OutputParser("/resources/knowledgebase/outputs.xml").getOutputs();
+//        for (Output o: outputs) System.out.println(o.toString());
         facts = new ArrayList<>();
     }
 
@@ -64,6 +69,14 @@ public class State {
     public String getSentence() {
         updateImplications();
         return new Sentence(facts).getSentence();
+    }
+
+    public static ArrayList<Output> getOutputs() {
+        ArrayList<Output> out = new ArrayList<>();
+        for (Output o: outputs) {
+            if (o.meetsRequirements(facts)) out.add(o);
+        }
+        return out;
     }
 
     public ArrayList<Fact> getImplications() {

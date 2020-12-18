@@ -4,6 +4,7 @@ package tjc.rug.ExpertSystem.controller;
 import com.itextpdf.text.*;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.CMYKColor;
 import com.itextpdf.text.pdf.PdfWriter;
 
 // GUI
@@ -11,6 +12,7 @@ import com.itextpdf.text.pdf.draw.LineSeparator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,10 +23,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 // Local
-import tjc.rug.ExpertSystem.model.Fact;
-import tjc.rug.ExpertSystem.model.Model;
-import tjc.rug.ExpertSystem.model.Question;
-import tjc.rug.ExpertSystem.model.Sentence;
+import tjc.rug.ExpertSystem.model.*;
 
 // Other
 import java.awt.*;
@@ -32,10 +31,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
+import static com.sun.xml.internal.ws.commons.xmlutil.Converter.UTF_8;
 
 public class QuestionController implements Initializable {
 
@@ -234,7 +236,7 @@ public class QuestionController implements Initializable {
             e.printStackTrace();
         }
         openPDF(filename);
-        labelBelowNext.setText("Summary saved as " + filename + ".pdf");
+        labelBelowNext.setText("Saved as " + filename + ".pdf");
     }
 
     private void buildDocument(Document doc) throws DocumentException, IOException {
@@ -244,13 +246,14 @@ public class QuestionController implements Initializable {
         Font body = FontFactory.getFont(FontFactory.HELVETICA, 11);
         Font sentenceFont = FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLD);
         Font subsubheading = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.UNDERLINE);
+        Font hyperlinkFont = FontFactory.getFont(FontFactory.HELVETICA, 10, new CMYKColor(98, 17, 0, 34));
 
         doc.open();
 
         // Title, timestamp and logo
         doc.add(new Paragraph("\nSentence Calculation\n", titleFont));
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        doc.add(new Paragraph("Calculated at: " + timestamp, smallFont));
+        String timestamp = new Timestamp(System.currentTimeMillis()).toString().split("[.]")[0];
+        doc.add(new Paragraph(timestamp, smallFont));
         doc.add(new Paragraph("\n\n"));
         URL iconURL = getClass().getResource("/resources/media/icon.jpg");
         Image logo = Image.getInstance(iconURL);
@@ -272,25 +275,64 @@ public class QuestionController implements Initializable {
             doc.add(new LineSeparator());
         }
 
+        // Get relevant outputs
+        ArrayList<Output> outputs = State.getOutputs();
+        ArrayList<String> links = new ArrayList<>();
+        ArrayList<String> urls = new ArrayList<>();
+
+        StringBuilder initialString = new StringBuilder();
+        StringBuilder modifiedString = new StringBuilder();
+        StringBuilder segmentString = new StringBuilder();
+        StringBuilder incDecString = new StringBuilder();
+
+        for (Output out: outputs) {
+            if (!links.contains(out.getLink())) {
+                links.add(out.getLink());
+                urls.add(out.getUrl());
+            }
+            switch (out.getSection()) {
+                case "Initial":
+                    initialString.append(out.getDescription()).append("\n\n");
+                    break;
+                case "Modified":
+                    modifiedString.append(out.getDescription()).append("\n\n");
+                    break;
+                case "Segment":
+                    segmentString.append(out.getDescription()).append("\n\n");
+                    break;
+                case "IncDec":
+                    incDecString.append(out.getDescription()).append("\n\n");
+                    break;
+                default:
+                    System.out.println("ERROR: Unknown output section");
+                    break;
+            }
+        }
+
         // Summary
         doc.add(new Paragraph("\n" + Model.getSentence(), sentenceFont));
         doc.add(new Paragraph("\nThis sentence was calculated in the following manner:", subheading));
 
         doc.add(new Paragraph("Initial Sentence Frame:\n", subsubheading));
-        String frameString = "NEEDS FUNCTION\n";
-        doc.add(new Paragraph(frameString, body));
+        doc.add(new Paragraph(initialString.toString(), body));
 
         doc.add(new Paragraph("Modified Sentence Frame:\n", subsubheading));
-        String modString = "NEEDS FUNCTION\n";
-        doc.add(new Paragraph(modString, body));
+        doc.add(new Paragraph(modifiedString.toString(), body));
 
         doc.add(new Paragraph("Segment of Sentence Frame:\n", subsubheading));
-        String segmentString = "NEEDS FUNCTION\n";
-        doc.add(new Paragraph(segmentString, body));
+        doc.add(new Paragraph(segmentString.toString(), body));
 
         doc.add(new Paragraph("Increases and/or Decreases to Sentence:", subsubheading));
-        String incDecString = "NEEDS FUNCTION\n";
-        doc.add(new Paragraph(incDecString, body));
+        doc.add(new Paragraph(incDecString.toString(), body));
+
+        doc.add(Chunk.NEWLINE);
+        doc.add(new LineSeparator());
+
+        for (int idx = 0; idx < links.size(); ++idx) {
+            Anchor anchor = new Anchor(links.get(idx), hyperlinkFont);
+            anchor.setReference(urls.get(idx));
+            doc.add(anchor);
+        }
 
         doc.close();
     }

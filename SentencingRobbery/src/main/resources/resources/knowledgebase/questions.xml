@@ -103,26 +103,26 @@
         </response>
     </question>
 <!--5:Other offence(s) type-->
-    <question>
-        <heading>Ascertaining the penalty frame</heading>
-        <text>For what other crimes was the individual convicted during the trial in question?</text>
-        <type>multi</type>
-        <requires>
-            <fact name="multi-offence">yes</fact>
-        </requires>
-        <response>
-            <text>Theft</text>
-            <then>
-                <fact name="other-offence">theft</fact>
-            </then>
-        </response>
-        <response>
-            <text>Placeholder</text>
-            <then>
-                <fact name="other-offence">placeholder</fact>
-            </then>
-        </response>
-    </question>
+<!--    <question>-->
+<!--        <heading>Ascertaining the penalty frame</heading>-->
+<!--        <text>For what other crimes was the individual convicted during the trial in question?</text>-->
+<!--        <type>multi</type>-->
+<!--        <requires>-->
+<!--            <fact name="multi-offence">yes</fact>-->
+<!--        </requires>-->
+<!--        <response>-->
+<!--            <text>Theft</text>-->
+<!--            <then>-->
+<!--                <fact name="other-offence">theft</fact>-->
+<!--            </then>-->
+<!--        </response>-->
+<!--        <response>-->
+<!--            <text>Placeholder</text>-->
+<!--            <then>-->
+<!--                <fact name="other-offence">placeholder</fact>-->
+<!--            </then>-->
+<!--        </response>-->
+<!--    </question>-->
 <!--6:Mitigating circumstances-->
     <question>
         <heading>Ascertaining the penalty frame</heading>

@@ -16,6 +16,7 @@ import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -119,7 +120,8 @@ public class Controller implements Initializable {
     }
 
     private void temporary() {
-        System.out.println("This has not yet be implemented");
+        String timestamp = new Timestamp(System.currentTimeMillis()).toString();
+        System.out.println(timestamp.split("[.]")[0]);
     }
 
     /**

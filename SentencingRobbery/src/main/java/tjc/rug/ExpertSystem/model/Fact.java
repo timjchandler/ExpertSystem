@@ -112,19 +112,6 @@ public class Fact {
         return name;
     }
 
-    //TODO: REMOVE DEPRECATED
-//    /**
-//     * Ascertains whether this fact is equal to a fact consisting of two given strings. Since
-//     * all other member variables are derived from the two input strings, and cannot be externally
-//     * modified no other comparisons are required.
-//     * @param name      The name variable of a fact
-//     * @param value     The value variable of a fact
-//     * @return          True if the fact matches this one, false otherwise
-//     */
-//    public boolean equals(String name, String value) {
-//        return (this.name.equals(name) && this.value.equals(value));
-//    }
-
     // TODO: UPDATE THIS JAVADOC
     /**
      * Ascertains whether this fact is equal to a given fact
@@ -133,8 +120,6 @@ public class Fact {
      */
     public boolean equals(Fact fact) {
         return (name.equals(fact.getName()) && value.equals(fact.getValue()));
-//        return (this.name.equals(name) && this.value.equals(value));
-//        return fact.equals(name, value);
     }
 
     /**
