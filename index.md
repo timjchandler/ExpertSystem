@@ -6,11 +6,11 @@ This calculator reads in rules from xml files and implements them via a gui
 
 
 #### Contents:
-[How to use the system](### How to use the system)
-[Download](### Download)
-[JavaDoc](### Documentation)
-[Knowledge Base](### Knowledge Base)
-[Structure](### Structure)
+[How to use the system](### How to use the system)  
+[Download](### Download)  
+[JavaDoc](### Documentation)  
+[Knowledge Base](### Knowledge Base)  
+[Structure](### Structure)  
 
 
 ### How to use the system
@@ -32,14 +32,14 @@ The xml for the knowledge base may be found here:
 
 + The [rules](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery/src/main/resources/resources/knowledgebase/rules.xml)
 
-+ The [questions](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery/src/main/resources/resources/knowledgebase/questions.xml)
++ The [questions](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery/src/main/resources/resources/knowledgebase/questions.xml)  
 
-+ The [outputs](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery/src/main/resources/resources/knowledgebase/outputs.xml)
++ The [outputs](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery/src/main/resources/resources/knowledgebase/outputs.xml)  
 
 
 ## Structure
 
-Below is a tree of the relevant structure. Test and target directories are not expanded.
+Below is a tree of the relevant structure. Test and target directories are not expanded.     
 _<span style="color:grey; font-size:10px">Last updated: 18/12/20</span>_   
 
 ```bash
