@@ -6,7 +6,7 @@ This calculator reads in rules from xml files and implements them via a gui
 
 
 #### Contents:
-[How to use the system](### How to use the system)  
+[How to use the system](###-how-to-use-the-system)  
 [Download](### Download)  
 [JavaDoc](### Documentation)  
 [Knowledge Base](### Knowledge Base)  
