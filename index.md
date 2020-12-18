@@ -5,7 +5,7 @@ This system provides a recommended sentence for cases in which the convicted has
 
 # Download   
 _<span style="color:grey; font-size:10px">File updated: 18/12/20</span>_     
-The latest version, _PROTOTYPE_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-PROTOTYPE-V2.jar)    
+The latest version, _PROTOTYPE-V2_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-PROTOTYPE-V2.jar)    
 
 To run the system, Java is required. 
 
