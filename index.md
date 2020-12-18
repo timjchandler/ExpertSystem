@@ -1,5 +1,3 @@
-# Expert System
-
 This system provides a recommended sentence for cases in which the convicted has committed robbery.
 
 * TOC
@@ -20,19 +18,19 @@ Note that you may need to provide admin/super user permissions to run the system
 
 # How to use the system
 
-## Calculating a sentence
+### Calculating a sentence
 
 Upon running the system click Start on the left menu bar and answer all of the questions. Questions with circular boxes are single choice, square boxes are multiple choice. You must always select at least one answer to progress. 
 
 If you wish to restart, the start button (now restart) may be clicked to take you back to the beginning and clear answers.
 
-## Viewing progress
+### Viewing progress
 
 By clicking on the Trace button you may view all of the questions you have answered up to that point. You can also switch to the facts tab to view the given and inferred facts. Please note that the facts are primarily for debugging, and as such are in a less human-readable form.
 
 Pressing the Trace button (now Hide Trace) again will take you back to the questions.
 
-## Viewing results
+### Viewing results
 
 Once you have answered all of the questions you will be presented with a short form. Here you may input your own name, the case number and the filename to save the output under. The first two fields are optional, if provided they will simply add the given information to the output.
 
