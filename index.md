@@ -42,8 +42,8 @@ The filename will only accept letters and numbers. Any other characters will be 
 
 # JavaDoc
 
-The JavaDoc for this system may be found [here](https://timjchandler.github.io/ExpertSystem/JavaDoc/overview-summary.html)
-_<span style="color:grey; font-size:10px">Last updated: 18/12/20</span>_   
+_<span style="color:grey; font-size:10px">Last updated: 18/12/20</span>_  
+The JavaDoc for this system may be found [here](https://timjchandler.github.io/ExpertSystem/JavaDoc/overview-summary.html)  
 
 # Knowledge Base
 
@@ -58,8 +58,8 @@ The xml for the knowledge base may be found here:
 
 # Structure
 
-Below is a tree of the relevant structure. Test and target directories are not expanded.     
 _<span style="color:grey; font-size:10px">Last updated: 18/12/20</span>_   
+Below is a tree of the relevant structure. Test and target directories are not expanded.       
 
 ```bash
 .
