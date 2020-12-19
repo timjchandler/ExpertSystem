@@ -102,28 +102,7 @@
             </then>
         </response>
     </question>
-<!--5:Other offence(s) type-->
-<!--    <question>-->
-<!--        <heading>Ascertaining the penalty frame</heading>-->
-<!--        <text>For what other crimes was the individual convicted during the trial in question?</text>-->
-<!--        <type>multi</type>-->
-<!--        <requires>-->
-<!--            <fact name="multi-offence">yes</fact>-->
-<!--        </requires>-->
-<!--        <response>-->
-<!--            <text>Theft</text>-->
-<!--            <then>-->
-<!--                <fact name="other-offence">theft</fact>-->
-<!--            </then>-->
-<!--        </response>-->
-<!--        <response>-->
-<!--            <text>Placeholder</text>-->
-<!--            <then>-->
-<!--                <fact name="other-offence">placeholder</fact>-->
-<!--            </then>-->
-<!--        </response>-->
-<!--    </question>-->
-<!--6:Mitigating circumstances-->
+<!--5:Mitigating circumstances-->
     <question>
         <heading>Ascertaining the penalty frame</heading>
         <text>Are there any of the following mitigating circumstances?</text>
@@ -189,7 +168,7 @@
             </then>
         </response>
     </question>
-<!--7:Value of items-->
+<!--6:Value of items-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>What was the value of the stolen items?</text>
@@ -216,7 +195,7 @@
             </then>
         </response>
     </question>
-<!--8:Seriousness of Danger-->
+<!--7:Seriousness of Danger-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How serious was the potential danger?</text>
@@ -252,7 +231,7 @@
             </then>
         </response>
     </question>
-<!--9:Likelihood of potential danger happening-->
+<!--8:Likelihood of potential danger happening-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How high was the likelihood of the potential danger happening?</text>
@@ -285,7 +264,7 @@
             </then>
         </response>
     </question>
-<!--10:Number of people injured-->
+<!--9:Number of people injured-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How high was the number of people (natural and legal entities) injured?</text>
@@ -321,7 +300,7 @@
             </then>
         </response>
     </question>
-<!--11:Severity of injury-->
+<!--10:Severity of injury-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How severe was the physical damage to natural people?</text>
@@ -357,7 +336,7 @@
             </then>
         </response>
     </question>
-<!--12:Psychological damage-->
+<!--11:Psychological damage-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How severe was the psychological damage to natural people?</text>
@@ -396,7 +375,7 @@
             </then>
         </response>
     </question>
-<!--13:Property damage-->
+<!--12:Property damage-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How severe was the damage to property?</text>
@@ -435,7 +414,7 @@
             </then>
         </response>
     </question>
-<!--14:Brutality of actions-->
+<!--13:Brutality of actions-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How brutal were the perpetrators actions?</text>
@@ -476,7 +455,7 @@
             </then>
         </response>
     </question>
-<!--15:Possibility of avoiding danger or injury-->
+<!--14:Possibility of avoiding danger or injury-->
 <!--    ONLY FOR assault/damage?    -->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
@@ -508,7 +487,7 @@
             </then>
         </response>
     </question>
-<!--16:Category of motive-->
+<!--15:Category of motive-->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>What category do the perpetrators motives fall under?</text>
@@ -537,7 +516,7 @@
             </then>
         </response>
     </question>
-<!--17:Special case: mental impairment-->
+<!--16:Special case: mental impairment-->
     <question>
         <heading>Special case: Mental Impairment</heading>
         <text>Was the perpetrator lucid when committing the crime?</text>
@@ -558,7 +537,7 @@
             </then>
         </response>
     </question>
-<!--18:Past Record-->
+<!--17:Past Record-->
     <question>
         <heading>Calculating increases to the sentence</heading>
         <text>Does the perpetrator have a past record?</text>
@@ -579,7 +558,7 @@
             </then>
         </response>
     </question>
-<!--19:Cooperation-->
+<!--18:Cooperation-->
     <question>
         <heading>Calculating an increase or decrease to the sentence</heading>
         <text>Has the perpetrator cooperated with the authorities?</text>
@@ -600,7 +579,7 @@
             </then>
         </response>
     </question>
-<!--20:Cooperated yes - why-->
+<!--19:Cooperated yes - why-->
     <question>
         <heading>Calculating a decrease to the sentence</heading>
         <text>In what situation did the perpetrator cooperate with the authorities?</text>
@@ -621,7 +600,7 @@
             </then>
         </response>
     </question>
-<!--21:Cooperated no - why-->
+<!--20:Cooperated no - why-->
     <question>
         <heading>Calculating an increase to the sentence</heading>
         <text>In what manner did the perpetrator not cooperate?</text>
@@ -642,7 +621,7 @@
             </then>
         </response>
     </question>
-<!--22:Dependents-->
+<!--21:Dependents-->
     <question>
         <heading>Calculating a decrease in the sentence</heading>
         <text>Does the perpetrator have people dependent on their care?</text>
@@ -663,7 +642,7 @@
             </then>
         </response>
     </question>
-<!--23:Effect of punishment-->
+<!--22:Effect of punishment-->
     <question>
         <heading>Calculating a decrease in the sentence</heading>
         <text>How negatively impactful is the presumed effect of the punishment on the perpetrators future life?</text>

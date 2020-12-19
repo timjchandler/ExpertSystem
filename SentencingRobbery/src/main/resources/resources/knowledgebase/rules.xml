@@ -88,32 +88,6 @@
             <fact name="frame-multiplier">1.5</fact>
         </then>
     </rule>
-<!--8:Frame multiplier theft-->
-<!--    <rule>-->
-<!--        <section>penalty-frame</section>-->
-<!--        <if>-->
-<!--            <and>-->
-<!--                <fact name="multi-offence">yes</fact>-->
-<!--                <fact name="other-offence">theft</fact>-->
-<!--            </and>-->
-<!--        </if>-->
-<!--        <then>-->
-<!--            <fact name="frame-multiplier">1.1</fact>-->
-<!--        </then>-->
-<!--    </rule>-->
-<!--&lt;!&ndash;9:Frame multiplier placeholder .............. &ndash;&gt;-->
-<!--    <rule>-->
-<!--        <section>penalty-frame</section>-->
-<!--        <if>-->
-<!--            <and>-->
-<!--                <fact name="multi-offence">yes</fact>-->
-<!--                <fact name="other-offence">placeholder</fact>-->
-<!--            </and>-->
-<!--        </if>-->
-<!--        <then>-->
-<!--            <fact name="frame-multiplier">1.3</fact>-->
-<!--        </then>-->
-<!--    </rule>-->
 <!--  ALL OF THE <THEN> SECTIONS ARE GUESSES  -->
     <rule>
         <section>penalty-frame</section>
@@ -252,13 +226,4 @@
             <fact name="mistaken-verdict">true</fact>
         </then>
     </rule>
-<!--    <rule>-->
-<!--        <if>-->
-<!--            <and>-->
-<!--                <fact name="cooperated-implication">-30%</fact>-->
-<!--                <fact name="dependents">-30%</fact>-->
-<!--                <fact name=""-->
-<!--            </and>-->
-<!--        </if>-->
-<!--    </rule>-->
 </rules>

@@ -19,7 +19,26 @@ public class PDFBuilder {
 
     private String caseNumber;
     private String userName;
-    private String fileName;
+    private final String fileName;
+
+    private final StringBuilder initialString = new StringBuilder();
+    private final StringBuilder modifiedString = new StringBuilder();
+    private final StringBuilder segmentString = new StringBuilder();
+    private final StringBuilder incDecString = new StringBuilder();
+    private final ArrayList<String> links = new ArrayList<>();
+    private final ArrayList<String> urls = new ArrayList<>();
+
+    /**
+     * Fonts - Public to allow for consistency if used in other classes
+     */
+    public final Font smallFont = FontFactory.getFont(FontFactory.HELVETICA, 8, Font.ITALIC);
+    public final Font titleFont = FontFactory.getFont(FontFactory.HELVETICA, 20);
+    public final Font subheading = FontFactory.getFont(FontFactory.HELVETICA, 16);
+    public final Font sentenceFont = FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLD);
+    public final Font hyperlinkFont = FontFactory.getFont(FontFactory.HELVETICA, 10, new CMYKColor(98, 17, 0, 34));
+    public final Font subsubheading = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.UNDERLINE);
+    public final Font naFont = FontFactory.getFont(FontFactory.HELVETICA, 11, Font.ITALIC);
+
 
     public PDFBuilder(String caseNumber, String userName, String fileName) {
         this.caseNumber = caseNumber;
@@ -44,46 +63,24 @@ public class PDFBuilder {
     }
 
     private void buildDocument(Document doc) throws DocumentException, IOException {
-        Font smallFont = FontFactory.getFont(FontFactory.HELVETICA, 8, Font.ITALIC);
-        Font titleFont = FontFactory.getFont(FontFactory.HELVETICA, 20);
-        Font subheading = FontFactory.getFont(FontFactory.HELVETICA, 16);
-        Font sentenceFont = FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLD);
-
         doc.open();
 
-        // Title, timestamp and logo
-        doc.add(new Paragraph("\nSentence Calculation\n", titleFont));
-        String timestamp = new Timestamp(System.currentTimeMillis()).toString().split("[.]")[0];
-        doc.add(new Paragraph(timestamp, smallFont));
-        doc.add(new Paragraph("\n\n"));
-        URL iconURL = getClass().getResource("/resources/media/icon.jpg");
-        Image logo = Image.getInstance(iconURL);
-        logo.scaleAbsolute(80, 86);
-        logo.setAbsolutePosition(460, 710);
-        doc.add(logo);
+        addHeader(doc);
+        addCaseInfo(doc);
+        buildStringArrays();
 
-        // Line separators, user name, case number
-        doc.add(Chunk.NEWLINE);
-        doc.add(new LineSeparator());
-        if (!caseNumber.equals("")) caseNumber = caseNumber + " ";
-//        else caseNumber = caseNumberField.getText() + " ";
-        if (!userName.equals("")) userName = "presided by " + userName;
-        if (!(caseNumber.equals("") && userName.equals(""))) {
-            doc.add(new Paragraph("Case " + caseNumber + userName));
-            doc.add(Chunk.NEWLINE);
-            doc.add(new LineSeparator());
-        }
+        addSection(initialString, doc, "Initial Sentence Frame");
+        addSection(modifiedString, doc, "Modified Sentence Frame");
+        addSection(segmentString, doc, "Segment of Sentence Frame");
+        addSection(incDecString, doc, "Increases and/or Decreases to Sentence");
 
-        // Get relevant outputs
+        addReferences(urls, links, doc);
+
+        doc.close();
+    }
+
+    private void buildStringArrays() {
         ArrayList<Output> outputs = State.getOutputs();
-        ArrayList<String> links = new ArrayList<>();
-        ArrayList<String> urls = new ArrayList<>();
-
-        StringBuilder initialString = new StringBuilder();
-        StringBuilder modifiedString = new StringBuilder();
-        StringBuilder segmentString = new StringBuilder();
-        StringBuilder incDecString = new StringBuilder();
-
         for (Output out: outputs) {
             if (!links.contains(out.getLink())) {
                 links.add(out.getLink());
@@ -107,23 +104,35 @@ public class PDFBuilder {
                     break;
             }
         }
+    }
 
-        // Summary
+    private void addHeader(Document doc) throws DocumentException, IOException {
+        doc.add(new Paragraph("\nSentence Calculation\n", titleFont));
+        String timestamp = new Timestamp(System.currentTimeMillis()).toString().split("[.]")[0];
+        doc.add(new Paragraph(timestamp, smallFont));
+        doc.add(new Paragraph("\n\n"));
+        URL iconURL = getClass().getResource("/resources/media/icon.jpg");
+        Image logo = Image.getInstance(iconURL);
+        logo.scaleAbsolute(80, 86);
+        logo.setAbsolutePosition(460, 710);
+        doc.add(logo);
+    }
+
+    private void addCaseInfo(Document doc) throws DocumentException {
+        doc.add(Chunk.NEWLINE);
+        doc.add(new LineSeparator());
+        if (!caseNumber.equals("")) caseNumber = caseNumber + " ";
+        if (!userName.equals("")) userName = "presided by " + userName;
+        if (!(caseNumber.equals("") && userName.equals(""))) {
+            doc.add(new Paragraph("Case " + caseNumber + userName));
+            doc.add(Chunk.NEWLINE);
+            doc.add(new LineSeparator());
+        }
         doc.add(new Paragraph("\n" + Model.getSentence(), sentenceFont));
         doc.add(new Paragraph("\nThis sentence was calculated in the following manner:", subheading));
-        addSection(initialString, doc, "Initial Sentence Frame");
-        addSection(modifiedString, doc, "Modified Sentence Frame");
-        addSection(segmentString, doc, "Segment of Sentence Frame");
-        addSection(incDecString, doc, "Increases and/or Decreases to Sentence");
-
-        addReferences(urls, links, doc);
-
-        doc.close();
     }
 
     private void addSection(StringBuilder sb, Document doc, String heading) throws DocumentException {
-        Font subsubheading = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.UNDERLINE);
-        Font naFont = FontFactory.getFont(FontFactory.HELVETICA, 11, Font.ITALIC);
         Font body = FontFactory.getFont(FontFactory.HELVETICA, 11);
         doc.add(new Paragraph(heading + ":\n", subsubheading));
         if (sb.length() == 0) doc.add(new Paragraph("Not applicable in this sentence.\n", naFont));
@@ -131,7 +140,6 @@ public class PDFBuilder {
     }
 
     private void addReferences(ArrayList<String> urls, ArrayList<String> links, Document doc) throws DocumentException {
-        Font hyperlinkFont = FontFactory.getFont(FontFactory.HELVETICA, 10, new CMYKColor(98, 17, 0, 34));
         doc.add(Chunk.NEWLINE);
         doc.add(new LineSeparator());
         for (int idx = 0; idx < links.size(); ++idx) {
