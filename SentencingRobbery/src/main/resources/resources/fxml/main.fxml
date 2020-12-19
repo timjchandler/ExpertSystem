@@ -17,6 +17,7 @@
                <children>
                   <Circle fx:id="closeCircle" fill="DODGERBLUE" layoutX="15.0" layoutY="15.0" onMouseClicked="#exit" radius="7.0" stroke="BLACK" strokeType="INSIDE" styleClass="circleClose" />
                   <Circle fx:id="minCircle" fill="DODGERBLUE" layoutX="40.0" layoutY="15.0" onMouseClicked="#minimise" radius="7.0" stroke="BLACK" strokeType="INSIDE" styleClass="circleMin" />
+                  <Pane layoutX="51.0" layoutY="22.0" prefHeight="62.0" prefWidth="59.0" styleClass="logoPane" />
                </children></Pane>
             <Button fx:id="btnSide0" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#mouseClicked" prefHeight="60.0" prefWidth="160.0" stylesheets="@../css/primary.css" text="Start" textFill="WHITE">
                <padding>

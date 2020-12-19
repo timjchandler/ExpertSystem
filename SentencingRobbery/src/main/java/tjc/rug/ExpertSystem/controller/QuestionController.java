@@ -220,29 +220,31 @@ public class QuestionController implements Initializable {
     }
 
     private void savePDF() {
-        Document document = new Document();
-        String filename = fileName.getText().replaceAll("[^A-Za-z]+", "");
-        if (filename.equals("")) filename = "output";
-        try
-        {
-            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filename + ".pdf"));
-            buildDocument(document);
-            writer.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        openPDF(filename);
+        String filename = new PDFBuilder(caseNumberField.getText(), userName.getText(), fileName.getText()).savePDF();
         labelBelowNext.setText("Saved as " + filename + ".pdf");
     }
+
+//    private void savePDF() {
+//        Document document = new Document();
+//        String filename = fileName.getText().replaceAll("[^A-Za-z]+", "");
+//        if (filename.equals("")) filename = "output";
+//        try
+//        {
+//            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filename + ".pdf"));
+//            buildDocument(document);
+//            writer.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        openPDF(filename);
+//        labelBelowNext.setText("Saved as " + filename + ".pdf");
+//    }
 
     private void buildDocument(Document doc) throws DocumentException, IOException {
         Font smallFont = FontFactory.getFont(FontFactory.HELVETICA, 8, Font.ITALIC);
         Font titleFont = FontFactory.getFont(FontFactory.HELVETICA, 20);
         Font subheading = FontFactory.getFont(FontFactory.HELVETICA, 16);
-        Font body = FontFactory.getFont(FontFactory.HELVETICA, 11);
         Font sentenceFont = FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLD);
-        Font subsubheading = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.UNDERLINE);
-        Font hyperlinkFont = FontFactory.getFont(FontFactory.HELVETICA, 10, new CMYKColor(98, 17, 0, 34));
 
         doc.open();
 
@@ -308,30 +310,34 @@ public class QuestionController implements Initializable {
         // Summary
         doc.add(new Paragraph("\n" + Model.getSentence(), sentenceFont));
         doc.add(new Paragraph("\nThis sentence was calculated in the following manner:", subheading));
+        addSection(initialString, doc, "Initial Sentence Frame");
+        addSection(modifiedString, doc, "Modified Sentence Frame");
+        addSection(segmentString, doc, "Segment of Sentence Frame");
+        addSection(incDecString, doc, "Increases and/or Decreases to Sentence");
 
-        doc.add(new Paragraph("Initial Sentence Frame:\n", subsubheading));
-        doc.add(new Paragraph(initialString.toString(), body));
+        addReferences(urls, links, doc);
 
-        doc.add(new Paragraph("Modified Sentence Frame:\n", subsubheading));
-        doc.add(new Paragraph(modifiedString.toString(), body));
+        doc.close();
+    }
 
-        doc.add(new Paragraph("Segment of Sentence Frame:\n", subsubheading));
-        doc.add(new Paragraph(segmentString.toString(), body));
+    private void addSection(StringBuilder sb, Document doc, String heading) throws DocumentException {
+        Font subsubheading = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.UNDERLINE);
+        Font naFont = FontFactory.getFont(FontFactory.HELVETICA, 11, Font.ITALIC);
+        Font body = FontFactory.getFont(FontFactory.HELVETICA, 11);
+        doc.add(new Paragraph(heading + ":\n", subsubheading));
+        if (sb.length() == 0) doc.add(new Paragraph("Not applicable in this sentence.\n", naFont));
+        else doc.add(new Paragraph(sb.toString(), body));
+    }
 
-        doc.add(new Paragraph("Increases and/or Decreases to Sentence:", subsubheading));
-        doc.add(new Paragraph("\nThe effects of the following sentence modifiers sum together before application.\n\n", smallFont));
-        doc.add(new Paragraph(incDecString.toString(), body));
-
+    private void addReferences(ArrayList<String> urls, ArrayList<String> links, Document doc) throws DocumentException {
+        Font hyperlinkFont = FontFactory.getFont(FontFactory.HELVETICA, 10, new CMYKColor(98, 17, 0, 34));
         doc.add(Chunk.NEWLINE);
         doc.add(new LineSeparator());
-
         for (int idx = 0; idx < links.size(); ++idx) {
             Anchor anchor = new Anchor(links.get(idx), hyperlinkFont);
             anchor.setReference(urls.get(idx));
             doc.add(anchor);
         }
-
-        doc.close();
     }
 
     private void openPDF(String filename) {

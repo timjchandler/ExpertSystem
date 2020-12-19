@@ -78,6 +78,7 @@ public class Controller implements Initializable {
             loadPage("home");
             currentView = CurrentView.HOME;
         }
+        btnSide3.setVisible(false);
         initDraggable();
     }
 

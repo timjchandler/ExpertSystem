@@ -63,7 +63,7 @@
             </then>
         </response>
         <response>
-            <text>Uncommon Assault</text>
+            <text>Serious Assault</text>
             <then>
                 <fact name="consumed">uncommon</fact>
             </then>
