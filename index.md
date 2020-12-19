@@ -126,3 +126,20 @@ Below is a tree of the relevant structure. Test and target directories are not e
 ├── summary.pdf
 └── target      
 ```
+
+# License
+
+This project is licensed under the MIT license. This can be found [here](https://github.com/timjchandler/ExpertSystem/blob/main/LICENSE.txt)
+
+# About
+
+This system is written in Java 
+
+### Built with
++ [Maven](https://maven.apache.org/) - Dependency managemet
++ [JavaFX](https://openjfx.io/) - GUI 
++ [iText](https://itextpdf.com/) - PDF creation
+
+### Acknowledgements
+
+This system was build with the help of Dominique Chopard, MLaw
