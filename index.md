@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/timjchandler/ExpertSystem/main/SentencingRobbery/src/main/resources/resources/media/icon.svg" alt="tjc logo" width="100" height="100" align="center>
+<img src="https://raw.githubusercontent.com/timjchandler/ExpertSystem/main/SentencingRobbery/src/main/resources/resources/media/icon.svg" alt="tjc logo" width="100" height="100" align="center">
 
 This system provides a recommended sentence for cases in which the convicted has committed robbery.
 
