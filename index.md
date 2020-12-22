@@ -136,7 +136,7 @@ This project is licensed under the MIT license. This can be found [here](https:/
 This system is written in Java 
 
 ### Built with
-+ [Maven](https://maven.apache.org/) - Dependency managemet
++ [Maven](https://maven.apache.org/) - Dependency management
 + [JavaFX](https://openjfx.io/) - GUI 
 + [iText](https://itextpdf.com/) - PDF creation
 
