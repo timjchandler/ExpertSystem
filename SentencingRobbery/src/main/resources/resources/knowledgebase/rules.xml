@@ -6,7 +6,8 @@
             <fact name="robbery-type">simple</fact>
         </if>
         <then>
-            <fact name="max">10</fact>
+            <fact name="max">15</fact>
+<!--            15 If multi offence, 10 otherwise -->
         </then>
     </rule>
 <!--2:Set max penalty - qualified-->
@@ -88,7 +89,8 @@
             <fact name="frame-multiplier">1.5</fact>
         </then>
     </rule>
-<!--  ALL OF THE <THEN> SECTIONS ARE GUESSES  -->
+<!--    ASSUMPTION: The situation is strong for each of these-->
+<!--                NOTE: in self defence, this is not completely strong as that implies mistrial-->
     <rule>
         <section>penalty-frame</section>
         <if>
@@ -113,7 +115,7 @@
             <fact name="mitigating">threat</fact>
         </if>
         <then>
-            <fact name="frame-multiplier">0.5</fact>
+            <fact name="frame-multiplier">0.9</fact>
         </then>
     </rule>
     <rule>
@@ -122,7 +124,7 @@
             <fact name="mitigating">behest</fact>
         </if>
         <then>
-            <fact name="frame-multiplier">0.9</fact>
+            <fact name="frame-multiplier">0.97</fact>
         </then>
     </rule>
     <rule>
@@ -131,7 +133,7 @@
             <fact name="mitigating">provoked</fact>
         </if>
         <then>
-            <fact name="frame-multiplier">0.85</fact>
+            <fact name="frame-multiplier">0.96</fact>
         </then>
     </rule>
     <rule>
@@ -140,7 +142,7 @@
             <fact name="mitigating">stress</fact>
         </if>
         <then>
-            <fact name="frame-multiplier">0.6</fact>
+            <fact name="frame-multiplier">0.85</fact>
         </then>
     </rule>
     <rule>
@@ -149,7 +151,7 @@
             <fact name="mitigating">remorse</fact>
         </if>
         <then>
-            <fact name="frame-multiplier">0.4</fact>
+            <fact name="frame-multiplier">0.9</fact>
         </then>
     </rule>
     <rule>
@@ -158,7 +160,7 @@
             <fact name="mitigating">time</fact>
         </if>
         <then>
-            <fact name="frame-multiplier">0.2</fact>
+            <fact name="frame-multiplier">0.93</fact>
         </then>
     </rule>
     <rule>
@@ -224,6 +226,33 @@
         </if>
         <then>
             <fact name="mistaken-verdict">true</fact>
+        </then>
+    </rule>
+    <rule>
+        <section>penalty-frame</section>
+        <if>
+            <fact name="motives">personal-gain</fact>
+        </if>
+        <then>
+            <fact name="motives-imp">severe</fact>
+        </then>
+    </rule>
+    <rule>
+        <section>penalty-frame</section>
+        <if>
+            <fact name="motives">emotional</fact>
+        </if>
+        <then>
+            <fact name="motives-imp">medium</fact>
+        </then>
+    </rule>
+    <rule>
+        <section>penalty-frame</section>
+        <if>
+            <fact name="motives">mental</fact>
+        </if>
+        <then>
+            <fact name="motives-imp">light</fact>
         </then>
     </rule>
 </rules>

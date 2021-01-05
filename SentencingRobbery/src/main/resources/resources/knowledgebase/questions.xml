@@ -179,7 +179,7 @@
         <response>
             <text>Low (CHF 300 or lower)</text>
             <then>
-                <fact name="success">light</fact>
+                <fact name="success">low</fact>
             </then>
         </response>
         <response>
@@ -203,7 +203,7 @@
         <requires>
             <and>
                 <fact name="success">not-null</fact>
-                <fact name="robbery-type">qualified</fact>
+<!--                <fact name="robbery-type">qualified</fact>  THIS IS REQUIRED FOR ALL ROBBERY -->
             </and>
         </requires>
         <response>
@@ -235,6 +235,7 @@
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>How high was the likelihood of the potential danger happening?</text>
+<!--        NOTE: THERE IS ALWAYS A RISK - IMPLICIT IN ROBBERY -->
         <type>single</type>
         <requires>
             <fact name="success">not-null</fact>
@@ -383,14 +384,14 @@
         <requires>
             <fact name="consumed">damage</fact>
         </requires>
+<!--        <response>-->
+<!--            <text>None</text>-->
+<!--            <then>-->
+<!--                <fact name="property-damage">none</fact>-->
+<!--            </then>-->
+<!--        </response>-->
         <response>
-            <text>None</text>
-            <then>
-                <fact name="property-damage">none</fact>
-            </then>
-        </response>
-        <response>
-            <text>Low</text>
+            <text>Low (CHF 300 or lower)</text>
             <then>
                 <fact name="property-damage">low</fact>
             </then>
@@ -402,17 +403,17 @@
             </then>
         </response>
         <response>
-            <text>Severe</text>
+            <text>High (CHF 10000 or higher) </text>
             <then>
                 <fact name="property-damage">severe</fact>
             </then>
         </response>
-        <response>
-            <text>Very Severe</text>
-            <then>
-                <fact name="property-damage">very-severe</fact>
-            </then>
-        </response>
+<!--        <response>-->
+<!--            <text>Very Severe </text>-->
+<!--            <then>-->
+<!--                <fact name="property-damage">very-severe</fact>-->
+<!--            </then>-->
+<!--        </response>-->
     </question>
 <!--13:Brutality of actions-->
     <question>
@@ -424,12 +425,12 @@
                 <fact name="mitigating">not-null</fact>
             </and>
         </requires>
-        <response>
-            <text>None</text>
-            <then>
-                <fact name="brutality">none</fact>
-            </then>
-        </response>
+<!--        <response>-->
+<!--            <text>None</text>-->
+<!--            <then>-->
+<!--                <fact name="brutality">none</fact>-->
+<!--            </then>-->
+<!--        </response>-->
         <response>
             <text>Low</text>
             <then>
@@ -501,18 +502,21 @@
             <text>Personal Enrichment</text>
             <then>
                 <fact name="motives">personal-gain</fact>
+<!--                Worst-->
             </then>
         </response>
         <response>
             <text>Emotional Reasons</text>
             <then>
                 <fact name="motives">emotional</fact>
+<!--                Middle-->
             </then>
         </response>
         <response>
             <text>Mental Impairment</text>
             <then>
                 <fact name="motives">mental</fact>
+<!--                Least bad-->
             </then>
         </response>
     </question>
@@ -632,7 +636,7 @@
         <response>
             <text>Yes</text>
             <then>
-                <fact name="dependents">-30%</fact>
+                <fact name="dependents">-20%</fact>
             </then>
         </response>
         <response>

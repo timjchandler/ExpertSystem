@@ -10,7 +10,7 @@ public class Sentence {
     private ArrayList<Fact> facts;
     private final float[] base = new float[2];
     private int segment = 0;
-    private int maxLength = 0; // TODO: Placeholder, add a fact that implements this
+    private int maxLength = 0;
     private float multiUp = 1;
     private float multiDown = 1;
 
@@ -70,15 +70,18 @@ public class Sentence {
 
     /**
      * Calculates which segment of the sentence to recommend. If no sentence fact has been applied, returns the full
-     * range.
+     * range. In the current implementation, the sentence assumes upcoming questions have the lowest impact until answered.
+     * A range is still used despite having a single value, this is to allow for ease of future changes.
      * @param current   The current sentence
      * @return          The adjusted segment of sentence
      */
     private float[] calculateSegment(float[] current) {
         if (segment == 0) return current;
-        float modifier = (Math.min(current[1], maxLength) - current[0]) / 4;
-        current[1] = current[0] + segment * modifier;
-        current[0] = current[0] + (segment - 1) * modifier;
+        float difference = current[1] - current[0];
+        difference /= 26;
+        difference *= segment;
+        current[0] += difference;
+        current[1] = current[0];
         return current;
     }
 
@@ -94,6 +97,7 @@ public class Sentence {
         if (current[0] + current[1] == 0) return "Not enough information. Please answer more questions.";
         StringBuilder out = new StringBuilder();
         boolean first = true;
+        boolean equal = current[0] == current[1];
         for (float f: current) {
             int weight = f < 2 ? 4 : f < 10 ? 2 : 1;
             f = Math.min((float) Math.round(f * weight) / weight, maxLength);
@@ -102,6 +106,7 @@ public class Sentence {
             if (years > 0 || months == 0) out.append(years).append(" years ");
             if (years > 0 && months > 0) out.append("and ");
             if (months > 0) out.append(months).append(" months ");
+            if (equal) break;
             if (first) {
                 out.append("to ");
                 first = false;
@@ -167,22 +172,20 @@ public class Sentence {
      * @param fact  The fact from which to update the segment information
      */
     private void updateSegment(Fact fact) {
-        int severity = 0;
         switch (fact.getValue()) {
-            case "light":
-                severity = 1;
+            case "none":
+                break;
+            case "low":
                 break;
             case "medium":
-                severity = 2;
+                ++segment;
                 break;
             case "severe":
-                severity = 3;
+                segment += 2;
                 break;
             case "very-severe":
-                severity = 4;
-                break;
+                segment += 3;
         }
-        segment = Math.max(segment, severity);
         if (completion.lessEqTo(Fact.Implication.SEGMENT)) completion = Fact.Implication.SEGMENT;
     }
 

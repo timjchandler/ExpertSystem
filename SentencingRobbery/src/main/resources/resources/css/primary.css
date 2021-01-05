@@ -82,3 +82,7 @@
                             c0-12.1-1.2-24-3.4-35.4H698.6C683,1855.3,670.3,1842.5,670.3,1826.9z
                             ";
 }
+.logoPane:pressed
+{
+-fx-background-color    : linear-gradient(to top right, #048ba8, #83e377);
+}

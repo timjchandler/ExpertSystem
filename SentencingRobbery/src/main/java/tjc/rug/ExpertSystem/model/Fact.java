@@ -1,5 +1,8 @@
 package tjc.rug.ExpertSystem.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Fact {
 
     /**
@@ -34,6 +37,9 @@ public class Fact {
 
     protected final int NOT_APPLICABLE = -1;
 
+    private final ArrayList<String> segmentValues = new ArrayList<>(
+            Arrays.asList("none", "low", "medium", "severe", "very-severe")
+    );
     private final String name;
     private final String value;
     private float minValue = NOT_APPLICABLE;
@@ -50,7 +56,7 @@ public class Fact {
         this.name = name;
         this.value = value;
         implication = Implication.NONE;
-        if (name.equals("segment")) implication = Implication.SEGMENT;
+        if (segmentValues.contains(value)) implication = Implication.SEGMENT;
         else if (name.equals("max")) implication = Implication.MAX;
         else manageNumbers();
     }
