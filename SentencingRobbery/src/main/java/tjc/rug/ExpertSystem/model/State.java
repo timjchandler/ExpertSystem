@@ -71,6 +71,16 @@ public class State {
         return new Sentence(facts).getSentence();
     }
 
+    public float[] getSentenceBase() {
+        updateImplications();
+        return new Sentence(facts).getBase();
+    }
+
+    public int getSentenceSegment() {
+        updateImplications();
+        return new Sentence(facts).getSegment();
+    }
+
     public static ArrayList<Output> getOutputs() {
         ArrayList<Output> out = new ArrayList<>();
         for (Output o: outputs) {

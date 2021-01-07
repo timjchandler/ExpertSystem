@@ -230,6 +230,15 @@ public class Sentence {
         return out.toString();
     }
 
+    public float[] getBase() {
+        return base;
+    }
+
+    public int getSegment() {
+
+        return segment;
+    }
+
     /**
      * Sets the static responses variable to null
      */

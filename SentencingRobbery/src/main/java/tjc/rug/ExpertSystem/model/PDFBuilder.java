@@ -72,6 +72,18 @@ public class PDFBuilder {
         addSection(initialString, doc, "Initial Sentence Frame");
         addSection(modifiedString, doc, "Modified Sentence Frame");
         addSection(segmentString, doc, "Segment of Sentence Frame");
+
+        float percentageSegment = (float) Model.getSentenceSegment();
+        percentageSegment /= 26.0;
+        float[] sentenceRange = Model.getSentenceBase();
+        float currentSegment = (sentenceRange[1] - sentenceRange[0]) * percentageSegment;
+        currentSegment += sentenceRange[0];
+
+        doc.add(new Paragraph("From the following questions the perpetrators actions placed them at " + (int) (percentageSegment * 100) +
+                "% of the sentence frame. This is a score of the severity of the violation or endangerment of the legal interest concerned.\n"
+                + "This leads to an unweighted sentence of " + currentSegment + " years within the frame " + sentenceRange[0] + " to "
+                + sentenceRange[1] + " years."));
+
         addSection(incDecString, doc, "Increases and/or Decreases to Sentence");
 
         addReferences(urls, links, doc);

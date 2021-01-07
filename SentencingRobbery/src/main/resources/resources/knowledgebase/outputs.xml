@@ -90,6 +90,50 @@
         </then>
     </output>
 <!--   Segment -->
+<!--    From the following questions the perpetrators actions scored [x] out of 26. This is a score of the severity of the violation or endangerment of the legal interest concerned.
+        This leads to a sentence of [exact] within the frame [frame]. -->
+<!--    Danger - Low-->
+    <output>
+        <if>
+            <fact name="danger">low</fact>
+        </if>
+        <then>
+            <description>Due to the low level of danger posed by the perpetrator, the sentence frame is skewed towards the minimum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+<!--    Danger - Medium-->
+    <output>
+        <if>
+            <fact name="danger">medium</fact>
+        </if>
+        <then>
+            <description>Due to the medium level of danger posed by the perpetrator, the sentence frame is skewed towards the middle of the range.</description>
+            <section>segment</section>
+        </then>
+    </output>
+<!--    Danger - Severe-->
+    <output>
+        <if>
+            <fact name="danger">severe</fact>
+        </if>
+        <then>
+            <description>Due to the high level of danger posed by the perpetrator, the sentence frame is skewed towards the maximum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+<!--    Likelihood - Low-->
+    <output>
+        <if>
+            <fact name="real-danger">low</fact>
+        </if>
+        <then>
+            <description>Taking into account the implicit existence of danger due to the nature of robbery, the likelihood of this danger becoming reality was low. As such this skews the sentence towards the minimum.</description>
+        </then>
+    </output>
+
+<!--    NOTE: Brutality refers to the level of disrespect for the victims life.-->
+
 <!--   IncDec -->
 <!--Cooperation-->
     <output>

@@ -87,6 +87,14 @@ public class Model {
         return state.getSentence();
     }
 
+    public static float[] getSentenceBase() {
+        return state.getSentenceBase();
+    }
+
+    public static int getSentenceSegment() {
+        return state.getSentenceSegment();
+    }
+
     /**
      * Checks if the questions variable has been initialised.
      * @return  True if the questions variable is null, else false
