@@ -33,7 +33,7 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <Label layoutX="165.0" layoutY="248.0" prefHeight="73.0" prefWidth="284.0" text="Calculating Robbery Sentencing" textFill="#85caee">
+      <Label layoutX="165.0" layoutY="248.0" prefHeight="73.0" prefWidth="320.0" text="Calculating Robbery Sentencing" textFill="#85caee">
          <font>
             <Font size="20.0" />
          </font>
