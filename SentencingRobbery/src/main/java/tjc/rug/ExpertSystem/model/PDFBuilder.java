@@ -3,6 +3,7 @@ package tjc.rug.ExpertSystem.model;
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
+import com.itextpdf.text.List;
 import com.itextpdf.text.pdf.CMYKColor;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
@@ -13,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class PDFBuilder {
@@ -25,6 +27,10 @@ public class PDFBuilder {
     private final StringBuilder modifiedString = new StringBuilder();
     private final StringBuilder segmentString = new StringBuilder();
     private final StringBuilder incDecString = new StringBuilder();
+
+    //TODO: add more lists instead of strings
+    private final List incDecList = new List(List.UNORDERED);
+
     private final ArrayList<String> links = new ArrayList<>();
     private final ArrayList<String> urls = new ArrayList<>();
 
@@ -38,12 +44,15 @@ public class PDFBuilder {
     public final Font hyperlinkFont = FontFactory.getFont(FontFactory.HELVETICA, 10, new CMYKColor(98, 17, 0, 34));
     public final Font subsubheading = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.UNDERLINE);
     public final Font naFont = FontFactory.getFont(FontFactory.HELVETICA, 11, Font.ITALIC);
+    public final Font noteFont = FontFactory.getFont(FontFactory.HELVETICA, 10);
 
 
     public PDFBuilder(String caseNumber, String userName, String fileName) {
         this.caseNumber = caseNumber;
         this.userName = userName;
         this.fileName = fileName;
+        Chunk bullet = new Chunk("\u2022 ");
+        incDecList.setListSymbol(bullet);
     }
 
     public String savePDF() {
@@ -72,19 +81,11 @@ public class PDFBuilder {
         addSection(initialString, doc, "Initial Sentence Frame");
         addSection(modifiedString, doc, "Modified Sentence Frame");
         addSection(segmentString, doc, "Segment of Sentence Frame");
-
-        float percentageSegment = (float) Model.getSentenceSegment();
-        percentageSegment /= 26.0;
-        float[] sentenceRange = Model.getSentenceBase();
-        float currentSegment = (sentenceRange[1] - sentenceRange[0]) * percentageSegment;
-        currentSegment += sentenceRange[0];
-
-        doc.add(new Paragraph("From the following questions the perpetrators actions placed them at " + (int) (percentageSegment * 100) +
-                "% of the sentence frame. This is a score of the severity of the violation or endangerment of the legal interest concerned.\n"
-                + "This leads to an unweighted sentence of " + currentSegment + " years within the frame " + sentenceRange[0] + " to "
-                + sentenceRange[1] + " years."));
-
-        addSection(incDecString, doc, "Increases and/or Decreases to Sentence");
+        addSegmentIntroduction(doc);
+//        addSection(incDecString, doc, "Increases and/or Decreases to Sentence");
+        
+        doc.add(new Paragraph("Increases and/or Decreases to Sentence:\n", subsubheading));
+        doc.add(incDecList);
 
         addReferences(urls, links, doc);
 
@@ -109,7 +110,8 @@ public class PDFBuilder {
                     segmentString.append(out.getDescription()).append("\n\n");
                     break;
                 case "IncDec":
-                    incDecString.append(out.getDescription()).append("\n\n");
+//                    incDecString.append(out.getDescription()).append("\n\n");
+                    incDecList.add(new ListItem(out.getDescription() + "\n", noteFont));
                     break;
                 default:
                     System.out.println("ERROR: Unknown output section");
@@ -128,6 +130,19 @@ public class PDFBuilder {
         logo.scaleAbsolute(80, 86);
         logo.setAbsolutePosition(460, 710);
         doc.add(logo);
+    }
+
+    private void addSegmentIntroduction(Document doc) throws DocumentException {
+        float percentageSegment = (float) Model.getSentenceSegment();
+        percentageSegment /= 26.0;
+        float[] sentenceRange = Model.getSentenceBase();
+        float currentSegment = (sentenceRange[1] - sentenceRange[0]) * percentageSegment;
+        currentSegment += sentenceRange[0];
+        DecimalFormat twoDP = new DecimalFormat("#.0");
+        doc.add(new Paragraph("From the following questions the perpetrators actions placed them at " + (int) (percentageSegment * 100) +
+                "% of the sentence frame. This is a measure of the severity of the violation or endangerment of the legal interest concerned.\n"
+                + "This leads to an unweighted sentence of " + twoDP.format(currentSegment) + " years within the frame " + sentenceRange[0] + " to "
+                + sentenceRange[1] + " years.\n\nThis calculation is based off constant jurisprudence.\n\n", noteFont));
     }
 
     private void addCaseInfo(Document doc) throws DocumentException {

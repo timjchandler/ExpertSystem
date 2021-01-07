@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Sentence {
-
+    // TODO: CHECK THAT FINAL MULTIPLICATIONS ARE CORRECTLY APPLIED
     private static ArrayList<Response> responses = null;
     private Fact.Implication completion;
     private ArrayList<Fact> facts;
