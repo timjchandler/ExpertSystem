@@ -40,7 +40,7 @@
             <Font size="20.0" />
         </font>
     </Button>
-    <Label layoutX="137.0" layoutY="158.0" text="Exit?" textAlignment="CENTER" AnchorPane.leftAnchor="296.0" AnchorPane.rightAnchor="295.5" AnchorPane.topAnchor="250.0">
+    <Label layoutX="137.0" layoutY="250.0" text="Are you sure you want to exit?">
         <font>
             <Font size="24.0" />
         </font>
