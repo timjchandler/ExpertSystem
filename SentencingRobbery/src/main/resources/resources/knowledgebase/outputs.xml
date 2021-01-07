@@ -129,6 +129,7 @@
         </if>
         <then>
             <description>Taking into account the implicit existence of danger due to the nature of robbery, the likelihood of this danger becoming reality was low. As such this skews the sentence towards the minimum.</description>
+            <section>segment</section>
         </then>
     </output>
 
