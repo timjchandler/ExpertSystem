@@ -28,8 +28,8 @@ public class PDFBuilder {
     private final StringBuilder segmentString = new StringBuilder();
     private final StringBuilder incDecString = new StringBuilder();
 
-    //TODO: add more lists instead of strings
     private final List incDecList = new List(List.UNORDERED);
+    private final List segmentList = new List(List.UNORDERED);
 
     private final ArrayList<String> links = new ArrayList<>();
     private final ArrayList<String> urls = new ArrayList<>();
@@ -53,6 +53,7 @@ public class PDFBuilder {
         this.fileName = fileName;
         Chunk bullet = new Chunk("\u2022 ");
         incDecList.setListSymbol(bullet);
+        segmentList.setListSymbol(bullet);
     }
 
     public String savePDF() {
@@ -78,13 +79,14 @@ public class PDFBuilder {
         addCaseInfo(doc);
         buildStringArrays();
 
-        addSection(initialString, doc, "Initial Sentence Frame");
-        addSection(modifiedString, doc, "Modified Sentence Frame");
-        addSection(segmentString, doc, "Segment of Sentence Frame");
+        addSection(initialString, doc, "\nInitial Sentence Frame");
+        addSection(modifiedString, doc, "\nModified Sentence Frame");
+
+        doc.add(new Paragraph("\nSegment of Sentence Frame\n", subsubheading));
         addSegmentIntroduction(doc);
-//        addSection(incDecString, doc, "Increases and/or Decreases to Sentence");
-        
-        doc.add(new Paragraph("Increases and/or Decreases to Sentence:\n", subsubheading));
+        doc.add(segmentList);
+
+        doc.add(new Paragraph("\nIncreases and/or Decreases to Sentence:\n", subsubheading));
         doc.add(incDecList);
 
         addReferences(urls, links, doc);
@@ -95,7 +97,7 @@ public class PDFBuilder {
     private void buildStringArrays() {
         ArrayList<Output> outputs = State.getOutputs();
         for (Output out: outputs) {
-            if (!links.contains(out.getLink())) {
+            if (out.getLink() != null) {
                 links.add(out.getLink());
                 urls.add(out.getUrl());
             }
@@ -106,8 +108,9 @@ public class PDFBuilder {
                 case "Modified":
                     modifiedString.append(out.getDescription()).append("\n\n");
                     break;
-                case "Segment":
+                case "segment":
                     segmentString.append(out.getDescription()).append("\n\n");
+                    segmentList.add(new ListItem(out.getDescription() + "\n", noteFont));
                     break;
                 case "IncDec":
 //                    incDecString.append(out.getDescription()).append("\n\n");
@@ -156,24 +159,26 @@ public class PDFBuilder {
             doc.add(new LineSeparator());
         }
         doc.add(new Paragraph("\n" + Model.getSentence(), sentenceFont));
+
+        doc.add(new Paragraph("\nThis sentence is rounded to the nearest 3 months for sentences under 2 years, 6 months for sentences between 2 and 10 years, and to the nearest year for sentences over 10 years.", naFont));
         doc.add(new Paragraph("\nThis sentence was calculated in the following manner:", subheading));
     }
 
     private void addSection(StringBuilder sb, Document doc, String heading) throws DocumentException {
         Font body = FontFactory.getFont(FontFactory.HELVETICA, 11);
         doc.add(new Paragraph(heading + ":\n", subsubheading));
-        if (sb.length() == 0) doc.add(new Paragraph("Not applicable in this sentence.\n", naFont));
-        else doc.add(new Paragraph(sb.toString(), body));
+        doc.add(new Paragraph(sb.toString(), body));
     }
 
     private void addReferences(ArrayList<String> urls, ArrayList<String> links, Document doc) throws DocumentException {
         doc.add(Chunk.NEWLINE);
         doc.add(new LineSeparator());
         for (int idx = 0; idx < links.size(); ++idx) {
-            Anchor anchor = new Anchor(links.get(idx), hyperlinkFont);
+            Anchor anchor = new Anchor(links.get(idx) + "\n", hyperlinkFont);
             anchor.setReference(urls.get(idx));
             doc.add(anchor);
         }
+
     }
 
     private void openPDF(String filename) {

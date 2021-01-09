@@ -6,7 +6,7 @@
 
     <groupId>tjc.rug</groupId>
     <artifactId>SentencingRobbery</artifactId>
-    <version>PROTOTYPE-V2</version>
+    <version>FINAL</version>
     <packaging>jar</packaging>
 
     <properties>

@@ -21,7 +21,7 @@ public class Fact {
         MULTI(2),
         SEGMENT(3),
         ADD(4),
-        SUB(5),
+//        SUB(5),
         MAX(6);
 
         private final int i;
@@ -37,9 +37,6 @@ public class Fact {
 
     protected final int NOT_APPLICABLE = -1;
 
-    private final ArrayList<String> segmentValues = new ArrayList<>(
-            Arrays.asList("none", "low", "medium", "severe", "very-severe")
-    );
     private final String name;
     private final String value;
     private float minValue = NOT_APPLICABLE;
@@ -56,6 +53,9 @@ public class Fact {
         this.name = name;
         this.value = value;
         implication = Implication.NONE;
+        ArrayList<String> segmentValues = new ArrayList<>(
+                Arrays.asList("none", "low", "medium", "severe", "very-severe")
+        );
         if (segmentValues.contains(value)) implication = Implication.SEGMENT;
         else if (name.equals("max")) implication = Implication.MAX;
         else manageNumbers();
@@ -73,6 +73,9 @@ public class Fact {
         } else if (value.contains(".") || value.equals("1")) {
             multiplier = Float.parseFloat(value);
             this.implication = Implication.MULTI;
+        } else if (value.contains("%")) {
+            this.implication = Implication.ADD;
+            multiplier = Float.parseFloat(value.split("%")[0]) / 100;
         }
     }
 

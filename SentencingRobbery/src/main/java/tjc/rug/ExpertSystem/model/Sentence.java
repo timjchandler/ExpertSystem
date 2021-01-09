@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Sentence {
-    // TODO: CHECK THAT FINAL MULTIPLICATIONS ARE CORRECTLY APPLIED
     private static ArrayList<Response> responses = null;
     private Fact.Implication completion;
     private ArrayList<Fact> facts;
@@ -13,6 +12,7 @@ public class Sentence {
     private int maxLength = 0;
     private float multiUp = 1;
     private float multiDown = 1;
+    private float finalWeight = 1;
 
     /**
      * Initialises the static responses ArrayList if required. Checks if a given question has already been recorded
@@ -54,12 +54,12 @@ public class Sentence {
         float[] temp = base;
         temp[0] *= multiUp * multiDown;
         temp[1] *= multiUp * multiDown;
-        temp = calculateSegment(temp);
-        temp = percentageChange(temp);
-        return sentenceStr(temp);
+        return sentenceStr(percentageChange(calculateSegment(temp)));
     }
 
     private float[] percentageChange(float[] temp) {
+        temp[0] *= finalWeight;
+        temp[1] *= finalWeight;
         return temp;
     }
 
@@ -135,9 +135,6 @@ public class Sentence {
                 case ADD:
                     updateAdd(fact);
                     break;
-                case SUB:
-                    updateSub(fact);
-                    break;
                 case MAX:
                     maxLength = Math.max(maxLength, Integer.parseInt(fact.getValue()));
             }
@@ -190,23 +187,15 @@ public class Sentence {
     }
 
     /**
-     * TODO: Add rules regarding this and implement
+     * Updates the final weighting variable
      * @param fact  The fact from which to make the update
      */
     private void updateAdd(Fact fact) {
-        System.out.println("updateAdd not yet implemented\n" + fact.toString());
+        finalWeight += fact.getMultiplier();
     }
 
     /**
-     * TODO: Add rules regarding this and implement
-     * @param fact  The fact from which to make the update
-     */
-    private void updateSub(Fact fact) {
-        System.out.println("updateSub not yet implemented\n" + fact.toString());
-    }
-
-    /**
-     * Builds a string of known facts. TODO: Add more information
+     * Builds a string of known facts.
      * @return  The string of known facts
      */
     @Override

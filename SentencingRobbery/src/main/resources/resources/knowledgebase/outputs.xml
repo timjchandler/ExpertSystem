@@ -90,9 +90,35 @@
         </then>
     </output>
 <!--   Segment -->
-<!--    From the following questions the perpetrators actions scored [x] out of 26. This is a score of the severity of the violation or endangerment of the legal interest concerned.
-        This leads to a sentence of [exact] within the frame [frame]. -->
-<!--    Danger - Low-->
+<!--    q6: Value-->
+    <output>
+        <if>
+            <fact name="success">low</fact>
+        </if>
+        <then>
+            <description>Due to the value of the stolen items being lower than CHF 300, the sentence is skewed towards the minimum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="success">medium</fact>
+        </if>
+        <then>
+            <description>Due to the value of the items being between CHF 300 and CHF 10000, the sentence is skewed towards the middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="success">severe</fact>
+        </if>
+        <then>
+            <description>Due to the value of the items being greater than CHF 10000, the sentence is skewed towards the maximum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+<!--    q7: Seriousness of danger-->
     <output>
         <if>
             <fact name="danger">low</fact>
@@ -102,7 +128,6 @@
             <section>segment</section>
         </then>
     </output>
-<!--    Danger - Medium-->
     <output>
         <if>
             <fact name="danger">medium</fact>
@@ -112,7 +137,6 @@
             <section>segment</section>
         </then>
     </output>
-<!--    Danger - Severe-->
     <output>
         <if>
             <fact name="danger">severe</fact>
@@ -122,7 +146,6 @@
             <section>segment</section>
         </then>
     </output>
-<!--    Likelihood - Low-->
     <output>
         <if>
             <fact name="real-danger">low</fact>
@@ -132,9 +155,304 @@
             <section>segment</section>
         </then>
     </output>
-
-<!--    NOTE: Brutality refers to the level of disrespect for the victims life.-->
-
+<!--    q8: Likelihood of danger-->
+    <output>
+        <if>
+            <fact name="real-danger">low</fact>
+        </if>
+        <then>
+            <description>Due to the low likelihood of the potential danger happening, the sentence is skewed towards the minimum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="real-danger">medium</fact>
+        </if>
+        <then>
+            <description>Due to the medium likelihood of the potential danger happening, the sentence is skewed towards the lower middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="real-danger">severe</fact>
+        </if>
+        <then>
+            <description>Due to the severe likelihood of the potential danger happening, the sentence is skewed towards the upper middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="real-danger">very-severe</fact>
+        </if>
+        <then>
+            <description>Due to the very severe likelihood of the potential danger happening, the sentence is skewed towards the maximum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+<!--    q9: People injured-->
+    <output>
+        <if>
+            <fact name="injuries">low</fact>
+        </if>
+        <then>
+            <description>Due to the low number of people (natural and legal entities) injured in the assault that was consumed by this robbery, the sentence is skewed towards the minimum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="injuries">medium</fact>
+        </if>
+        <then>
+            <description>Due to the medium number of people (natural and legal entities) injured in the assault that was consumed by this robbery, the sentence is skewed towards the lower middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="injuries">severe</fact>
+        </if>
+        <then>
+            <description>Due to the high number of people (natural and legal entities) injured in the assault that was consumed by this robbery, the sentence is skewed towards the upper middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="injuries">very-severe</fact>
+        </if>
+        <then>
+            <description>Due to the very high number of people (natural and legal entities) injured in the assault that was consumed by this robbery, the sentence is skewed towards the maximum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+<!--    q10: Severity of injury-->
+    <output>
+        <if>
+            <fact name="physical-damage">low</fact>
+        </if>
+        <then>
+            <description>Due to the low severity of physical damage to natural people resulting from the assault consumed by this robbery, the sentence is skewed towards the minimum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="physical-damage">medium</fact>
+        </if>
+        <then>
+            <description>Due to the medium severity of physical damage to natural people resulting from the assault consumed by this robbery, the sentence is skewed towards the lower middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="physical-damage">severe</fact>
+        </if>
+        <then>
+            <description>Due to the high severity of physical damage to natural people resulting from the assault consumed by this robbery, the sentence is skewed towards the upper middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="physical-damage">very-severe</fact>
+        </if>
+        <then>
+            <description>Due to the very high severity of physical damage to natural people resulting from the assault consumed by this robbery, the sentence is skewed towards the maximum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+<!--    q11: Psychological-->
+    <output>
+        <if>
+            <fact name="psychological">none</fact>
+        </if>
+        <then>
+            <description>Due to the lack of psychological damage to natural people resulting from the robbery, the sentence is skewed towards the minimum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="psychological">low</fact>
+        </if>
+        <then>
+            <description>Due to the low psychological damage to natural people resulting from the robbery, the sentence is skewed towards the minimum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="psychological">medium</fact>
+        </if>
+        <then>
+            <description>Due to the medium amount of psychological damage to natural people resulting from the robbery, the sentence is skewed towards the lower middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="psychological">severe</fact>
+        </if>
+        <then>
+            <description>Due to the high amount of psychological damage to natural people resulting from the robbery, the sentence is skewed towards the upper middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="psychological">very-severe</fact>
+        </if>
+        <then>
+            <description>Due to the very high amount of psychological damage to natural people resulting from the robbery, the sentence is skewed towards the maximum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+<!--    q12: Property Damage-->
+    <output>
+        <if>
+            <fact name="property-damage">low</fact>
+        </if>
+        <then>
+            <description>Due to the low value (less than CHF 300) of the property damage resulting from the criminal damage that was consumed by this robbery, the sentence is skewed towards the minimum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="property-damage">medium</fact>
+        </if>
+        <then>
+            <description>Due to the medium value (between CHF 300 and CHF 10000) of the property damage resulting from the criminal damage that was consumed by this robbery, the sentence is skewed towards the middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="property-damage">severe</fact>
+        </if>
+        <then>
+            <description>Due to the high value (more than CHF 10000) of the property damage resulting from the criminal damage that was consumed by this robbery, the sentence is skewed towards the maximum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+<!--    q13: Brutality-->
+    <output>
+        <if>
+            <fact name="brutality">low</fact>
+        </if>
+        <then>
+            <description>Due to the low level of brutality (defined as a disrespect for the victims lives) displayed, the sentence is skewed towards the minimum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="brutality">medium</fact>
+        </if>
+        <then>
+            <description>Due to the medium level of brutality (defined as a disrespect for the victims lives) displayed, the sentence is skewed towards the lower middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="brutality">severe</fact>
+        </if>
+        <then>
+            <description>Due to the high level of brutality (defined as a disrespect for the victims lives) displayed, the sentence is skewed towards the upper middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="brutality">very-severe</fact>
+        </if>
+        <then>
+            <description>Due to the very high level of brutality (defined as a disrespect for the victims lives) displayed, the sentence is skewed towards the maximum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+<!--    q14: Avoidable danger-->
+    <output>
+        <if>
+            <fact name="avoidable-danger">low</fact>
+        </if>
+        <then>
+            <description>Due to the low possibility of the perpetrator avoiding the danger or injury caused, the sentence is skewed towards the minimum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="avoidable-danger">medium</fact>
+        </if>
+        <then>
+            <description>Due to the medium possibility of the perpetrator avoiding the danger or injury caused, the sentence is skewed towards the lower middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="avoidable-danger">severe</fact>
+        </if>
+        <then>
+            <description>Due to the high possibility of the perpetrator avoiding the danger or injury caused, the sentence is skewed towards the upper middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="avoidable-danger">very-severe</fact>
+        </if>
+        <then>
+            <description>Due to the very high possibility of the perpetrator avoiding the danger or injury caused, the sentence is skewed towards the maximum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+<!--    q15: Motive-->
+<!--    Note: low (mental impairment) not included here as addressed in next question.-->
+    <output>
+        <if>
+            <fact name="motives">medium</fact>
+        </if>
+        <then>
+            <description>The perpetrators motives fall under the category of "Emotional Reasons", this does not give reason to suspect high criminal intent, and as such the sentence is skewed towards the middle.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="motives">severe</fact>
+        </if>
+        <then>
+            <description>The perpetrators motives fall under the category of "Personal Gain", this gives reason to suspect high criminal intent, and as such the sentence is skewed towards the maximum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+<!--    q16: -->
+    <output>
+        <if>
+            <fact name="mental-lucidity">lucid</fact>
+        </if>
+        <then>
+            <description>The perpetrators motives fall under the category of "Mental Impairment" and the perpetrator is believed to have been lucid during the crime. This does not give reason to suspect high criminal intent, and as such the sentence is skewed towards the minimum.</description>
+            <section>segment</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="mental-lucidity">not-lucid</fact>
+        </if>
+        <then>
+            <description>The perpetrator is not believed to have been lucid during the crime. This suggests that an error was made during the judgement and no sentence should be given.</description>
+            <section>segment</section>
+        </then>
+    </output>
 <!--   IncDec -->
 <!--Cooperation-->
     <output>

@@ -384,12 +384,6 @@
         <requires>
             <fact name="consumed">damage</fact>
         </requires>
-<!--        <response>-->
-<!--            <text>None</text>-->
-<!--            <then>-->
-<!--                <fact name="property-damage">none</fact>-->
-<!--            </then>-->
-<!--        </response>-->
         <response>
             <text>Low (CHF 300 or lower)</text>
             <then>
@@ -408,12 +402,6 @@
                 <fact name="property-damage">severe</fact>
             </then>
         </response>
-<!--        <response>-->
-<!--            <text>Very Severe </text>-->
-<!--            <then>-->
-<!--                <fact name="property-damage">very-severe</fact>-->
-<!--            </then>-->
-<!--        </response>-->
     </question>
 <!--13:Brutality of actions-->
     <question>
@@ -425,12 +413,6 @@
                 <fact name="mitigating">not-null</fact>
             </and>
         </requires>
-<!--        <response>-->
-<!--            <text>None</text>-->
-<!--            <then>-->
-<!--                <fact name="brutality">none</fact>-->
-<!--            </then>-->
-<!--        </response>-->
         <response>
             <text>Low</text>
             <then>
@@ -457,7 +439,6 @@
         </response>
     </question>
 <!--14:Possibility of avoiding danger or injury-->
-<!--    ONLY FOR assault/damage?    -->
     <question>
         <heading>Ascertaining placement within base sentence</heading>
         <text>To what extent was the perpetrator able to avoid the danger or injury?</text>
@@ -501,21 +482,21 @@
         <response>
             <text>Personal Enrichment</text>
             <then>
-                <fact name="motives">personal-gain</fact>
+                <fact name="motives">severe</fact>
 <!--                Worst-->
             </then>
         </response>
         <response>
             <text>Emotional Reasons</text>
             <then>
-                <fact name="motives">emotional</fact>
+                <fact name="motives">medium</fact>
 <!--                Middle-->
             </then>
         </response>
         <response>
             <text>Mental Impairment</text>
             <then>
-                <fact name="motives">mental</fact>
+                <fact name="motives">low</fact>
 <!--                Least bad-->
             </then>
         </response>
@@ -525,7 +506,7 @@
         <heading>Special case: Mental Impairment</heading>
         <text>Was the perpetrator lucid when committing the crime?</text>
         <requires>
-            <fact name="motives">mental</fact>
+            <fact name="motives">low</fact>
         </requires>
         <type>single</type>
         <response>

@@ -173,53 +173,6 @@
         </then>
     </rule>
     <rule>
-        <section>penalty-frame</section>
-        <if>
-            <or>
-                <fact name="success">light</fact>
-                <fact name="danger">light</fact>
-            </or>
-        </if>
-        <then>
-            <fact name="segment">light</fact>
-        </then>
-    </rule>
-    <rule>
-        <section>penalty-frame</section>
-        <if>
-            <or>
-                <fact name="success">medium</fact>
-                <fact name="danger">medium</fact>
-            </or>
-        </if>
-        <then>
-            <fact name="segment">medium</fact>
-        </then>
-    </rule>
-    <rule>
-        <section>penalty-frame</section>
-        <if>
-            <or>
-                <fact name="success">severe</fact>
-                <fact name="danger">severe</fact>
-            </or>
-        </if>
-        <then>
-            <fact name="segment">severe</fact>
-        </then>
-    </rule>
-    <rule>
-        <section>penalty-frame</section>
-        <if>
-            <or>
-                <fact name="danger">very-severe</fact>
-            </or>
-        </if>
-        <then>
-            <fact name="segment">very-severe</fact>
-        </then>
-    </rule>
-    <rule>
         <section>special</section>
         <if>
             <fact name="mental-lucidity">not-lucid</fact>
