@@ -8,8 +8,12 @@ This system provides a recommended sentence for cases in which the convicted has
 {:toc} 
 
 # Download   
+
+The latest version, _FINAL_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-FINAL.jar)  
+_<span style="color:grey; font-size:10px">File updated: 09/01/21</span>_     
+
+The previous version, _PROTOTYPE-V2_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-PROTOTYPE-V2.jar)   
 _<span style="color:grey; font-size:10px">File updated: 19/12/20</span>_     
-The latest version, _PROTOTYPE-V2_ can be downloaded [here](https://github.com/timjchandler/ExpertSystem/blob/main/SentencingRobbery-PROTOTYPE-V2.jar)    
 
 To run the system, Java is required. 
 
@@ -63,68 +67,78 @@ Below is a tree of the relevant structure. Test and target directories are not e
 
 ```bash
 .
-├── pom.xml
-├── src
-│   ├── main
-│   │   ├── appengine
-│   │   │   └── app.yaml
-│   │   ├── java
-│   │   │   └── tjc
-│   │   │       └── rug
-│   │   │           ├── ExpertSystem
-│   │   │           │   ├── ExpertSystemMain.java
-│   │   │           │   ├── Main.java
-│   │   │           │   ├── controller
-│   │   │           │   │   ├── AnimateElement.java
-│   │   │           │   │   ├── Controller.java
-│   │   │           │   │   ├── ExitController.java
-│   │   │           │   │   ├── HomeController.java
-│   │   │           │   │   ├── QuestionController.java
-│   │   │           │   │   └── TraceController.java
-│   │   │           │   ├── model
-│   │   │           │   │   ├── AbstractKnowledge.java
-│   │   │           │   │   ├── Fact.java
-│   │   │           │   │   ├── Model.java
-│   │   │           │   │   ├── Output.java
-│   │   │           │   │   ├── Question.java
-│   │   │           │   │   ├── Response.java
-│   │   │           │   │   ├── Rule.java
-│   │   │           │   │   ├── Sentence.java
-│   │   │           │   │   └── State.java
-│   │   │           │   └── parser
-│   │   │           │       ├── OutputParser.java
-│   │   │           │       ├── Parser.java
-│   │   │           │       ├── QuestionParser.java
-│   │   │           │       └── RuleParser.java
-│   │   │           └── META-INF
-│   │   │               └── MANIFEST.MF
-│   │   └── resources
-│   │       └── resources
-│   │           ├── css
-│   │           │   ├── exit.css
-│   │           │   ├── home.css
-│   │           │   ├── primary.css
-│   │           │   ├── question.css
-│   │           │   └── trace.css
-│   │           ├── fxml
-│   │           │   ├── exit.fxml
-│   │           │   ├── home.fxml
-│   │           │   ├── main.fxml
-│   │           │   ├── questionArea.fxml
-│   │           │   └── trace.fxml
-│   │           ├── knowledgebase
-│   │           │   ├── outputs.xml
-│   │           │   ├── questions.xml
-│   │           │   └── rules.xml
-│   │           └── media
-│   │               ├── home.png
-│   │               ├── icon.jpg
-│   │               ├── icon.png
-│   │               ├── icon.svg
-│   │               └── scales.png
-│   └── test
-├── summary.pdf
-└── target      
+├── LICENSE.txt
+├── README.md
+├── SentencingRobbery
+│   ├── SentencingRobbery.iml
+│   ├── dependency-reduced-pom.xml
+│   ├── pom.xml
+│   ├── src
+│   │   ├── main
+│   │   │   ├── appengine
+│   │   │   │   └── app.yaml
+│   │   │   ├── java
+│   │   │   │   └── tjc
+│   │   │   │       └── rug
+│   │   │   │           ├── ExpertSystem
+│   │   │   │           │   ├── ExpertSystemMain.java
+│   │   │   │           │   ├── Main.java
+│   │   │   │           │   ├── controller
+│   │   │   │           │   │   ├── AnimateElement.java
+│   │   │   │           │   │   ├── Controller.java
+│   │   │   │           │   │   ├── ExitController.java
+│   │   │   │           │   │   ├── HomeController.java
+│   │   │   │           │   │   ├── QuestionController.java
+│   │   │   │           │   │   └── TraceController.java
+│   │   │   │           │   ├── model
+│   │   │   │           │   │   ├── AbstractKnowledge.java
+│   │   │   │           │   │   ├── Fact.java
+│   │   │   │           │   │   ├── Model.java
+│   │   │   │           │   │   ├── Output.java
+│   │   │   │           │   │   ├── PDFBuilder.java
+│   │   │   │           │   │   ├── Question.java
+│   │   │   │           │   │   ├── Response.java
+│   │   │   │           │   │   ├── Rule.java
+│   │   │   │           │   │   ├── Sentence.java
+│   │   │   │           │   │   └── State.java
+│   │   │   │           │   └── parser
+│   │   │   │           │       ├── OutputParser.java
+│   │   │   │           │       ├── Parser.java
+│   │   │   │           │       ├── QuestionParser.java
+│   │   │   │           │       └── RuleParser.java
+│   │   │   │           └── META-INF
+│   │   │   │               └── MANIFEST.MF
+│   │   │   └── resources
+│   │   │       └── resources
+│   │   │           ├── css
+│   │   │           │   ├── exit.css
+│   │   │           │   ├── home.css
+│   │   │           │   ├── primary.css
+│   │   │           │   ├── question.css
+│   │   │           │   └── trace.css
+│   │   │           ├── fxml
+│   │   │           │   ├── exit.fxml
+│   │   │           │   ├── home.fxml
+│   │   │           │   ├── main.fxml
+│   │   │           │   ├── questionArea.fxml
+│   │   │           │   └── trace.fxml
+│   │   │           ├── knowledgebase
+│   │   │           │   ├── outputs.xml
+│   │   │           │   ├── questions.xml
+│   │   │           │   └── rules.xml
+│   │   │           └── media
+│   │   │               ├── home.png
+│   │   │               ├── icon.jpg
+│   │   │               ├── icon.png
+│   │   │               ├── icon.svg
+│   │   │               └── scales.png
+│   │   └── test
+│   ├── summary.pdf
+│   └── target
+├── SentencingRobbery-FINAL.jar
+├── SentencingRobbery-PROTOTYPE-V2.jar
+├── SentencingRobbery-PROTOTYPE.jar
+└── summary.pdf     
 ```
 
 # License
