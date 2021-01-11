@@ -28,6 +28,8 @@ Note that you may need to provide admin/super user permissions to run the system
 
 ### Video Example
 
+Here is a video showing a typical use case.  
+
 <video width="480" height="360" controls>
   <source type="video/mp4" src="https://github.com/timjchandler/ExpertSystem/raw/gh-pages/walkthrough.mp4">
 </video>
