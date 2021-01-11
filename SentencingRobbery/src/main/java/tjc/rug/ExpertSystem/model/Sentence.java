@@ -10,8 +10,9 @@ public class Sentence {
     private final float[] base = new float[2];
     private int segment = 0;
     private int maxLength = 0;
-    private float multiUp = 1;
-    private float multiDown = 1;
+    private float multi = 1;
+//    private float multiUp = 1;
+//    private float multiDown = 1;
     private float finalWeight = 1;
 
     /**
@@ -52,8 +53,10 @@ public class Sentence {
     public String getSentence() {
         if (checkMistaken()) return "No sentence: The answers provided suggest that the verdict should have been NOT-GUILTY";
         float[] temp = base;
-        temp[0] *= multiUp * multiDown;
-        temp[1] *= multiUp * multiDown;
+//        temp[0] *= multiUp * multiDown;
+//        temp[1] *= multiUp * multiDown;
+        temp[0] *= multi;
+        temp[1] *= multi;
         return sentenceStr(percentageChange(calculateSegment(temp)));
     }
 
@@ -158,8 +161,9 @@ public class Sentence {
      * @param fact  The fact from which to update the multipliers.
      */
     private void updateMulti(Fact fact) {
-        if (fact.getMultiplier() > 1) multiUp = Math.max(fact.getMultiplier(), multiUp);
-        if (fact.getMultiplier() < 1) multiDown = Math.min(fact.getMultiplier(), multiDown);
+//        if (fact.getMultiplier() > 1) multiUp = Math.max(fact.getMultiplier(), multiUp);
+//        if (fact.getMultiplier() < 1) multiDown = Math.min(fact.getMultiplier(), multiDown);
+        multi *= fact.getMultiplier();
         if (completion.lessEqTo(Fact.Implication.MULTI)) completion = Fact.Implication.MULTI;
     }
 
@@ -245,5 +249,12 @@ public class Sentence {
 
     public static boolean isNull() {
         return (responses == null);
+    }
+
+    public float[] getUpdatedSentenceFrame() {
+        float[] temp = getBase();
+        temp[0] *= multi;
+        temp[1] = Math.min(temp[1] * multi, 20);
+        return temp;
     }
 }

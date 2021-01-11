@@ -87,6 +87,10 @@ public class Model {
         return state.getSentence();
     }
 
+    public static float[] getModBase() {
+        return state.getModBase();
+    }
+
     public static float[] getSentenceBase() {
         return state.getSentenceBase();
     }

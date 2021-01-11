@@ -110,7 +110,6 @@
         <requires>
             <or>
                 <fact name="multi-offence">not-null</fact>
-<!--                <fact name="other-offence">not-null</fact>-->
             </or>
         </requires>
         <response>
@@ -630,7 +629,7 @@
 <!--22:Effect of punishment-->
     <question>
         <heading>Calculating a decrease in the sentence</heading>
-        <text>How negatively impactful is the presumed effect of the punishment on the perpetrators future life?</text>
+        <text>How negative is the presumed impact of the punishment on the perpetrators future life?</text>
         <type>single</type>
         <requires>
             <fact name="dependents">not-null</fact>

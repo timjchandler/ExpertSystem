@@ -82,11 +82,84 @@
         </if>
         <then>
             <description>Additional crimes with lesser base sentences were included in this sentencing. This leads to an increase of 50% in the sentence length, in accordance with Art. 49 ciph. 1 StGB.</description>
-            <section>Modified</section>
+            <section>modified</section>
             <link>
                 <text>Art. 49 ciph. 1 StGB</text>
                 <url>https://www.admin.ch/opc/en/classified-compilation/19370083/index.html</url>
             </link>
+        </then>
+    </output>
+<!--    Mitigating -->
+    <output>
+        <if>
+            <fact name="mitigating">honourable</fact>
+        </if>
+        <then>
+            <description>The motives for the crime were deemed to be honourable. As such, a 20% deduction to the sentence frame is implemented.</description>
+            <section>modified</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="mitigating">distress</fact>
+        </if>
+        <then>
+            <description>The perpetrator committed the crime whilst seriously distressed. As such a 10% deduction to the sentence frame is implemented.</description>
+            <section>modified</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="mitigating">threat</fact>
+        </if>
+        <then>
+            <description>The perpetrator committed the crime whilst under serious threat. As such a 10% deduction to the sentence frame is implemented.</description>
+            <section>modified</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="mitigating">behest</fact>
+        </if>
+        <then>
+            <description>The perpetrator committed the crime at the behest of someone to whom they were dependent or duty bound. A 3% deduction to the sentence frame is implemented.</description>
+            <section>modified</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="mitigating">provoked</fact>
+        </if>
+        <then>
+            <description>The offender was seriously provoked by the conduct of the person suffering injury. A 4% deduction to the sentence frame is implemented.</description>
+            <section>modified</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="mitigating">stress</fact>
+        </if>
+        <then>
+            <description>The perpetrator committed the crime whilst in a state of extreme emotion or psychological stress. A 15% deduction to the sentence frame is implemented.</description>
+            <section>modified</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="mitigating">remorse</fact>
+        </if>
+        <then>
+            <description>The perpetrator has shown genuine remorse for the crime, and has made reparations. A 10% deduction to the sentence frame is implemented.</description>
+            <section>modified</section>
+        </then>
+    </output>
+    <output>
+        <if>
+            <fact name="mitigating">time</fact>
+        </if>
+        <then>
+            <description>The need for punishment has been substantially reduced due to the elapsed time since the offence. A 7% deduction to the sentence frame is implemented.</description>
+            <section>modified</section>
         </then>
     </output>
 <!--   Segment -->

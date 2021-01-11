@@ -89,8 +89,6 @@
             <fact name="frame-multiplier">1.5</fact>
         </then>
     </rule>
-<!--    ASSUMPTION: The situation is strong for each of these-->
-<!--                NOTE: in self defence, this is not completely strong as that implies mistrial-->
     <rule>
         <section>penalty-frame</section>
         <if>

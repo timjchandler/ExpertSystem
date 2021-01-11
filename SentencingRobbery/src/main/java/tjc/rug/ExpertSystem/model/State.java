@@ -102,4 +102,7 @@ public class State {
         return facts;
     }
 
+    public float[] getModBase() {
+        return new Sentence(facts).getUpdatedSentenceFrame();
+    }
 }

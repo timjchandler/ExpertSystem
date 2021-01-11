@@ -24,15 +24,15 @@ public class PDFBuilder {
     private final String fileName;
 
     private final StringBuilder initialString = new StringBuilder();
-    private final StringBuilder modifiedString = new StringBuilder();
-    private final StringBuilder segmentString = new StringBuilder();
-    private final StringBuilder incDecString = new StringBuilder();
 
     private final List incDecList = new List(List.UNORDERED);
     private final List segmentList = new List(List.UNORDERED);
+    private final List modifyList = new List(List.UNORDERED);
 
     private final ArrayList<String> links = new ArrayList<>();
     private final ArrayList<String> urls = new ArrayList<>();
+
+    private float[] modFrame;
 
     /**
      * Fonts - Public to allow for consistency if used in other classes
@@ -46,7 +46,12 @@ public class PDFBuilder {
     public final Font naFont = FontFactory.getFont(FontFactory.HELVETICA, 11, Font.ITALIC);
     public final Font noteFont = FontFactory.getFont(FontFactory.HELVETICA, 10);
 
-
+    /**
+     * Constructor sets the caseNumber, userName and fileName variables. Sets up the empty lists for the summary.
+     * @param caseNumber    An optional String entered by the user
+     * @param userName      An optional String entered by the user
+     * @param fileName      A mandatory string entered by the user
+     */
     public PDFBuilder(String caseNumber, String userName, String fileName) {
         this.caseNumber = caseNumber;
         this.userName = userName;
@@ -54,8 +59,16 @@ public class PDFBuilder {
         Chunk bullet = new Chunk("\u2022 ");
         incDecList.setListSymbol(bullet);
         segmentList.setListSymbol(bullet);
+        modifyList.setListSymbol(bullet);
+        modFrame = Model.getModBase();
     }
 
+    /**
+     * Strips illegal characters from the filename creates, generates and saves the document under that filename.
+     * The method then opens the pdf file and returns the filename under which it was saved to be displayed in the
+     * gui
+     * @return
+     */
     public String savePDF() {
         Document document = new Document();
         String filename = fileName.replaceAll("[^A-Za-z]+", "");
@@ -72,6 +85,12 @@ public class PDFBuilder {
         return filename;
     }
 
+    /**
+     * Builds the document. Calls other methods to create sections.
+     * @param doc       The document to build
+     * @throws DocumentException
+     * @throws IOException
+     */
     private void buildDocument(Document doc) throws DocumentException, IOException {
         doc.open();
 
@@ -80,7 +99,10 @@ public class PDFBuilder {
         buildStringArrays();
 
         addSection(initialString, doc, "\nInitial Sentence Frame");
-        addSection(modifiedString, doc, "\nModified Sentence Frame");
+
+        doc.add(new Paragraph("\nModified Sentence Frame", subsubheading));
+        addModIntroduction(doc);
+        doc.add(modifyList);
 
         doc.add(new Paragraph("\nSegment of Sentence Frame\n", subsubheading));
         addSegmentIntroduction(doc);
@@ -94,6 +116,10 @@ public class PDFBuilder {
         doc.close();
     }
 
+    /**
+     * Builds the information base from the facts stored within the Model. Prints an error message if an unknown
+     * output is read in
+     */
     private void buildStringArrays() {
         ArrayList<Output> outputs = State.getOutputs();
         for (Output out: outputs) {
@@ -105,15 +131,13 @@ public class PDFBuilder {
                 case "Initial":
                     initialString.append(out.getDescription()).append("\n\n");
                     break;
-                case "Modified":
-                    modifiedString.append(out.getDescription()).append("\n\n");
+                case "modified":
+                    modifyList.add(new ListItem(out.getDescription() + "\n", noteFont));
                     break;
                 case "segment":
-                    segmentString.append(out.getDescription()).append("\n\n");
                     segmentList.add(new ListItem(out.getDescription() + "\n", noteFont));
                     break;
                 case "IncDec":
-//                    incDecString.append(out.getDescription()).append("\n\n");
                     incDecList.add(new ListItem(out.getDescription() + "\n", noteFont));
                     break;
                 default:
@@ -123,6 +147,12 @@ public class PDFBuilder {
         }
     }
 
+    /**
+     * Adds the title, case number, user name, date, sentence and logo to the top of the pdf
+     * @param doc       The document to add the header to.
+     * @throws DocumentException
+     * @throws IOException
+     */
     private void addHeader(Document doc) throws DocumentException, IOException {
         doc.add(new Paragraph("\nSentence Calculation\n", titleFont));
         String timestamp = new Timestamp(System.currentTimeMillis()).toString().split("[.]")[0];
@@ -135,19 +165,40 @@ public class PDFBuilder {
         doc.add(logo);
     }
 
+    /**
+     * Adds a short summary to the start of the Sentence modification section.
+     * @param doc   The document to add the summary to.
+     * @throws DocumentException
+     */
+    private void addModIntroduction(Document doc) throws DocumentException {
+        DecimalFormat twoDP = new DecimalFormat("#0.0");
+        doc.add(new Paragraph("The modifications listed below lead to an updated sentence frame of " + twoDP.format(modFrame[0])
+        + " to " + twoDP.format(modFrame[1]) + " years.\n\n"));
+    }
+
+    /**
+     * Calculates the segment of the sentence and adds a short summary of it to the document.
+     * @param doc   The document to add the summary to.
+     * @throws DocumentException
+     */
     private void addSegmentIntroduction(Document doc) throws DocumentException {
         float percentageSegment = (float) Model.getSentenceSegment();
         percentageSegment /= 26.0;
-        float[] sentenceRange = Model.getSentenceBase();
+        float[] sentenceRange = modFrame;
         float currentSegment = (sentenceRange[1] - sentenceRange[0]) * percentageSegment;
         currentSegment += sentenceRange[0];
-        DecimalFormat twoDP = new DecimalFormat("#.0");
+        DecimalFormat twoDP = new DecimalFormat("#0.0");
         doc.add(new Paragraph("From the following questions the perpetrators actions placed them at " + (int) (percentageSegment * 100) +
                 "% of the sentence frame. This is a measure of the severity of the violation or endangerment of the legal interest concerned.\n"
-                + "This leads to an unweighted sentence of " + twoDP.format(currentSegment) + " years within the frame " + sentenceRange[0] + " to "
-                + sentenceRange[1] + " years.\n\nThis calculation is based off constant jurisprudence.\n\n", noteFont));
+                + "This leads to an unweighted sentence of " + twoDP.format(currentSegment) + " years within the frame " + twoDP.format(sentenceRange[0]) + " to "
+                + twoDP.format(sentenceRange[1]) + " years.\n\nThis calculation is based off constant jurisprudence.\n\n", noteFont));
     }
 
+    /**
+     * Adds information about the case to the document
+     * @param doc   The document to add to
+     * @throws DocumentException
+     */
     private void addCaseInfo(Document doc) throws DocumentException {
         doc.add(Chunk.NEWLINE);
         doc.add(new LineSeparator());
@@ -164,12 +215,26 @@ public class PDFBuilder {
         doc.add(new Paragraph("\nThis sentence was calculated in the following manner:", subheading));
     }
 
+    /**
+     * Adds a section to the document
+     * @param sb    A stringbuilder object
+     * @param doc   The document to add to
+     * @param heading   The heading for the section
+     * @throws DocumentException
+     */
     private void addSection(StringBuilder sb, Document doc, String heading) throws DocumentException {
         Font body = FontFactory.getFont(FontFactory.HELVETICA, 11);
         doc.add(new Paragraph(heading + ":\n", subsubheading));
         doc.add(new Paragraph(sb.toString(), body));
     }
 
+    /**
+     * Adds a list of reference links to the document
+     * @param urls      The URL to link to
+     * @param links     The name of the link
+     * @param doc       The document to add to
+     * @throws DocumentException
+     */
     private void addReferences(ArrayList<String> urls, ArrayList<String> links, Document doc) throws DocumentException {
         doc.add(Chunk.NEWLINE);
         doc.add(new LineSeparator());
@@ -181,6 +246,10 @@ public class PDFBuilder {
 
     }
 
+    /**
+     * Opens the specified document on the users desktop
+     * @param filename  The name of the document to open
+     */
     private void openPDF(String filename) {
         try {
             File myFile = new File(filename + ".pdf");
