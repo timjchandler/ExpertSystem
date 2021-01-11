@@ -29,7 +29,7 @@ Note that you may need to provide admin/super user permissions to run the system
 ### Video Example
 
 <video width="320" height="240" controls>
-  <source type="video/mp4" src="https://github.com/timjchandler/ExpertSystem/blob/gh-pages/walkthrough.mp4">
+  <source type="video/mp4" src="https://github.com/timjchandler/ExpertSystem/raw/gh-pages/walkthrough.mp4">
 </video>
 
 ### Calculating a sentence
@@ -52,7 +52,7 @@ The filename will only accept letters and numbers. Any other characters will be 
 
 # JavaDoc
 
-_<span style="color:grey; font-size:10px">Last updated: 18/12/20</span>_  
+_<span style="color:grey; font-size:10px">Last updated: 11/01/21</span>_  
 The JavaDoc for this system may be found [here](https://timjchandler.github.io/ExpertSystem/JavaDoc/overview-summary.html)  
 
 # Knowledge Base
