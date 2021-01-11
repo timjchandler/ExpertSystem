@@ -28,7 +28,7 @@ Note that you may need to provide admin/super user permissions to run the system
 
 ### Video Example
 
-<video width="320" height="240" controls>
+<video width="480" height="360" controls>
   <source type="video/mp4" src="https://github.com/timjchandler/ExpertSystem/raw/gh-pages/walkthrough.mp4">
 </video>
 
@@ -68,7 +68,7 @@ The xml for the knowledge base may be found here:
 
 # Structure
 
-_<span style="color:grey; font-size:10px">Last updated: 18/12/20</span>_   
+_<span style="color:grey; font-size:10px">Last updated: 09/01/21</span>_   
 Below is a tree of the relevant structure. Test and target directories are not expanded.       
 
 ```bash
