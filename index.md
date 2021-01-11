@@ -26,6 +26,12 @@ Note that you may need to provide admin/super user permissions to run the system
 
 # How to use the system
 
+### Video Example
+
+<video width="320" height="240" controls>
+  <source type="video/mp4" src="https://github.com/timjchandler/ExpertSystem/blob/gh-pages/walkthrough.mp4">
+</video>
+
 ### Calculating a sentence
 
 Upon running the system click Start on the left menu bar and answer all of the questions. Questions with circular boxes are single choice, square boxes are multiple choice. You must always select at least one answer to progress. 
