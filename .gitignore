@@ -1,2 +1,8 @@
 JavaDoc/
 SentencingRobbery/target/
+*.pdf
+SentencingRobbery/dependency-reduced-pon.xml
+SentencingRobbery/SentencingRobbery.iml
+SentencingRobbery/src/main/appengine/
+SentencingRobbery/src/test/
+SentencingRobbery/src/main/java/tjc/rug/META-INF/
