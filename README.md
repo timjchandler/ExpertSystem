@@ -2,79 +2,18 @@
 
 #### An expert system for calculating sentence duration for robbery under Swiss law.
 
-### TODO:
+More information about the system may be found [here](https://timjchandler.github.io/ExpertSystem/)
 
-+ Refactoring:
-    - Break up controller class
-+ Rules:
-    - Add more functionality
-    - Decision made more by the rules, not the system
-    - Fewer 1 to 1 rules
-    - Add more rules
-    - Add more questions
+#### Running from IntelliJ (or another IDE)
 
-### Relevant Structure
+1. Open ```SentencingRobbery/pom.xml``` in IntelliJ
 
-```Bash
-.
-├── README.md
-├── SentencingRobbery
-│   ├── pom.xml
-│   ├── src
-│   │   ├── main
-│   │   │   ├── java
-│   │   │   │   └── tjc
-│   │   │   │       └── rug
-│   │   │   │           ├── ExpertSystem
-│   │   │   │           │   ├── FatJarMain.java
-│   │   │   │           │   ├── Main.java
-│   │   │   │           │   ├── controller
-│   │   │   │           │   │   ├── AnimateElement.java
-│   │   │   │           │   │   ├── Controller.java
-│   │   │   │           │   │   ├── ExitController.java
-│   │   │   │           │   │   ├── HomeController.java
-│   │   │   │           │   │   ├── QuestionController.java
-│   │   │   │           │   │   └── TraceController.java
-│   │   │   │           │   ├── model
-│   │   │   │           │   │   ├── AbstractKnowledge.java
-│   │   │   │           │   │   ├── Fact.java
-│   │   │   │           │   │   ├── Model.java
-│   │   │   │           │   │   ├── Question.java
-│   │   │   │           │   │   ├── Response.java
-│   │   │   │           │   │   ├── Rule.java
-│   │   │   │           │   │   ├── Sentence.java
-│   │   │   │           │   │   └── State.java
-│   │   │   │           │   └── parser
-│   │   │   │           │       ├── Parser.java
-│   │   │   │           │       ├── QuestionParser.java
-│   │   │   │           │       └── RuleParser.java
-│   │   │   │           └── META-INF
-│   │   │   │               └── MANIFEST.MF
-│   │   │   └── resources
-│   │   │       └── resources
-│   │   │           ├── css
-│   │   │           │   ├── exit.css
-│   │   │           │   ├── home.css
-│   │   │           │   ├── primary.css
-│   │   │           │   ├── question.css
-│   │   │           │   └── trace.css
-│   │   │           ├── fxml
-│   │   │           │   ├── exit.fxml
-│   │   │           │   ├── home.fxml
-│   │   │           │   ├── main.fxml
-│   │   │           │   ├── questionArea.fxml
-│   │   │           │   └── trace.fxml
-│   │   │           ├── knowledgebase
-│   │   │           │   ├── questions.xml
-│   │   │           │   └── rules.xml
-│   │   │           └── media
-│   │   │               ├── home.png
-│   │   │               ├── icon.png
-│   │   │               ├── icon2.png
-│   │   │               ├── icon3.png
-│   │   │               └── scales.png
-│   │   └── test
-│   └── target
-├── SentencingRobbery-PROTOTYPE-V2.jar
-└── SentencingRobbery-PROTOTYPE.jar
-```
+2. Run ```mvn compile``` (requires maven)
+
+3. Now the system should be runnable from either ```Main.java``` or ```ExpertSystemMain.java```
+
+#### Notes:
+
+This has only been tested with IntelliJ and running through the compiled ```.jar``` file. Whilst it will no doubt work in other IDEs such as eclipse, I am not familiar with them.  
+
+There are two main files due to a quirk with compiling JavaFX to a single ```.jar``` file. Both will run the System as one simply calls the other.
