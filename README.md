@@ -17,3 +17,11 @@ More information about the system may be found [here](https://timjchandler.githu
 This has only been tested with IntelliJ and running through the compiled ```.jar``` file. Whilst it will no doubt work in other IDEs such as eclipse, I am not familiar with them.  
 
 There are two main files due to a quirk with compiling JavaFX to a single ```.jar``` file. Both will run the System as one simply calls the other.
+
+#### Knowledge Base:
+
+The knowledge base is comprised of three files: ```rules.xml```,  ```questions.xml``` and ```outputs```
+
+These may be found linked through the github pages page mentioned above, or in the following location:
+
+```SentencingRobbery/src/main/resources/resources/knowledgebase/```
